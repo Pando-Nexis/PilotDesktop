@@ -53,7 +53,7 @@
             this.bSettings.Location = new System.Drawing.Point(0, -1);
             this.bSettings.MinimumSize = new System.Drawing.Size(100, 0);
             this.bSettings.Name = "bSettings";
-            this.bSettings.Size = new System.Drawing.Size(144, 36);
+            this.bSettings.Size = new System.Drawing.Size(114, 36);
             this.bSettings.TabIndex = 1;
             this.bSettings.Text = "Settings";
             this.bSettings.UseVisualStyleBackColor = false;
@@ -69,10 +69,10 @@
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 146);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 137);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(144, 205);
+            this.toolStrip1.Size = new System.Drawing.Size(114, 222);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
@@ -86,7 +86,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(0, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(144, 100);
+            this.panel1.Size = new System.Drawing.Size(114, 100);
             this.panel1.TabIndex = 4;
             // 
             // button2
@@ -105,7 +105,7 @@
             this.button2.Location = new System.Drawing.Point(5, 54);
             this.button2.MinimumSize = new System.Drawing.Size(100, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 45);
+            this.button2.Size = new System.Drawing.Size(102, 45);
             this.button2.TabIndex = 6;
             this.button2.Text = "Code generator";
             this.button2.UseVisualStyleBackColor = false;
@@ -127,7 +127,7 @@
             this.button1.Location = new System.Drawing.Point(5, 6);
             this.button1.MinimumSize = new System.Drawing.Size(100, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 45);
+            this.button1.Size = new System.Drawing.Size(102, 45);
             this.button1.TabIndex = 5;
             this.button1.Text = "Project handler";
             this.button1.UseVisualStyleBackColor = false;
@@ -138,9 +138,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::PilotDesktop.Properties.Resources.reflection1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(144, 351);
+            this.ClientSize = new System.Drawing.Size(114, 359);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.bSettings);
@@ -149,6 +149,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PilotNavigator";
+            this.Opacity = 0.98D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Pilot";
             this.TopMost = true;
