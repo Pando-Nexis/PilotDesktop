@@ -59,8 +59,7 @@ namespace PilotDesktop
         protected override void OnMove(EventArgs e)
         {
             base.OnMove(e);
-            this.Height = 300;
-            this.Width = 130;
+            this.Height = 300; 
             
         }
 
