@@ -77,8 +77,7 @@ namespace PilotDesktop
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var frm = new Forms.CustomerSourceCodeTool("TestProject1");
-            frm.Show();
+           
         }
 
         private void PilotNavigator_Load(object sender, EventArgs e)
@@ -95,12 +94,22 @@ namespace PilotDesktop
 
                 var dropDown = new ToolStripDropDownButton();
                 dropDown.Text = customer.Name;
-                var syncCode = new ToolStripButton();
-                syncCode.Text = "sync code";
-                syncCode.Tag = customer.Name;
-                syncCode.Click += new EventHandler(OpenCodeSync);
-                dropDown.DropDownItems.Add(syncCode);
-                dropDown.DropDownItems.Add("test2");
+              
+                foreach(var project in customer.Projects)
+                {
+                    var projectNode = new ToolStripDropDownButton();
+                    projectNode.Text = project.Name;
+                    projectNode.Tag = project.SystemId.ToString();  
+                    var syncCode = new ToolStripButton();
+                    syncCode.Text = "sync code";
+                    syncCode.Tag = project;
+                    syncCode.Click += new EventHandler(OpenCodeSync);
+                    projectNode.DropDownItems.Add(syncCode);
+                    projectNode.DropDownItems.Add("test2");
+                    dropDown.DropDownItems.Add(projectNode);
+                }
+                
+   
                 toolStrip1.Items.Add(dropDown);
 
 
@@ -109,8 +118,8 @@ namespace PilotDesktop
         private void OpenCodeSync(object sender, EventArgs e)
         {
             var senderButton = (ToolStripButton)sender;
-            var customer = Program._customers.FirstOrDefault(i => i.Name == senderButton.Tag);
-            var frm = new CustomerSourceCodeTool(customer.ProjectName);
+            var project =  senderButton.Tag as PilotProject;
+            var frm = new CustomerSourceCodeTool(project);
             frm.Show();
         }
 
