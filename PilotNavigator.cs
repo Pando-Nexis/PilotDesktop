@@ -20,8 +20,9 @@ namespace PilotDesktop
         {
             Screen scn = Screen.FromPoint(this.Location);
             this.Left = -8;
-            this.Top = (scn.WorkingArea.Height/2) - (this.Height/2);
-            this.Height = scn.WorkingArea.Height - 100;
+
+            this.Height = scn.WorkingArea.Height - 400;
+            this.Top = (scn.WorkingArea.Height/4) - (this.Height/4);
         }
 
         private const int SnapDist = 200;
@@ -38,16 +39,16 @@ namespace PilotDesktop
             Screen scn = Screen.FromPoint(this.Location);
             if (DoSnap(this.Left, scn.WorkingArea.Left))
             {
-                this.Left = scn.WorkingArea.Left - 10;
-                this.Top = (scn.WorkingArea.Height / 2) - (this.Height / 2);
-                this.Height = scn.WorkingArea.Height - 100;
+                this.Left = scn.WorkingArea.Left - 10; 
+                this.Height = scn.WorkingArea.Height - 400;
+                this.Top = (scn.WorkingArea.Height / 4) - (this.Height / 4);
             }
             //else if (DoSnap(this.Top, scn.WorkingArea.Top, 40)) this.Top = scn.WorkingArea.Top;
             else if (DoSnap(scn.WorkingArea.Right, this.Right))
             {
-                this.Left = scn.WorkingArea.Right - this.Width + 10;
-                this.Top = (scn.WorkingArea.Height / 2) - (this.Height / 2);
-                this.Height = scn.WorkingArea.Height - 100;
+                this.Left = scn.WorkingArea.Right - this.Width + 10; 
+                this.Height = scn.WorkingArea.Height - 400;
+                this.Top = (scn.WorkingArea.Height / 4) - (this.Height / 4);
             }
             //else if (DoSnap(scn.WorkingArea.Bottom, this.Bottom, 40)) this.Top = scn.WorkingArea.Bottom - this.Height;
             else
@@ -115,13 +116,13 @@ namespace PilotDesktop
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            var dlg = new Forms.CodeGenerator();
+            dlg.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var dlg = new Forms.CodeGenerator();
-            dlg.ShowDialog();
+            
         }
     }
 }
