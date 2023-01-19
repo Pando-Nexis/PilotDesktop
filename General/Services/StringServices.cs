@@ -1,14 +1,6 @@
-﻿using Newtonsoft.Json;
-using PilotDesktop.Pilot.Objects;
-using PilotDesktop.Pilot.Services;
-using System;
-using System.Collections.Generic;
+﻿using PilotDesktop.CodeGenerator.Models;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static PilotDesktop.Program;
 
 namespace PilotDesktop.General.Services
 {
@@ -71,21 +63,21 @@ namespace PilotDesktop.General.Services
             var prefix = isInFile ? "[" : string.Empty;
             var sufix = isInFile ? "]" : string.Empty;
 
-            if (str.Contains(prefix + Global.AddonNameReplace + sufix))
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplace + sufix))
             {
-                str = str.Replace(prefix + Global.AddonNameReplace + sufix, Global.AddonName);
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplace + sufix, CodeGeneratorItem.AddonName);
             }
-            if (str.Contains(prefix + Global.AddonNameReplaceKebabCase + sufix))
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplaceKebabCase + sufix))
             {
-                str = str.Replace(prefix + Global.AddonNameReplaceKebabCase + sufix, Global.AddonNameKebabCase);
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceKebabCase + sufix, CodeGeneratorItem.AddonNameKebabCase);
             }
-            if (str.Contains(prefix + Global.AddonNameReplaceCamelCase + sufix))
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplaceCamelCase + sufix))
             {
-                str = str.Replace(prefix + Global.AddonNameReplaceCamelCase + sufix, Global.AddonNameCamelCase);
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceCamelCase + sufix, CodeGeneratorItem.AddonNameCamelCase);
             }
-            if (str.Contains(prefix + Global.AddonNameReplaceAllLettersSmall + sufix))
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersSmall + sufix))
             {
-                str = str.Replace(prefix + Global.AddonNameReplaceAllLettersSmall + sufix, Global.AddonNameAllLowerCase);
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersSmall + sufix, CodeGeneratorItem.AddonNameAllLowerCase);
             }
 
             return str;

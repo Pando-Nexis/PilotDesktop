@@ -86,7 +86,6 @@
             // 
             // projFolder
             // 
-            this.projFolder.HelpRequest += new System.EventHandler(this.browseProjFolder_HelpRequest);
             // 
             // btnChooseProj
             // 
@@ -109,7 +108,6 @@
             this.btnChooseProj.TabIndex = 2;
             this.btnChooseProj.Text = "Välj PN-Litium projekt";
             this.btnChooseProj.UseVisualStyleBackColor = false;
-            this.btnChooseProj.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // lblFolderError
             // 
@@ -153,7 +151,6 @@
             // ToolContainer.Panel2
             // 
             this.ToolContainer.Panel2.Controls.Add(this.RightToolPanel);
-            this.ToolContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.ToolContainer_Panel2_Paint);
             this.ToolContainer.Size = new System.Drawing.Size(800, 450);
             this.ToolContainer.SplitterDistance = 623;
             this.ToolContainer.TabIndex = 5;
@@ -202,7 +199,6 @@
             this.lblBtnChoosNewProj.TabStop = true;
             this.lblBtnChoosNewProj.Text = "Välj nytt PN-Litium-projekt";
             this.lblBtnChoosNewProj.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblBtnChoosNewProj.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBtnChoosNewProj_LinkClicked_1);
             // 
             // lblProjName
             // 
@@ -284,7 +280,7 @@
             this.checkBoxWebsiteSettings.Text = "Website-inställningar?";
             this.checkBoxWebsiteSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.checkBoxWebsiteSettings.UseVisualStyleBackColor = true;
-            this.checkBoxWebsiteSettings.CheckedChanged += new System.EventHandler(this.checkBoxWebsiteSettings_CheckedChanged);
+            this.checkBoxWebsiteSettings.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // checkBoxToggleAll
             // 
@@ -313,7 +309,7 @@
             this.checkBoxNewFields.TabIndex = 6;
             this.checkBoxNewFields.Text = "Nya Block/Sid-fält?";
             this.checkBoxNewFields.UseVisualStyleBackColor = true;
-            this.checkBoxNewFields.CheckedChanged += new System.EventHandler(this.checkBoxNewFields_CheckedChanged);
+            this.checkBoxNewFields.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // checkBoxConstants
             // 
@@ -327,7 +323,7 @@
             this.checkBoxConstants.TabIndex = 5;
             this.checkBoxConstants.Text = "Använder Konstanter?";
             this.checkBoxConstants.UseVisualStyleBackColor = true;
-            this.checkBoxConstants.CheckedChanged += new System.EventHandler(this.checkBoxConstants_CheckedChanged);
+            this.checkBoxConstants.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // checkBoxPageTemplate
             // 
@@ -341,7 +337,7 @@
             this.checkBoxPageTemplate.TabIndex = 4;
             this.checkBoxPageTemplate.Text = "Nya Sid/Sidmall/Vyer?";
             this.checkBoxPageTemplate.UseVisualStyleBackColor = true;
-            this.checkBoxPageTemplate.CheckedChanged += new System.EventHandler(this.checkBoxPageTemplate_CheckedChanged);
+            this.checkBoxPageTemplate.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // checkBoxServices
             // 
@@ -355,7 +351,7 @@
             this.checkBoxServices.TabIndex = 3;
             this.checkBoxServices.Text = "Använder Services?";
             this.checkBoxServices.UseVisualStyleBackColor = true;
-            this.checkBoxServices.CheckedChanged += new System.EventHandler(this.checkBoxServices_CheckedChanged);
+            this.checkBoxServices.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // checkBoxViewModels
             // 
@@ -369,7 +365,7 @@
             this.checkBoxViewModels.TabIndex = 2;
             this.checkBoxViewModels.Text = "Använder ViewModels?";
             this.checkBoxViewModels.UseVisualStyleBackColor = true;
-            this.checkBoxViewModels.CheckedChanged += new System.EventHandler(this.checkBoxViewModels_CheckedChanged);
+            this.checkBoxViewModels.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // checkBoxBuilders
             // 
@@ -383,7 +379,7 @@
             this.checkBoxBuilders.TabIndex = 1;
             this.checkBoxBuilders.Text = "Använder  Builders?";
             this.checkBoxBuilders.UseVisualStyleBackColor = true;
-            this.checkBoxBuilders.CheckedChanged += new System.EventHandler(this.checkBoxBuilders_CheckedChanged);
+            this.checkBoxBuilders.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // groupBoxREACT
             // 
@@ -411,7 +407,7 @@
             this.checkBoxREACT_API.TabIndex = 1;
             this.checkBoxREACT_API.Text = "Använder API-controller?";
             this.checkBoxREACT_API.UseVisualStyleBackColor = true;
-            this.checkBoxREACT_API.CheckedChanged += new System.EventHandler(this.checkBoxREACT_API_CheckedChanged);
+            this.checkBoxREACT_API.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // checkBoxREACT_Reducers
             // 
@@ -425,7 +421,7 @@
             this.checkBoxREACT_Reducers.TabIndex = 0;
             this.checkBoxREACT_Reducers.Text = "Använder Reducers (Redux)?";
             this.checkBoxREACT_Reducers.UseVisualStyleBackColor = true;
-            this.checkBoxREACT_Reducers.CheckedChanged += new System.EventHandler(this.checkBoxREACT_Reducers_CheckedChanged);
+            this.checkBoxREACT_Reducers.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // AddonType
             // 
@@ -440,7 +436,6 @@
             this.AddonType.TabIndex = 7;
             this.AddonType.TabStop = false;
             this.AddonType.Text = "Addon-typ";
-            this.AddonType.Enter += new System.EventHandler(this.AddonType_Enter);
             // 
             // radioNone
             // 
@@ -565,7 +560,6 @@
             this.label1.Size = new System.Drawing.Size(100, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Addon-ID/Namn:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // RightToolPanel
             // 

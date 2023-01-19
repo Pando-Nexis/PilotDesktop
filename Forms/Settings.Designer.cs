@@ -208,6 +208,7 @@
             this.Name = "Settings";
             this.Opacity = 0.98D;
             this.Text = "Settings";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

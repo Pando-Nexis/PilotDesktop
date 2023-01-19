@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static PilotDesktop.Program;
 using PilotDesktop.General.Services;
+using PilotDesktop.CodeGenerator.Models;
 
 namespace PilotDesktop.General.Services
 {
@@ -18,8 +19,8 @@ namespace PilotDesktop.General.Services
             var path = Path.Combine(Directory.GetCurrentDirectory(), "TemplateFiles");
             if (Directory.Exists(path))
             {
-                Global.PathTemplates = path;
-                //Global.TemplateDirectory = new DirectoryInfo(path);
+                CodeGeneratorItem.PathTemplates = path;
+                //CodeGeneratorItem.TemplateDirectory = new DirectoryInfo(path);
             }
 
             //if (!Directory.Exists(path))
@@ -28,8 +29,8 @@ namespace PilotDesktop.General.Services
 
         public static void CreateStylingStructure()
         {
-            var source = Path.Combine(Global.PathTemplates, Global.PathSource_StylesAddons);
-            var destination = Path.Combine(Global.PathProject, Global.PathDestination_StylesAddons);
+            var source = Path.Combine(CodeGeneratorItem.PathTemplates, CodeGeneratorConstants.PathSource_StylesAddons);
+            var destination = Path.Combine(CodeGeneratorItem.PathProject, CodeGeneratorConstants.PathDestination_StylesAddons);
             if (Directory.Exists(source) && Directory.Exists(destination))
             {
                 FilesAndFolderService.ChangeFileVariableNames(FilesAndFolderService.CopyFilesRecursively(new DirectoryInfo(source), new DirectoryInfo(destination)));

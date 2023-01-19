@@ -1,12 +1,6 @@
+using PilotDesktop.CodeGenerator.Models;
 using PilotDesktop.General.Services;
-using System.Drawing;
-using System.Globalization;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
 using static PilotDesktop.General.Services.CodeGeneratorService;
-using static PilotDesktop.Program;
-using static System.Environment;
 
 namespace PilotDesktop.Forms
 {
@@ -30,21 +24,6 @@ namespace PilotDesktop.Forms
             lblFolderError.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTest_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void browseProjFolder_HelpRequest(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             ChoosePNLitiumProjectFolder();
@@ -56,34 +35,19 @@ namespace PilotDesktop.Forms
             ChoosePNLitiumProjectFolder();
         }
 
-        private void ToolContainer_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void lblBtnChoosNewProj_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void lblBtnChoosNewProj_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ChoosePNLitiumProjectFolder(true);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void PNAddonId_TextChanged(object sender, EventArgs e)
         {
-            if (!Global.ignoreChange)
+            if (!CodeGeneratorItem.ignoreChange)
             {
                 lblAddonName.Text = "PN" + StringService.FixStringPascalCase(PNAddonId.Text);
                 ValidateName(lblAddonName.Text);
             }
-            Global.ignoreChange = false;
+            CodeGeneratorItem.ignoreChange = false;
         }
 
         private void PNAddonId_Leave(object sender, EventArgs e)
@@ -92,10 +56,6 @@ namespace PilotDesktop.Forms
             ValidateName(tempPascalCaseText);
             PNAddonId.Text = tempPascalCaseText;
             lblAddonName.Text = "PN" + tempPascalCaseText;
-
-        }
-        private void AddonType_Enter(object sender, EventArgs e)
-        {
 
         }
 
@@ -154,47 +114,7 @@ namespace PilotDesktop.Forms
             }
         }
 
-        private void checkBoxREACT_Reducers_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTaskList();
-        }
-
-        private void checkBoxREACT_API_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTaskList();
-        }
-
-        private void checkBoxBuilders_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTaskList();
-        }
-
-        private void checkBoxViewModels_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTaskList();
-        }
-
-        private void checkBoxServices_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTaskList();
-        }
-
-        private void checkBoxPageTemplate_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTaskList();
-        }
-
-        private void checkBoxConstants_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTaskList();
-        }
-
-        private void checkBoxNewFields_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTaskList();
-        }
-
-        private void checkBoxWebsiteSettings_CheckedChanged(object sender, EventArgs e)
+        private void GeneralCheckedChanged(object sender, EventArgs e)
         {
             UpdateTaskList();
         }
@@ -213,8 +133,8 @@ namespace PilotDesktop.Forms
                 }
                 else
                 {
-                    Global.ProjectDirectory = srcDir;
-                    Global.PathProject = srcDir.FullName;
+                    CodeGeneratorItem.ProjectDirectory = srcDir;
+                    CodeGeneratorItem.PathProject = srcDir.FullName;
                     ToolContainer.BringToFront();
 
                     ToolContainer.Visible = true;
@@ -246,7 +166,7 @@ namespace PilotDesktop.Forms
             btnCreate.Enabled = str.Length > 4;
 
             // Check if exists in target project
-            if(Directory.Exists(Path.Combine(Global.PathProject, Global.PathDestinationPnAddonsExtensions, str)))
+            if(Directory.Exists(Path.Combine(CodeGeneratorItem.PathProject, CodeGeneratorConstants.PathDestinationPnAddonsExtensions, str)))
             {
                 lblErrorAddonExistsInProject.Visible = true;
                 btnCreate.Enabled = false;
@@ -261,7 +181,7 @@ namespace PilotDesktop.Forms
         private void UpdateTaskList(bool isCreate = false)
         {
             SetGlobalVariables();
-            var type = Global.AddonType ?? string.Empty;
+            var type = CodeGeneratorItem.AddonType ?? string.Empty;
 
             var addonName = lblAddonName.Text;// isCreate ? lblAddonName.Text : string.Empty;
             var addonNameKebabCase = StringService.ConvertStringToKebabCase(addonName); // isCreate ? ConvertStringToKebabCase(addonName) : string.Empty;
@@ -327,7 +247,6 @@ namespace PilotDesktop.Forms
             }
         }
 
-
         private void SetNewLine(string text, bool isCreate = false)
         {
             TaskList.SelectionFont = new Font("Arial", 10);
@@ -337,41 +256,34 @@ namespace PilotDesktop.Forms
         
         private void SetGlobalVariables()
         {
-            Global.AddonName = lblAddonName.Text;
+            CodeGeneratorItem.AddonName = lblAddonName.Text;
 
             if (radioNone.Checked)
             {
-                Global.AddonType = "Varken block eller sida";
-                Global.MainType = "None";
+                CodeGeneratorItem.AddonType = "Varken block eller sida";
+                CodeGeneratorItem.MainType = "None";
             }
             else if (radioPage.Checked)
             {
-                Global.AddonType = "Sidamall/Vy";
-                Global.MainType = "Page";
+                CodeGeneratorItem.AddonType = "Sidamall/Vy";
+                CodeGeneratorItem.MainType = "Page";
             }
             else if (radioBlock.Checked)
             {
-                Global.AddonType = Global.MainType = "Block";
+                CodeGeneratorItem.AddonType = CodeGeneratorItem.MainType = "Block";
             }
 
-            Global.UseStyling = checkBoxStyling.Checked;
-            Global.UseREACT = checkBoxStyling.Checked;
-            Global.UseReducers = checkBoxREACT_Reducers.Checked;
-            Global.UseApi = checkBoxREACT_API.Checked;
-            Global.UseBuilders = checkBoxBuilders.Checked;
-            Global.UseViewModels = checkBoxViewModels.Checked;
-            Global.UseServices = checkBoxServices.Checked;
-            Global.UsePageTemplate = checkBoxPageTemplate.Checked;
-            Global.UseConstants = checkBoxConstants.Checked;
-            Global.UseNewFields = checkBoxNewFields.Checked;
-            Global.UseNewWebsiteSettings = checkBoxWebsiteSettings.Checked;
+            CodeGeneratorItem.UseStyling = checkBoxStyling.Checked;
+            CodeGeneratorItem.UseREACT = checkBoxStyling.Checked;
+            CodeGeneratorItem.UseReducers = checkBoxREACT_Reducers.Checked;
+            CodeGeneratorItem.UseApi = checkBoxREACT_API.Checked;
+            CodeGeneratorItem.UseBuilders = checkBoxBuilders.Checked;
+            CodeGeneratorItem.UseViewModels = checkBoxViewModels.Checked;
+            CodeGeneratorItem.UseServices = checkBoxServices.Checked;
+            CodeGeneratorItem.UsePageTemplate = checkBoxPageTemplate.Checked;
+            CodeGeneratorItem.UseConstants = checkBoxConstants.Checked;
+            CodeGeneratorItem.UseNewFields = checkBoxNewFields.Checked;
+            CodeGeneratorItem.UseNewWebsiteSettings = checkBoxWebsiteSettings.Checked;
         }
-
-        
     }
 }
-
-//PNAddonTemp 	// Replace
-//pn-addon-temp // Replace CamelCase
-//pn_addonTemp 	// Replace first letter small
-//pn_addon_temp	// Replace all letters small

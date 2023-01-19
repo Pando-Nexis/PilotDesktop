@@ -30,7 +30,7 @@ namespace PilotDesktop.General.Services
             if (folderSrc != null)
             {
                 DirectoryInfo[] folders = folderSrc.GetDirectories();
-                var PNAddonsFolder = folders.FirstOrDefault(x => x.Name.ToLower() == Global.PathDestinationPnAddonsExtensions.ToLower());
+                var PNAddonsFolder = folders.FirstOrDefault(x => x.Name.ToLower() == CodeGeneratorConstants.PathDestinationPnAddonsExtensions.ToLower());
                 if (PNAddonsFolder != null)
                 {
                     return folderSrc;

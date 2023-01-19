@@ -1,8 +1,6 @@
 using PilotDesktop.Forms;
 using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Pilot.Services;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace PilotDesktop
 {
@@ -32,7 +30,6 @@ namespace PilotDesktop
             return delta > 0 && delta <= SnapDist;
         }
 
-
         protected override void OnResizeEnd(EventArgs e)
         {
             base.OnResizeEnd(e);
@@ -42,18 +39,21 @@ namespace PilotDesktop
                 this.Left = scn.WorkingArea.Left - 10; 
                 this.Height = scn.WorkingArea.Height - 400;
                 this.Top = (scn.WorkingArea.Height / 4) - (this.Height / 4);
+                this.Width = 135;
             }
             //else if (DoSnap(this.Top, scn.WorkingArea.Top, 40)) this.Top = scn.WorkingArea.Top;
             else if (DoSnap(scn.WorkingArea.Right, this.Right))
             {
                 this.Left = scn.WorkingArea.Right - this.Width + 10; 
                 this.Height = scn.WorkingArea.Height - 400;
+                this.Width = 135;
                 this.Top = (scn.WorkingArea.Height / 4) - (this.Height / 4);
             }
             //else if (DoSnap(scn.WorkingArea.Bottom, this.Bottom, 40)) this.Top = scn.WorkingArea.Bottom - this.Height;
             else
             {
-                this.Height = 500;
+                this.Height = this.Height;
+                this.Width = 800;
             }
         }
 
@@ -69,7 +69,7 @@ namespace PilotDesktop
 
         }
 
-        private void bSettings_Click(object sender, EventArgs e)
+        private void btnSettings_Click(object sender, EventArgs e)
         {
             var dlg = new Forms.Settings(); 
             dlg.ShowDialog();
@@ -129,9 +129,15 @@ namespace PilotDesktop
             //dlg.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnToCodeGenerator_Click(object sender, EventArgs e)
         {
             var dlg = new Forms.CodeGenerator();
+            dlg.ShowDialog();
+        }
+
+        private void Keg_Click(object sender, EventArgs e)
+        {
+            var dlg = new Forms.Settings();
             dlg.ShowDialog();
         }
     }
