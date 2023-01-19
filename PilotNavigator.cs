@@ -53,16 +53,16 @@ namespace PilotDesktop
             //else if (DoSnap(scn.WorkingArea.Bottom, this.Bottom, 40)) this.Top = scn.WorkingArea.Bottom - this.Height;
             else
             {
-                this.Height = this.MinimumSize.Height;
+                this.Height = 500;
             }
         }
 
-        protected override void OnMove(EventArgs e)
-        {
-            base.OnMove(e);
-            this.Height = 300; 
+        //protected override void OnMove(EventArgs e)
+        //{
+        //    base.OnMove(e);
+        //    this.Height = 300; 
             
-        }
+        //}
 
         private void mnyWToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -116,13 +116,14 @@ namespace PilotDesktop
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var dlg = new Forms.CodeGenerator();
-            dlg.ShowDialog();
+            //var dlg = new Forms.CodeGenerator();
+            //dlg.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            var dlg = new Forms.CodeGenerator();
+            dlg.ShowDialog();
         }
     }
 }

@@ -73,6 +73,26 @@ namespace PilotDesktop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GlassButton11 {
+            get {
+                object obj = ResourceManager.GetObject("GlassButton11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GlassButton111 {
+            get {
+                object obj = ResourceManager.GetObject("GlassButton111", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GlassButton2 {
             get {
                 object obj = ResourceManager.GetObject("GlassButton2", resourceCulture);
@@ -106,6 +126,26 @@ namespace PilotDesktop.Properties {
         internal static System.Drawing.Bitmap GlassButtonGeneral1 {
             get {
                 object obj = ResourceManager.GetObject("GlassButtonGeneral1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap keg {
+            get {
+                object obj = ResourceManager.GetObject("keg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap keg1 {
+            get {
+                object obj = ResourceManager.GetObject("keg1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

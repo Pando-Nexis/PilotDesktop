@@ -1,18 +1,17 @@
+using PilotDesktop.General.Services;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static PilotDesktop.General.Services.CodeGeneratorService;
 using static PilotDesktop.Program;
 using static System.Environment;
 
 namespace PilotDesktop.Forms
 {
-
     public partial class CodeGenerator : Form
     {
-
-
         public CodeGenerator()
         {
             InitializeComponent();
@@ -23,7 +22,7 @@ namespace PilotDesktop.Forms
             checkBoxREACT_Reducers.Enabled = false;
             checkBoxREACT_API.Enabled = false;
             btnCreate.Enabled = false;
-            General.SetTemplatePath();
+            SetTemplatePath();
         }
 
         private void SelectDir_Load(object sender, EventArgs e)
@@ -81,7 +80,7 @@ namespace PilotDesktop.Forms
         {
             if (!Global.ignoreChange)
             {
-                lblAddonName.Text = "PN" + General.FixStringPascalCase(PNAddonId.Text);
+                lblAddonName.Text = "PN" + StringService.FixStringPascalCase(PNAddonId.Text);
                 ValidateName(lblAddonName.Text);
             }
             Global.ignoreChange = false;
@@ -89,7 +88,7 @@ namespace PilotDesktop.Forms
 
         private void PNAddonId_Leave(object sender, EventArgs e)
         {
-            var tempPascalCaseText = General.FixStringPascalCase(PNAddonId.Text);
+            var tempPascalCaseText = StringService.FixStringPascalCase(PNAddonId.Text);
             ValidateName(tempPascalCaseText);
             PNAddonId.Text = tempPascalCaseText;
             lblAddonName.Text = "PN" + tempPascalCaseText;
@@ -206,7 +205,7 @@ namespace PilotDesktop.Forms
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                var srcDir = General.CheckPNLitiumDir(new DirectoryInfo(dialog.SelectedPath));
+                var srcDir = FilesAndFolderService.CheckPNLitiumDir(new DirectoryInfo(dialog.SelectedPath));
                 if (srcDir == null)
                 {
                     ToolContainer.Visible = false;
@@ -265,7 +264,7 @@ namespace PilotDesktop.Forms
             var type = Global.AddonType ?? string.Empty;
 
             var addonName = lblAddonName.Text;// isCreate ? lblAddonName.Text : string.Empty;
-            var addonNameKebabCase = General.ConvertStringToKebabCase(addonName); // isCreate ? ConvertStringToKebabCase(addonName) : string.Empty;
+            var addonNameKebabCase = StringService.ConvertStringToKebabCase(addonName); // isCreate ? ConvertStringToKebabCase(addonName) : string.Empty;
             
             TaskList.Clear();
            
@@ -280,7 +279,7 @@ namespace PilotDesktop.Forms
             {                
                 if (isCreate)
                 {
-                    General.CreateStylingStructure();
+                    CreateStylingStructure();
                 }
                 SetNewLine("SASS-struktur", isCreate);
             }
