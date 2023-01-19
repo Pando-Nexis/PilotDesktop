@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Settings.Constants;
 using PilotDesktop.SourceCode.Services;
 
@@ -16,12 +17,13 @@ namespace PilotDesktop.Forms
     public partial class CustomerSourceCodeTool : Form
     {
         private readonly SourceCodeProjectService _sourceCodeProjectService;
-        private readonly string _projectName;
-        public CustomerSourceCodeTool(string projectName)
+        private readonly PilotProject _project;
+        public CustomerSourceCodeTool(PilotProject project)
         {
             InitializeComponent();
             _sourceCodeProjectService = new SourceCodeProjectService();
-            _projectName = projectName;
+            _project = project;
+            Text = $"Skapa eller uppdatera {_project.Name}";
         }
 
 
@@ -48,13 +50,13 @@ namespace PilotDesktop.Forms
         private void bAddAddon_Click(object sender, EventArgs e)
         {
             AddAddOn(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.MasterProject],
-                          Path.Combine(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder], _projectName));
+                          Path.Combine(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder], _project.Name));
         }
 
         private void bCreateProject_Click(object sender, EventArgs e)
         {
             CreateProject(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.MasterProject], 
-                            Path.Combine(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder], _projectName));
+                            Path.Combine(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder], _project.Name));
         }
     }
 }
