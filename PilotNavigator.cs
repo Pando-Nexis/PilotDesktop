@@ -141,7 +141,7 @@ namespace PilotDesktop
             dlg.ShowDialog();
         }
 
-        private void bRegisterAddon_Click(object sender, EventArgs e)
+        private void bHandleAddOn_Click(object sender, EventArgs e)
         {
             var dlg = new Forms.HandleAddons();
             dlg.ShowDialog();
