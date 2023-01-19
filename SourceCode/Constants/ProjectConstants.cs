@@ -29,6 +29,7 @@ namespace PilotDesktop.SourceCode.Constants
         public static string PandoNexisJs = "pandoNexis.js";
         public static string IndexScss = "index.scss";
         public static string Reducers = "reducers.js";
+        public static string BuildClientBat = "BuildClientProjects.bat";
     }
     public static class FileFilterConstants
     {
