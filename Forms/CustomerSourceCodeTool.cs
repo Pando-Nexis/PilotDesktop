@@ -1,5 +1,17 @@
-﻿using PilotDesktop.Pilot.Objects;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Settings.Constants;
+using PilotDesktop.SourceCode.Constants;
 using PilotDesktop.SourceCode.Services;
 
 namespace PilotDesktop.Forms
@@ -29,6 +41,15 @@ namespace PilotDesktop.Forms
             _sourceCodeProjectService.CreateSlnFile(masterProjectPath, createProjectPath);
             _sourceCodeProjectService.CreateAddonProject(masterProjectDirectoryPath, createProjectPath);
             _sourceCodeProjectService.CreateSolutionProject(masterProjectDirectoryPath, createProjectPath);
+
+            ProcessStartInfo processInfo;
+            Process process;
+            processInfo = new ProcessStartInfo("cmd.exe", "/K " + Path.Combine(createProjectPath, FolderConstants.Src, FileTypeConstants.BuildClientBat));
+            processInfo.CreateNoWindow = true;
+            processInfo.UseShellExecute = true;
+
+            process = Process.Start(processInfo);
+
         }
         private void AddAddOn(string masterProjectPath, string createProjectPath)
         {
