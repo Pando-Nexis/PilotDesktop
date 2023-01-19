@@ -671,7 +671,9 @@
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CodeGenerator";
+            this.Opacity = 0.98D;
             this.Text = "Pando Nexis Code Generator";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SelectDir_Load);
             this.panel_PNChooseFolder.ResumeLayout(false);
             this.ToolContainer.Panel1.ResumeLayout(false);

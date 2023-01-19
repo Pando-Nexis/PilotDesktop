@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tbApiSecret = new System.Windows.Forms.TextBox();
@@ -170,6 +171,7 @@
             this.bSave.BackColor = System.Drawing.Color.Transparent;
             this.bSave.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonDark;
             this.bSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bSave.FlatAppearance.BorderColor = System.Drawing.Color.SeaShell;
             this.bSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSave.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -202,7 +204,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bSelectProjectFolder);
             this.Controls.Add(this.tbProjectFolder);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
+            this.Opacity = 0.98D;
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);

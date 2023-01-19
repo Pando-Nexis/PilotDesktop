@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerSourceCodeTool));
             this.bAddAddon = new System.Windows.Forms.Button();
             this.bCreateProject = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -37,6 +38,7 @@
             this.bAddAddon.BackColor = System.Drawing.Color.Transparent;
             this.bAddAddon.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButton2;
             this.bAddAddon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bAddAddon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bAddAddon.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.bAddAddon.Location = new System.Drawing.Point(360, 130);
             this.bAddAddon.Name = "bAddAddon";
@@ -51,6 +53,7 @@
             this.bCreateProject.BackColor = System.Drawing.Color.Transparent;
             this.bCreateProject.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral;
             this.bCreateProject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bCreateProject.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCreateProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.bCreateProject.Location = new System.Drawing.Point(195, 130);
             this.bCreateProject.Name = "bCreateProject";
@@ -69,8 +72,11 @@
             this.ClientSize = new System.Drawing.Size(828, 389);
             this.Controls.Add(this.bAddAddon);
             this.Controls.Add(this.bCreateProject);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CustomerSourceCodeTool";
+            this.Opacity = 0.98D;
             this.Text = "CustomerSourceCodeTool";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }
