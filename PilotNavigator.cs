@@ -134,5 +134,11 @@ namespace PilotDesktop
             var dlg = new Forms.CodeGenerator();
             dlg.ShowDialog();
         }
+
+        private void bRegisterAddon_Click(object sender, EventArgs e)
+        {
+            var dlg = new Forms.HandleAddons();
+            dlg.ShowDialog();
+        }
     }
 }

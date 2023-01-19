@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PilotNavigator));
             this.bSettings = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bRegisterAddon = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -66,12 +67,35 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.bRegisterAddon);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(0, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(109, 112);
+            this.panel1.Size = new System.Drawing.Size(109, 158);
             this.panel1.TabIndex = 4;
+            // 
+            // bRegisterAddon
+            // 
+            this.bRegisterAddon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bRegisterAddon.BackColor = System.Drawing.Color.Transparent;
+            this.bRegisterAddon.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral1;
+            this.bRegisterAddon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bRegisterAddon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bRegisterAddon.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bRegisterAddon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bRegisterAddon.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bRegisterAddon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.bRegisterAddon.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bRegisterAddon.Location = new System.Drawing.Point(3, 110);
+            this.bRegisterAddon.MinimumSize = new System.Drawing.Size(100, 0);
+            this.bRegisterAddon.Name = "bRegisterAddon";
+            this.bRegisterAddon.Size = new System.Drawing.Size(100, 45);
+            this.bRegisterAddon.TabIndex = 7;
+            this.bRegisterAddon.Text = "Hantera addon";
+            this.bRegisterAddon.UseVisualStyleBackColor = false;
+            this.bRegisterAddon.Click += new System.EventHandler(this.bRegisterAddon_Click);
             // 
             // button2
             // 
@@ -142,10 +166,10 @@
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 149);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 195);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(109, 210);
+            this.toolStrip1.Size = new System.Drawing.Size(109, 164);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
@@ -187,5 +211,6 @@
         private Button button1;
         private PictureBox pictureBox1;
         private ToolStrip toolStrip1;
+        private Button bRegisterAddon;
     }
 }
