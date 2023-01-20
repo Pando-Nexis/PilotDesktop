@@ -59,14 +59,22 @@ namespace PilotDesktop.Forms
         }
         private void bAddAddon_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+
             AddAddOn(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.MasterProject],
                           Path.Combine(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder], _project.Name));
+
+            Cursor.Current = Cursors.Default;
         }
 
         private void bCreateProject_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+
             CreateProject(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.MasterProject], 
                             Path.Combine(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder], _project.Name));
+            
+            Cursor.Current = Cursors.Default;
         }
     }
 }

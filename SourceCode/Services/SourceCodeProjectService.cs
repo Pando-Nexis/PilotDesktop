@@ -13,7 +13,7 @@ namespace PilotDesktop.SourceCode.Services;
 
 public class SourceCodeProjectService
 {
- 
+
 
 
     #region AddOns
@@ -31,6 +31,7 @@ public class SourceCodeProjectService
         var resxFiles = Directory.GetFiles(createAddonProjectPath, FileFilterConstants.Resx, SearchOption.AllDirectories)?.ToList() ?? new List<string>();
 
         CreateCsProjeFile(Path.Combine(masterAddonProjectPath, ProjectConstants.AddOn + FileTypeConstants.Csproj), Path.Combine(createAddonProjectPath, ProjectConstants.AddOn + FileTypeConstants.Csproj), createAddonProjectPath, resxFiles);
+
 
         CreatePandoNexisJsFile(masterProjectDirectoryPath, createProjectPath, addOns);
         CreateAddonReducerFile(createProjectPath, addOns);
@@ -213,6 +214,16 @@ public class SourceCodeProjectService
             lines.Add($"    ...{name},");
         }
         lines.Add(ConfigConstants.JsEndOfExport);
+
+        if (!Directory.Exists(Path.Combine(createProjectPath,FolderConstants.Src,ProjectConstants.Mvc,FolderConstants.Client,FolderConstants.Script,FolderConstants.Addons)))
+        {
+            Directory.CreateDirectory(Path.Combine(createProjectPath,
+                                       FolderConstants.Src,
+                                       ProjectConstants.Mvc,
+                                       FolderConstants.Client,
+                                       FolderConstants.Script,
+                                       FolderConstants.Addons));
+        }
 
 
         File.WriteAllLines(Path.Combine(createProjectPath,
@@ -470,11 +481,11 @@ public class SourceCodeProjectService
     }
     #endregion
 
-   
+
 
     #region Folder Helpers
-  
- 
+
+
     #endregion
 
 
