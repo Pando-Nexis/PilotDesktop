@@ -54,7 +54,8 @@ public class SourceCodeProjectService
 
         foreach (var addOn in addOns)
         {
-            AddAddons(masterProjectDirectoryPath, createProjectPath, addOn);
+            if (!Directory.Exists(Path.Combine(createAddonProjectPath, addOn)))
+                AddAddons(masterProjectDirectoryPath, createProjectPath, addOn);
         }
 
         addOns = GetAddons(createAddonProjectPath);
