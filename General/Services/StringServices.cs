@@ -79,6 +79,10 @@ namespace PilotDesktop.General.Services
             {
                 str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersLower + sufix, CodeGeneratorItem.AddonNameAllLowerCase);
             }
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersUpper + sufix))
+            {
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersUpper + sufix, CodeGeneratorItem.AddonNameAllUpperCase);
+            }
 
             return str;
         }
