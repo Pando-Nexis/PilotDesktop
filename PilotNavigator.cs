@@ -1,16 +1,19 @@
 using PilotDesktop.Forms;
 using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Pilot.Services;
+using PilotDesktop.WorkItems.Services;
 
 namespace PilotDesktop
 {
     public partial class PilotNavigator : Form
     {
         private readonly PilotCustomerService _pilotCustomerService;
+        private readonly WorkItemService _workItemService;
         public PilotNavigator()
         {
             InitializeComponent();
             _pilotCustomerService =  new PilotCustomerService();
+            _workItemService = new WorkItemService();
             SnapToLeft();
         }
 
@@ -82,8 +85,9 @@ namespace PilotDesktop
 
         private void PilotNavigator_Load(object sender, EventArgs e)
         {
-            GetCustomers();
             SnapToLeft();
+            GetCustomers();
+            GetWorkItems();
         }
         private async void GetCustomers()
         {
@@ -114,6 +118,10 @@ namespace PilotDesktop
 
 
             }
+        }
+        private async void GetWorkItems()
+        {
+            Program.workItems = await _workItemService.GetWorkItems();
         }
         private void OpenCodeSync(object sender, EventArgs e)
         {
