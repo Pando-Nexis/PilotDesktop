@@ -35,6 +35,7 @@
             this.panel_PNChooseFolder = new System.Windows.Forms.Panel();
             this.ToolContainer = new System.Windows.Forms.SplitContainer();
             this.LeftToolPanel = new System.Windows.Forms.Panel();
+            this.checkBoxIsSolution = new System.Windows.Forms.CheckBox();
             this.ProjNameBar = new System.Windows.Forms.Panel();
             this.lblBtnChoosNewProj = new System.Windows.Forms.LinkLabel();
             this.lblProjName = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.lblAddonName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TaskList = new System.Windows.Forms.RichTextBox();
-            this.checkBoxIsSolution = new System.Windows.Forms.CheckBox();
             this.panel_PNChooseFolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ToolContainer)).BeginInit();
             this.ToolContainer.Panel1.SuspendLayout();
@@ -100,7 +100,7 @@
             this.btnChooseProj.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnChooseProj.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnChooseProj.ForeColor = System.Drawing.Color.AntiqueWhite;
-            this.btnChooseProj.Location = new System.Drawing.Point(288, 190);
+            this.btnChooseProj.Location = new System.Drawing.Point(323, 190);
             this.btnChooseProj.Name = "btnChooseProj";
             this.btnChooseProj.Size = new System.Drawing.Size(197, 74);
             this.btnChooseProj.TabIndex = 2;
@@ -117,7 +117,7 @@
             this.lblFolderError.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFolderError.Location = new System.Drawing.Point(3, 60);
             this.lblFolderError.Name = "lblFolderError";
-            this.lblFolderError.Size = new System.Drawing.Size(794, 127);
+            this.lblFolderError.Size = new System.Drawing.Size(865, 127);
             this.lblFolderError.TabIndex = 4;
             this.lblFolderError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -131,7 +131,7 @@
             this.panel_PNChooseFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_PNChooseFolder.Location = new System.Drawing.Point(0, 0);
             this.panel_PNChooseFolder.Name = "panel_PNChooseFolder";
-            this.panel_PNChooseFolder.Size = new System.Drawing.Size(800, 450);
+            this.panel_PNChooseFolder.Size = new System.Drawing.Size(871, 450);
             this.panel_PNChooseFolder.TabIndex = 5;
             // 
             // ToolContainer
@@ -151,8 +151,8 @@
             // ToolContainer.Panel2
             // 
             this.ToolContainer.Panel2.Controls.Add(this.RightToolPanel);
-            this.ToolContainer.Size = new System.Drawing.Size(800, 450);
-            this.ToolContainer.SplitterDistance = 623;
+            this.ToolContainer.Size = new System.Drawing.Size(871, 450);
+            this.ToolContainer.SplitterDistance = 654;
             this.ToolContainer.TabIndex = 5;
             this.ToolContainer.Visible = false;
             // 
@@ -172,8 +172,23 @@
             this.LeftToolPanel.Controls.Add(this.panel1);
             this.LeftToolPanel.Location = new System.Drawing.Point(0, 0);
             this.LeftToolPanel.Name = "LeftToolPanel";
-            this.LeftToolPanel.Size = new System.Drawing.Size(624, 450);
+            this.LeftToolPanel.Size = new System.Drawing.Size(655, 450);
             this.LeftToolPanel.TabIndex = 4;
+            // 
+            // checkBoxIsSolution
+            // 
+            this.checkBoxIsSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxIsSolution.AutoSize = true;
+            this.checkBoxIsSolution.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxIsSolution.ForeColor = System.Drawing.Color.Gold;
+            this.checkBoxIsSolution.Location = new System.Drawing.Point(228, 144);
+            this.checkBoxIsSolution.Name = "checkBoxIsSolution";
+            this.checkBoxIsSolution.Size = new System.Drawing.Size(176, 19);
+            this.checkBoxIsSolution.TabIndex = 13;
+            this.checkBoxIsSolution.Text = "Ska detta läggas i Solution?";
+            this.checkBoxIsSolution.UseVisualStyleBackColor = true;
+            this.checkBoxIsSolution.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // ProjNameBar
             // 
@@ -185,7 +200,7 @@
             this.ProjNameBar.Controls.Add(this.label2);
             this.ProjNameBar.Location = new System.Drawing.Point(0, 0);
             this.ProjNameBar.Name = "ProjNameBar";
-            this.ProjNameBar.Size = new System.Drawing.Size(624, 34);
+            this.ProjNameBar.Size = new System.Drawing.Size(655, 34);
             this.ProjNameBar.TabIndex = 1;
             // 
             // lblBtnChoosNewProj
@@ -193,7 +208,7 @@
             this.lblBtnChoosNewProj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBtnChoosNewProj.AutoSize = true;
             this.lblBtnChoosNewProj.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblBtnChoosNewProj.Location = new System.Drawing.Point(462, 8);
+            this.lblBtnChoosNewProj.Location = new System.Drawing.Point(493, 8);
             this.lblBtnChoosNewProj.Name = "lblBtnChoosNewProj";
             this.lblBtnChoosNewProj.Size = new System.Drawing.Size(149, 15);
             this.lblBtnChoosNewProj.TabIndex = 3;
@@ -227,7 +242,7 @@
             this.checkBoxStyling.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxStyling.AutoSize = true;
             this.checkBoxStyling.ForeColor = System.Drawing.Color.White;
-            this.checkBoxStyling.Location = new System.Drawing.Point(535, 144);
+            this.checkBoxStyling.Location = new System.Drawing.Point(566, 144);
             this.checkBoxStyling.Name = "checkBoxStyling";
             this.checkBoxStyling.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxStyling.Size = new System.Drawing.Size(67, 19);
@@ -264,7 +279,7 @@
             this.groupBoxProj.ForeColor = System.Drawing.Color.White;
             this.groupBoxProj.Location = new System.Drawing.Point(228, 171);
             this.groupBoxProj.Name = "groupBoxProj";
-            this.groupBoxProj.Size = new System.Drawing.Size(384, 267);
+            this.groupBoxProj.Size = new System.Drawing.Size(415, 267);
             this.groupBoxProj.TabIndex = 9;
             this.groupBoxProj.TabStop = false;
             this.groupBoxProj.Text = "PandoNexis.AddOns.Extensions";
@@ -290,7 +305,7 @@
             this.checkBoxToggleAll.AutoSize = true;
             this.checkBoxToggleAll.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.checkBoxToggleAll.ForeColor = System.Drawing.Color.PeachPuff;
-            this.checkBoxToggleAll.Location = new System.Drawing.Point(244, 19);
+            this.checkBoxToggleAll.Location = new System.Drawing.Point(275, 19);
             this.checkBoxToggleAll.Name = "checkBoxToggleAll";
             this.checkBoxToggleAll.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxToggleAll.Size = new System.Drawing.Size(129, 17);
@@ -432,7 +447,7 @@
             this.AddonType.Controls.Add(this.radioBlock);
             this.AddonType.Controls.Add(this.radioPage);
             this.AddonType.ForeColor = System.Drawing.Color.White;
-            this.AddonType.Location = new System.Drawing.Point(87, 76);
+            this.AddonType.Location = new System.Drawing.Point(102, 76);
             this.AddonType.Name = "AddonType";
             this.AddonType.Size = new System.Drawing.Size(451, 58);
             this.AddonType.TabIndex = 7;
@@ -496,7 +511,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(624, 37);
+            this.panel1.Size = new System.Drawing.Size(655, 37);
             this.panel1.TabIndex = 3;
             // 
             // lblErrorAddonExistsInProject
@@ -505,7 +520,7 @@
             this.lblErrorAddonExistsInProject.BackColor = System.Drawing.Color.White;
             this.lblErrorAddonExistsInProject.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblErrorAddonExistsInProject.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorAddonExistsInProject.Location = new System.Drawing.Point(404, 2);
+            this.lblErrorAddonExistsInProject.Location = new System.Drawing.Point(435, 2);
             this.lblErrorAddonExistsInProject.Name = "lblErrorAddonExistsInProject";
             this.lblErrorAddonExistsInProject.Size = new System.Drawing.Size(206, 33);
             this.lblErrorAddonExistsInProject.TabIndex = 6;
@@ -519,7 +534,7 @@
             this.labelErrNoAddonId.AutoSize = true;
             this.labelErrNoAddonId.BackColor = System.Drawing.Color.White;
             this.labelErrNoAddonId.ForeColor = System.Drawing.Color.Red;
-            this.labelErrNoAddonId.Location = new System.Drawing.Point(460, 11);
+            this.labelErrNoAddonId.Location = new System.Drawing.Point(491, 11);
             this.labelErrNoAddonId.Name = "labelErrNoAddonId";
             this.labelErrNoAddonId.Size = new System.Drawing.Size(149, 15);
             this.labelErrNoAddonId.TabIndex = 5;
@@ -534,7 +549,7 @@
             this.PNAddonId.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PNAddonId.Location = new System.Drawing.Point(163, 3);
             this.PNAddonId.Name = "PNAddonId";
-            this.PNAddonId.Size = new System.Drawing.Size(458, 33);
+            this.PNAddonId.Size = new System.Drawing.Size(489, 33);
             this.PNAddonId.TabIndex = 2;
             this.PNAddonId.TextChanged += new System.EventHandler(this.PNAddonId_TextChanged);
             this.PNAddonId.Leave += new System.EventHandler(this.PNAddonId_Leave);
@@ -574,7 +589,7 @@
             this.RightToolPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RightToolPanel.Location = new System.Drawing.Point(0, 0);
             this.RightToolPanel.Name = "RightToolPanel";
-            this.RightToolPanel.Size = new System.Drawing.Size(173, 450);
+            this.RightToolPanel.Size = new System.Drawing.Size(213, 450);
             this.RightToolPanel.TabIndex = 0;
             // 
             // btnCreate
@@ -593,7 +608,7 @@
             this.btnCreate.ForeColor = System.Drawing.Color.LightCyan;
             this.btnCreate.Location = new System.Drawing.Point(-2, 386);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(173, 64);
+            this.btnCreate.Size = new System.Drawing.Size(213, 64);
             this.btnCreate.TabIndex = 2;
             this.btnCreate.Text = "Skapa grund i projektet";
             this.btnCreate.UseVisualStyleBackColor = false;
@@ -607,7 +622,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(166, 34);
+            this.label5.Size = new System.Drawing.Size(206, 34);
             this.label5.TabIndex = 1;
             this.label5.Text = "...kommer att skapa...";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -620,7 +635,7 @@
             this.lblAddonName.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblAddonName.Location = new System.Drawing.Point(2, 39);
             this.lblAddonName.Name = "lblAddonName";
-            this.lblAddonName.Size = new System.Drawing.Size(166, 21);
+            this.lblAddonName.Size = new System.Drawing.Size(206, 21);
             this.lblAddonName.TabIndex = 0;
             this.lblAddonName.Text = "...";
             this.lblAddonName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -635,7 +650,7 @@
             this.panel2.Controls.Add(this.TaskList);
             this.panel2.Location = new System.Drawing.Point(6, 74);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(156, 296);
+            this.panel2.Size = new System.Drawing.Size(196, 296);
             this.panel2.TabIndex = 4;
             // 
             // TaskList
@@ -650,7 +665,7 @@
             this.TaskList.Margin = new System.Windows.Forms.Padding(23);
             this.TaskList.Name = "TaskList";
             this.TaskList.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.TaskList.Size = new System.Drawing.Size(127, 268);
+            this.TaskList.Size = new System.Drawing.Size(167, 268);
             this.TaskList.TabIndex = 3;
             this.TaskList.Text = "";
             // 
@@ -675,7 +690,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::PilotDesktop.Properties.Resources.PandoNexisHero;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(871, 450);
             this.Controls.Add(this.panel_PNChooseFolder);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.Control;

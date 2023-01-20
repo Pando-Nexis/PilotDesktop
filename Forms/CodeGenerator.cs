@@ -11,8 +11,8 @@ namespace PilotDesktop.Forms
             InitializeComponent();
 
             ToolContainer.Visible = false;
-            //ToolContainer.Panel2Collapsed = true;
-            //ToolContainer.Panel2.Hide();
+            ToolContainer.Panel2Collapsed = true;
+            ToolContainer.Panel2.Hide();
             checkBoxREACT_Reducers.Enabled = false;
             checkBoxREACT_API.Enabled = false;
             btnCreate.Enabled = false;
@@ -194,13 +194,19 @@ namespace PilotDesktop.Forms
 
             TaskList.SelectionBullet = true;
 
+            if (checkBoxIsSolution.Checked)
+            {
+                SetNewLine("Läggs i '_SOLUTION'", isCreate, true);
+            }
+            
             if (!string.IsNullOrEmpty(type))
             {
-                SetNewLine(type);
+                SetNewLine("Typ: " + type);
             }
 
-            if (checkBoxStyling.Checked == true)
-            {
+
+            if (checkBoxStyling.Checked)
+            {           
                 if (isCreate)
                 {
                     CreateStylingStructure();
@@ -251,10 +257,18 @@ namespace PilotDesktop.Forms
             }
         }
 
-        private void SetNewLine(string text, bool isCreate = false)
-        {
-            TaskList.SelectionFont = new Font("Arial", 10);
-            TaskList.SelectionColor = isCreate ? Color.LightGreen : Color.AntiqueWhite;
+        private void SetNewLine(string text, bool isCreate = false, bool isHighlight = false)
+        {   
+            if (isHighlight)
+            {
+                TaskList.SelectionFont = new Font(TaskList.Font, FontStyle.Bold);
+                TaskList.SelectionColor = Color.Gold;
+            }
+            else
+            {
+                TaskList.SelectionFont = new Font("Arial", 10);
+                TaskList.SelectionColor = isCreate ? Color.LightGreen : Color.AntiqueWhite;
+            }
             TaskList.SelectedText = text + "\n";
         }
 
@@ -288,7 +302,7 @@ namespace PilotDesktop.Forms
             CodeGeneratorItem.UseConstants = checkBoxConstants.Checked;
             CodeGeneratorItem.UseNewFields = checkBoxNewFields.Checked;
             CodeGeneratorItem.UseNewWebsiteSettings = checkBoxWebsiteSettings.Checked;
+            CodeGeneratorItem.PlaceInSolution = checkBoxIsSolution.Checked;
         }
-
     }
 }
