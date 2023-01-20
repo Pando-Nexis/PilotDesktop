@@ -4,6 +4,7 @@ using PilotDesktop.Settings.Services;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using PilotDesktop.General.Services;
+using Solution.Extensions.PNPilot.Objects;
 
 namespace PilotDesktop
 {
@@ -11,6 +12,7 @@ namespace PilotDesktop
     {
         public static PilotApplicationSettings _pilotApplicationSettings = new PilotApplicationSettings();
         public static List<PilotCustomer> _customers = new List<PilotCustomer>();
+        public static List<WorkItem> workItems = new List<WorkItem>();
        
         /// <summary>
         ///  The main entry point for the application.

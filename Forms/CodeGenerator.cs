@@ -1,5 +1,7 @@
 ﻿using PilotDesktop.CodeGenerator.Models;
 using PilotDesktop.General.Services;
+using PilotDesktop.Settings.Constants;
+using PilotDesktop.SourceCode.Constants;
 using static PilotDesktop.General.Services.CodeGeneratorService;
 
 namespace PilotDesktop.Forms
@@ -126,6 +128,8 @@ namespace PilotDesktop.Forms
         private void ChoosePNLitiumProjectFolder(bool openRightPane = false)
         {
             var dialog = new FolderBrowserDialog();
+            if (!dialog.SelectedPath.StartsWith(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder]))
+                dialog.SelectedPath = Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder];
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -198,14 +202,14 @@ namespace PilotDesktop.Forms
             {
                 SetNewLine("Läggs i '_SOLUTION'", isCreate, true);
             }
-            
+
             if (!string.IsNullOrEmpty(type))
             {
                 SetNewLine("Typ: " + type);
             }
 
             if (checkBoxStyling.Checked)
-            {           
+            {
                 if (isCreate)
                 {
                     if (!CreateMvcStructure(CodeGeneratorConstants.Path_StylesAddons)) {
