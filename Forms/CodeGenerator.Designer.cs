@@ -69,6 +69,7 @@
             this.lblAddonName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TaskList = new System.Windows.Forms.RichTextBox();
+            this.checkBoxIsSolution = new System.Windows.Forms.CheckBox();
             this.panel_PNChooseFolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ToolContainer)).BeginInit();
             this.ToolContainer.Panel1.SuspendLayout();
@@ -161,6 +162,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LeftToolPanel.BackColor = System.Drawing.Color.Transparent;
+            this.LeftToolPanel.Controls.Add(this.checkBoxIsSolution);
             this.LeftToolPanel.Controls.Add(this.ProjNameBar);
             this.LeftToolPanel.Controls.Add(this.checkBoxStyling);
             this.LeftToolPanel.Controls.Add(this.checkBoxREACT);
@@ -652,6 +654,20 @@
             this.TaskList.TabIndex = 3;
             this.TaskList.Text = "";
             // 
+            // checkBoxIsSolution
+            // 
+            this.checkBoxIsSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxIsSolution.AutoSize = true;
+            this.checkBoxIsSolution.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxIsSolution.ForeColor = System.Drawing.Color.Gold;
+            this.checkBoxIsSolution.Location = new System.Drawing.Point(228, 144);
+            this.checkBoxIsSolution.Name = "checkBoxIsSolution";
+            this.checkBoxIsSolution.Size = new System.Drawing.Size(176, 19);
+            this.checkBoxIsSolution.TabIndex = 13;
+            this.checkBoxIsSolution.Text = "Ska detta läggas i Solution?";
+            this.checkBoxIsSolution.UseVisualStyleBackColor = true;
+            // 
             // CodeGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -733,5 +749,6 @@
         private CheckBox checkBoxConstants;
         private CheckBox checkBoxWebsiteSettings;
         private Label lblErrorAddonExistsInProject;
+        private CheckBox checkBoxIsSolution;
     }
 }

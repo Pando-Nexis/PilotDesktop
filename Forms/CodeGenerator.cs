@@ -33,8 +33,11 @@ namespace PilotDesktop.Forms
         {
             if (!CodeGeneratorItem.ignoreChange)
             {
-                lblAddonName.Text = "PN" + StringService.FixStringPascalCase(PNAddonId.Text);
-                ValidateName(lblAddonName.Text);
+
+                var addonName = "PN" + StringService.FixStringPascalCase(PNAddonId.Text);
+                lblAddonName.Text = addonName;
+                CodeGeneratorItem.AddonName = addonName;
+                ValidateName(addonName);
             }
             CodeGeneratorItem.ignoreChange = false;
             if (ToolContainer.Panel2Collapsed)
@@ -66,8 +69,8 @@ namespace PilotDesktop.Forms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Alla Addonfiler kommer nu att skapas upp i projektet...",
-                                     "Bekräfta för att forsätta... :)",
+            var confirmResult = MessageBox.Show("ADDON '"+ CodeGeneratorItem.AddonName + "' och alla dess filer kommer nu att skapas upp i projektet...",
+                                     "Bekräfta för att forsätta skapa ADDON med namn '"+ CodeGeneratorItem.AddonName + "'... :)",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
