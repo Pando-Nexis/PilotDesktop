@@ -11,8 +11,8 @@ namespace PilotDesktop.Forms
             InitializeComponent();
 
             ToolContainer.Visible = false;
-            ToolContainer.Panel2Collapsed = true;
-            ToolContainer.Panel2.Hide();
+            //ToolContainer.Panel2Collapsed = true;
+            //ToolContainer.Panel2.Hide();
             checkBoxREACT_Reducers.Enabled = false;
             checkBoxREACT_API.Enabled = false;
             btnCreate.Enabled = false;
@@ -22,17 +22,6 @@ namespace PilotDesktop.Forms
         private void SelectDir_Load(object sender, EventArgs e)
         {
             lblFolderError.Text = "";
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            ChoosePNLitiumProjectFolder();
-        }
-
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            ChoosePNLitiumProjectFolder();
         }
 
         private void lblBtnChoosNewProj_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -48,6 +37,10 @@ namespace PilotDesktop.Forms
                 ValidateName(lblAddonName.Text);
             }
             CodeGeneratorItem.ignoreChange = false;
+            if (ToolContainer.Panel2Collapsed)
+            {
+                ToggleRightPanel();
+            }
         }
 
         private void PNAddonId_Leave(object sender, EventArgs e)
@@ -59,28 +52,19 @@ namespace PilotDesktop.Forms
 
         }
 
-        private void radioNone_CheckedChanged(object sender, EventArgs e)
+        private void radioType_CheckedChanged(object sender, EventArgs e)
+        {
+            OnFormStateChanged();
+        }
+
+        private void OnFormStateChanged()
         {
             SetGlobalVariables();
             ToggleRightPanel();
             UpdateTaskList();
         }
 
-        private void radioPage_CheckedChanged(object sender, EventArgs e)
-        {
-            SetGlobalVariables();
-            ToggleRightPanel();
-            UpdateTaskList();
-        }
-
-        private void radioBlock_CheckedChanged(object sender, EventArgs e)
-        {
-            SetGlobalVariables();
-            ToggleRightPanel();
-            UpdateTaskList();
-        }
-
-        private void button1_Click_3(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Alla Addonfiler kommer nu att skapas upp i projektet...",
                                      "Bekräfta för att forsätta... :)",
@@ -91,17 +75,30 @@ namespace PilotDesktop.Forms
             }
         }
 
+        private void btnChooseProj_Click(object sender, EventArgs e)
+        {
+            ChoosePNLitiumProjectFolder();
+        }
+
         private void checkBoxREACT_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxREACT_Reducers.Enabled = checkBoxREACT.Checked;
             checkBoxREACT_API.Enabled = checkBoxREACT.Checked;
 
             UpdateTaskList();
+            if (ToolContainer.Panel2Collapsed)
+            {
+                ToggleRightPanel();
+            }
         }
 
         private void checkBoxStyling_CheckedChanged(object sender, EventArgs e)
         {
             UpdateTaskList();
+            if (ToolContainer.Panel2Collapsed)
+            {
+                ToggleRightPanel();
+            }
         }
 
         private void checkBoxToggleAll_CheckedChanged(object sender, EventArgs e)
@@ -117,6 +114,10 @@ namespace PilotDesktop.Forms
         private void GeneralCheckedChanged(object sender, EventArgs e)
         {
             UpdateTaskList();
+            if (ToolContainer.Panel2Collapsed)
+            {
+                ToggleRightPanel();
+            }
         }
 
         private void ChoosePNLitiumProjectFolder(bool openRightPane = false)
@@ -150,10 +151,10 @@ namespace PilotDesktop.Forms
         }
         private void ToggleRightPanel(bool hidePanel = false)
         {
-            ToolContainer.Panel2Collapsed = hidePanel;
             if (!hidePanel)
             {
                 ToolContainer.Panel2.Show();
+                ToolContainer.Panel2Collapsed = false;
             }
             else
             {
@@ -285,5 +286,6 @@ namespace PilotDesktop.Forms
             CodeGeneratorItem.UseNewFields = checkBoxNewFields.Checked;
             CodeGeneratorItem.UseNewWebsiteSettings = checkBoxWebsiteSettings.Checked;
         }
+
     }
 }
