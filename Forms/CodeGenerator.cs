@@ -204,12 +204,15 @@ namespace PilotDesktop.Forms
                 SetNewLine("Typ: " + type);
             }
 
-
             if (checkBoxStyling.Checked)
             {           
                 if (isCreate)
                 {
-                    CreateStylingStructure();
+                    if (!CreateMvcStructure(CodeGeneratorConstants.Path_StylesAddons)) {
+                        isCreate = false;
+                        SetNewLine("SASS-struktur - ERROR", isCreate, isError : true);
+                        return;
+                    }
                 }
                 SetNewLine("SASS-struktur", isCreate);
             }
@@ -257,12 +260,17 @@ namespace PilotDesktop.Forms
             }
         }
 
-        private void SetNewLine(string text, bool isCreate = false, bool isHighlight = false)
+        private void SetNewLine(string text, bool isCreate = false, bool isHighlight = false, bool isError = false)
         {   
             if (isHighlight)
             {
                 TaskList.SelectionFont = new Font(TaskList.Font, FontStyle.Bold);
                 TaskList.SelectionColor = Color.Gold;
+            }
+            else if (isError)
+            {
+                TaskList.SelectionFont = new Font(TaskList.Font, FontStyle.Bold);
+                TaskList.SelectionColor = Color.Red;
             }
             else
             {

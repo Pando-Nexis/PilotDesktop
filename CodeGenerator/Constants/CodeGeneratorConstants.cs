@@ -13,15 +13,14 @@ namespace PilotDesktop.General.Services
         // Todo Aspen: Fix all Logic (search-replace: PNAddon and pn-addon)
 
         
-        public const string PathSource_Api = "AddonsMvc\\API\\PNAddon";
+        public const string PathSource_Api = "Litium.Accelerator.Mvc\\Controllers\\API\\PNAddon";
 
-        public const string PathSource_StylesAddons = "AddonsMvc\\Styles";
+        public const string Path_StylesAddons = "Litium.Accelerator.Mvc\\Client\\Styles\\_Addons";
+        public const string Path_ScriptsAddons = "Litium.Accelerator.Mvc\\Client\\Scripts\\_Addons";
+        //public const string PathDestination_StylesAddons = "Litium.Accelerator.Mvc\\Client\\Styles\\_Addons";
 
         public const string PathDestinationPnAddonsExtensions = "PandoNexis.AddOns.Extensions";
         public const string PathDestination_Api = "Litium.Accelerator.Mvc\\Controllers\\Api\\_Addons";
-        public const string PathDestination_StylesAddons = "Litium.Accelerator.Mvc\\Client\\Styles\\_Addons";
-        public const string PathDestination_Scripts = "Litium.Accelerator.Mvc\\Client\\Scripts";
-        public const string PathDestination_ScriptsAddons = PathDestination_Scripts + "\\_Addons";
         public const string PathDestination_ViewsAddons = "Litium.Accelerator.Mvc\\Views\\_Addons";
         public const string PathDestination_ViewsAddonsBlock = PathDestination_ViewsAddons + "Blocks";
 
@@ -29,6 +28,7 @@ namespace PilotDesktop.General.Services
         public const string AddonNameReplace = "PNAddonTemp";
         public const string AddonNameReplaceKebabCase = "pn-addon-temp-kebab";
         public const string AddonNameReplaceCamelCase = "pnAddonTempCamel";
-        public const string AddonNameReplaceAllLettersSmall = "pn_addontemplower";
+        public const string AddonNameReplaceAllLettersLower = "pn_addontemplower";
+        public const string AddonNameReplaceAllLettersUpper = "PN_ADDONTEMP_UPPER";
     }
 }

@@ -9,8 +9,8 @@ namespace PilotDesktop.CodeGenerator.Models
 {
     internal class CodeGeneratorItem
     {
-        public static string PathProject { get; internal set; }
-        public static string PathTemplates { get; internal set; }
+        public static string? PathProject { get; internal set; } = string.Empty;
+        public static string? PathTemplates { get; internal set; } = string.Empty;
 
         private static string addonName; // field
         public static string AddonName
@@ -22,11 +22,13 @@ namespace PilotDesktop.CodeGenerator.Models
                 AddonNameKebabCase = StringService.ConvertStringToKebabCase(value);
                 AddonNameCamelCase = "pn" + value.Replace("PN", string.Empty);
                 AddonNameAllLowerCase = value.ToLower();
+                AddonNameAllUpperCase = value.ToUpper();
             }
         }
         public static string AddonNameKebabCase { get; set; } = string.Empty;
         public static string AddonNameCamelCase { get; set; } = string.Empty;
         public static string AddonNameAllLowerCase { get; set; } = string.Empty;
+        public static string AddonNameAllUpperCase { get; set; } = string.Empty;
 
         internal static bool ignoreChange;
 

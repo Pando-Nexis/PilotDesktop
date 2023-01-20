@@ -75,9 +75,9 @@ namespace PilotDesktop.General.Services
             {
                 str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceCamelCase + sufix, CodeGeneratorItem.AddonNameCamelCase);
             }
-            if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersSmall + sufix))
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersLower + sufix))
             {
-                str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersSmall + sufix, CodeGeneratorItem.AddonNameAllLowerCase);
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersLower + sufix, CodeGeneratorItem.AddonNameAllLowerCase);
             }
 
             return str;
