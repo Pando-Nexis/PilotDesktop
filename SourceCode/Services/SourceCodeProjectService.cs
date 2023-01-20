@@ -17,16 +17,11 @@ public class SourceCodeProjectService
 
 
     #region AddOns
-    public void CreateAddonProject(string masterProjectDirectoryPath, string createProjectPath)
+    public void CreateAddonProject(string masterProjectDirectoryPath, string createProjectPath, List<string> addOns)
     {
         var masterAddonProjectPath = Path.Combine(masterProjectDirectoryPath, FolderConstants.Src, ProjectConstants.AddOn);
         var createAddonProjectPath = masterAddonProjectPath.Replace(masterProjectDirectoryPath, createProjectPath);
         Directory.CreateDirectory(createAddonProjectPath);
-
-
-
-
-        var addOns = new List<string>() { "PNGenericGridView" };
 
         foreach (var addOn in addOns)
         {
@@ -50,14 +45,12 @@ public class SourceCodeProjectService
         AddModifiedFiles(masterProjectDirectoryPath, createProjectPath, modifieldPaths, addOns);
     }
 
-    public void AddAddonToProject(string masterProjectDirectoryPath, string createProjectPath)
+    public void AddAddonToProject(string masterProjectDirectoryPath, string createProjectPath, List<string> addOns)
     {
         var masterAddonProjectPath = Path.Combine(masterProjectDirectoryPath, FolderConstants.Src, ProjectConstants.AddOn);
         var createAddonProjectPath = masterAddonProjectPath.Replace(masterProjectDirectoryPath, createProjectPath);
         if (!Directory.Exists(createAddonProjectPath))
             Directory.CreateDirectory(createAddonProjectPath);
-
-        var addOns = new List<string>() { "PNInfiniteScroll" };
 
         foreach (var addOn in addOns)
         {

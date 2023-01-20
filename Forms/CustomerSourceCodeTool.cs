@@ -39,7 +39,7 @@ namespace PilotDesktop.Forms
             FoldersAndFilesHelper.CopyFiles(masterProjectDirectoryPath, createProjectPath);
             FoldersAndFilesHelper.CreateSubFolders(masterProjectDirectoryPath, createProjectPath);
             _sourceCodeProjectService.CreateSlnFile(masterProjectPath, createProjectPath);
-            _sourceCodeProjectService.CreateAddonProject(masterProjectDirectoryPath, createProjectPath);
+            _sourceCodeProjectService.CreateAddonProject(masterProjectDirectoryPath, createProjectPath, _project.AddOns);
             _sourceCodeProjectService.CreateSolutionProject(masterProjectDirectoryPath, createProjectPath);
 
             ProcessStartInfo processInfo;
@@ -55,8 +55,7 @@ namespace PilotDesktop.Forms
         {
             var masterProjectDirectoryPath = Path.GetDirectoryName(masterProjectPath);
 
-            _sourceCodeProjectService.AddAddonToProject(masterProjectDirectoryPath,
-                                                        createProjectPath);
+            _sourceCodeProjectService.AddAddonToProject(masterProjectDirectoryPath,createProjectPath, _project.AddOns);
         }
         private void bAddAddon_Click(object sender, EventArgs e)
         {

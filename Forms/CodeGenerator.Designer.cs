@@ -69,6 +69,7 @@
             this.lblAddonName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TaskList = new System.Windows.Forms.RichTextBox();
+            this.checkBoxIsSolution = new System.Windows.Forms.CheckBox();
             this.panel_PNChooseFolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ToolContainer)).BeginInit();
             this.ToolContainer.Panel1.SuspendLayout();
@@ -83,9 +84,6 @@
             this.RightToolPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // projFolder
-            // 
             // 
             // btnChooseProj
             // 
@@ -108,6 +106,7 @@
             this.btnChooseProj.TabIndex = 2;
             this.btnChooseProj.Text = "Välj PN-Litium projekt";
             this.btnChooseProj.UseVisualStyleBackColor = false;
+            this.btnChooseProj.Click += new System.EventHandler(this.btnChooseProj_Click);
             // 
             // lblFolderError
             // 
@@ -137,9 +136,10 @@
             // 
             // ToolContainer
             // 
+            this.ToolContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ToolContainer.BackColor = System.Drawing.Color.Transparent;
             this.ToolContainer.BackgroundImage = global::PilotDesktop.Properties.Resources.PandoNexisHeroDark;
-            this.ToolContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolContainer.Location = new System.Drawing.Point(0, 0);
             this.ToolContainer.Name = "ToolContainer";
             // 
@@ -162,6 +162,7 @@
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LeftToolPanel.BackColor = System.Drawing.Color.Transparent;
+            this.LeftToolPanel.Controls.Add(this.checkBoxIsSolution);
             this.LeftToolPanel.Controls.Add(this.ProjNameBar);
             this.LeftToolPanel.Controls.Add(this.checkBoxStyling);
             this.LeftToolPanel.Controls.Add(this.checkBoxREACT);
@@ -199,6 +200,7 @@
             this.lblBtnChoosNewProj.TabStop = true;
             this.lblBtnChoosNewProj.Text = "Välj nytt PN-Litium-projekt";
             this.lblBtnChoosNewProj.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblBtnChoosNewProj.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnChooseProj_Click);
             // 
             // lblProjName
             // 
@@ -450,7 +452,7 @@
             this.radioNone.TabStop = true;
             this.radioNone.Text = "Inkluderar varken block eller sidmall";
             this.radioNone.UseVisualStyleBackColor = true;
-            this.radioNone.CheckedChanged += new System.EventHandler(this.radioNone_CheckedChanged);
+            this.radioNone.CheckedChanged += new System.EventHandler(this.radioType_CheckedChanged);
             // 
             // radioBlock
             // 
@@ -465,7 +467,7 @@
             this.radioBlock.TabStop = true;
             this.radioBlock.Text = "Block";
             this.radioBlock.UseVisualStyleBackColor = true;
-            this.radioBlock.CheckedChanged += new System.EventHandler(this.radioBlock_CheckedChanged);
+            this.radioBlock.CheckedChanged += new System.EventHandler(this.radioType_CheckedChanged);
             // 
             // radioPage
             // 
@@ -480,7 +482,7 @@
             this.radioPage.TabStop = true;
             this.radioPage.Text = "Inkluderar sidmall";
             this.radioPage.UseVisualStyleBackColor = true;
-            this.radioPage.CheckedChanged += new System.EventHandler(this.radioPage_CheckedChanged);
+            this.radioPage.CheckedChanged += new System.EventHandler(this.radioType_CheckedChanged);
             // 
             // panel1
             // 
@@ -595,7 +597,7 @@
             this.btnCreate.TabIndex = 2;
             this.btnCreate.Text = "Skapa grund i projektet";
             this.btnCreate.UseVisualStyleBackColor = false;
-            this.btnCreate.Click += new System.EventHandler(this.button1_Click_3);
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // label5
             // 
@@ -651,6 +653,20 @@
             this.TaskList.Size = new System.Drawing.Size(127, 268);
             this.TaskList.TabIndex = 3;
             this.TaskList.Text = "";
+            // 
+            // checkBoxIsSolution
+            // 
+            this.checkBoxIsSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxIsSolution.AutoSize = true;
+            this.checkBoxIsSolution.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxIsSolution.ForeColor = System.Drawing.Color.Gold;
+            this.checkBoxIsSolution.Location = new System.Drawing.Point(228, 144);
+            this.checkBoxIsSolution.Name = "checkBoxIsSolution";
+            this.checkBoxIsSolution.Size = new System.Drawing.Size(176, 19);
+            this.checkBoxIsSolution.TabIndex = 13;
+            this.checkBoxIsSolution.Text = "Ska detta läggas i Solution?";
+            this.checkBoxIsSolution.UseVisualStyleBackColor = true;
             // 
             // CodeGenerator
             // 
@@ -733,5 +749,6 @@
         private CheckBox checkBoxConstants;
         private CheckBox checkBoxWebsiteSettings;
         private Label lblErrorAddonExistsInProject;
+        private CheckBox checkBoxIsSolution;
     }
 }
