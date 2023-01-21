@@ -58,7 +58,7 @@ namespace PilotDesktop.General.Services
             }
         }
 
-        public static string ReplacePartString(string str, bool isInFile = false)
+        public static string ReplacePartString(string str, bool isInFile = false, string fullName = "", List<string> optionList = null)
         {
             var prefix = isInFile ? "[" : string.Empty;
             var sufix = isInFile ? "]" : string.Empty;
@@ -82,6 +82,17 @@ namespace PilotDesktop.General.Services
             if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersUpper + sufix))
             {
                 str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersUpper + sufix, CodeGeneratorItem.AddonNameAllUpperCase);
+            }
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonOption + sufix))
+            {
+                // Checking if there is an option name present.
+                // If there is AND it's found in the optionList show it,
+                // otherwise continue
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonOption + sufix, "");
+                if (optionList== null || optionList.Count()==0 || optionList.Select(x => fullName.ToLower().Contains(x.ToLower())) == null)
+                {
+                    return "continue";
+                }
             }
 
             return str;

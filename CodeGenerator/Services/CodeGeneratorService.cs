@@ -27,7 +27,7 @@ namespace PilotDesktop.General.Services
             //    Directory.CreateDirectory(path);
         }
 
-        public static bool CreateMvcStructure(string pathToSourceFiles, string pathToDestinationFiles = "")
+        public static bool CreateStructure(string pathToSourceFiles, string pathToDestinationFiles = "", List<string> optionList = null)
         {
             if (string.IsNullOrWhiteSpace(pathToDestinationFiles))
             {
@@ -40,7 +40,7 @@ namespace PilotDesktop.General.Services
                 var destination = GetPathToDestination(pathToDestinationFiles);
                 if (!string.IsNullOrWhiteSpace(destination))
                 {
-                    FilesAndFolderService.ChangeFileVariableNames(FilesAndFolderService.CopyFilesRecursively(new DirectoryInfo(source), new DirectoryInfo(destination)));
+                    FilesAndFolderService.ChangeFileVariableNames(FilesAndFolderService.CopyFilesRecursively(new DirectoryInfo(source), new DirectoryInfo(destination), optionList: optionList));
                     return true;
                 }
             }

@@ -16,6 +16,7 @@ namespace PilotDesktop.General.Services
         public const string PathSource_Api = "Litium.Accelerator.Mvc\\Controllers\\API\\PNAddon";
 
         public const string Path_StylesAddons = "Litium.Accelerator.Mvc\\Client\\Styles\\_Addons";
+        public const string Path_StylesApi = "Litium.Accelerator.Mvc\\Controllers\\Api\\_Addons";
         public const string Path_ScriptsAddons = "Litium.Accelerator.Mvc\\Client\\Scripts\\_Addons";
         //public const string PathDestination_StylesAddons = "Litium.Accelerator.Mvc\\Client\\Styles\\_Addons";
 
@@ -30,5 +31,6 @@ namespace PilotDesktop.General.Services
         public const string AddonNameReplaceCamelCase = "pnAddonTempCamel";
         public const string AddonNameReplaceAllLettersLower = "pn_addontemplower";
         public const string AddonNameReplaceAllLettersUpper = "PN_ADDONTEMP_UPPER";
+        public const string AddonOption = "pn_option_";
     }
 }

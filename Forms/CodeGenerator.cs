@@ -128,9 +128,11 @@ namespace PilotDesktop.Forms
         private void ChoosePNLitiumProjectFolder(bool openRightPane = false)
         {
             var dialog = new FolderBrowserDialog();
-            if (!dialog.SelectedPath.StartsWith(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder]))
-                dialog.SelectedPath = Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder];
+            //if (!dialog.SelectedPath.StartsWith(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder]))
+            //    dialog.SelectedPath = Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder];
+
             DialogResult result = dialog.ShowDialog();
+            
             if (result == DialogResult.OK)
             {
                 var srcDir = FilesAndFolderService.CheckPNLitiumDir(new DirectoryInfo(dialog.SelectedPath));
@@ -212,7 +214,8 @@ namespace PilotDesktop.Forms
             {
                 if (isCreate)
                 {
-                    if (!CreateMvcStructure(CodeGeneratorConstants.Path_StylesAddons)) {
+                    var cssOptionList = new List<string>();
+                    if (!CreateStructure(CodeGeneratorConstants.Path_StylesAddons, optionList:cssOptionList)) {
                         isCreate = false;
                         SetNewLine("SASS-struktur - ERROR", isCreate, isError : true);
                         return;
@@ -223,14 +226,28 @@ namespace PilotDesktop.Forms
 
             if (checkBoxREACT.Checked)
             {
+                var reactOptionList = new List<string>();
                 SetNewLine("REACT-struktur");
                 if (checkBoxREACT_Reducers.Checked)
                 {
                     SetNewLine("   ...med Reducers");
+                    reactOptionList.Add("redusers");
                 }
                 if (checkBoxREACT_API.Checked)
                 {
                     SetNewLine("   ...med API-Cntr");
+                    reactOptionList.Add("Api");
+                    reactOptionList.Add("Actions");
+                }
+
+                if (isCreate)
+                {
+                    if (!CreateStructure(CodeGeneratorConstants.Path_ScriptsAddons, optionList: reactOptionList) || CreateStructure(CodeGeneratorConstants.Path_StylesApi, optionList: reactOptionList))
+                    {
+                        isCreate = false;
+                        SetNewLine("JS-struktur - ERROR", isCreate, isError: true);
+                        return;
+                    }
                 }
             }
 
