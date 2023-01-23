@@ -67,20 +67,10 @@ namespace PilotDesktop
             
         //}
 
-        private void mnyWToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSettings_Click(object sender, EventArgs e)
         {
             var dlg = new Forms.Settings(); 
             dlg.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void PilotNavigator_Load(object sender, EventArgs e)
@@ -112,11 +102,8 @@ namespace PilotDesktop
                     projectNode.DropDownItems.Add("test2");
                     dropDown.DropDownItems.Add(projectNode);
                 }
-                
    
                 toolStrip1.Items.Add(dropDown);
-
-
             }
         }
         private async void GetWorkItems()

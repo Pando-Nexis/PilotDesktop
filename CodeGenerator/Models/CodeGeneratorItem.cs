@@ -46,7 +46,7 @@ namespace PilotDesktop.CodeGenerator.Models
         public static bool UseReducers { get; internal set; }
         public static bool UseREACT { get; internal set; }
         public static bool UseStyling { get; internal set; }
-        public static string? MainType { get; internal set; }
+        public static string? MainType { get; internal set; } = string.Empty;
         public static bool PlaceInSolution { get; internal set; }
     }
 }

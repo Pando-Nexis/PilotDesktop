@@ -83,13 +83,34 @@ namespace PilotDesktop.General.Services
             {
                 str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplaceAllLettersUpper + sufix, CodeGeneratorItem.AddonNameAllUpperCase);
             }
-            if (str.Contains(prefix + CodeGeneratorConstants.AddonOption + sufix))
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonOptionByName + sufix))
             {
                 // Checking if there is an option name present.
                 // If there is AND it's found in the optionList show it,
                 // otherwise continue
-                str = str.Replace(prefix + CodeGeneratorConstants.AddonOption + sufix, "");
-                if (optionList== null || optionList.Count()==0 || optionList.Select(x => fullName.ToLower().Contains(x.ToLower())) == null)
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonOptionByName + sufix, "");
+                bool? optionFound = null;
+                if (optionList != null && optionList.Count() > 0)
+                {
+                    optionFound = optionList.Select(x => str.ToLower() == x.ToLower())?.Where(y => y == true).FirstOrDefault();
+                }
+                if (optionFound == null || optionFound == false)
+                {
+                    return "continue";
+                }
+            }
+            if (str.Contains(prefix + CodeGeneratorConstants.AddonOptionByPath + sufix))
+            {
+                // Checking if there is an option part path present.
+                // If there is AND it's found in the optionList show it,
+                // otherwise continue
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonOptionByPath + sufix, "");
+                bool? optionFound = null;
+                if (optionList != null && optionList.Count() > 0)
+                {
+                    optionFound = optionList.Select(x => fullName.ToLower().Contains(x.ToLower()))?.Where(y => y == true).FirstOrDefault();
+                }
+                if (optionFound == null || optionFound == false)
                 {
                     return "continue";
                 }

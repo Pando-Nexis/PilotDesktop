@@ -58,7 +58,7 @@ namespace PilotDesktop.Forms
         }
 
         private void radioType_CheckedChanged(object sender, EventArgs e)
-        {
+        {            
             OnFormStateChanged();
         }
 
@@ -118,6 +118,15 @@ namespace PilotDesktop.Forms
 
         private void GeneralCheckedChanged(object sender, EventArgs e)
         {
+            var chkBx = (CheckBox)sender;
+            // Misc dependencies
+            if (chkBx.Name == "checkBoxBuilders" && chkBx.Checked)
+            {
+                checkBoxViewModels.Checked = true;
+                checkBoxConstants.Checked = true;
+                return;
+            }
+
             UpdateTaskList();
             if (ToolContainer.Panel2Collapsed)
             {
@@ -176,7 +185,7 @@ namespace PilotDesktop.Forms
             btnCreate.Enabled = str.Length > 4;
 
             // Check if exists in target project
-            if (Directory.Exists(Path.Combine(CodeGeneratorItem.PathProject, CodeGeneratorConstants.PathDestinationPnAddonsExtensions, str)))
+            if (Directory.Exists(Path.Combine(CodeGeneratorItem.PathProject, CodeGeneratorConstants.Path_DestinationPnAddonsExtensions, str)))
             {
                 lblErrorAddonExistsInProject.Visible = true;
                 btnCreate.Enabled = false;
@@ -192,7 +201,7 @@ namespace PilotDesktop.Forms
         {
             SetGlobalVariables();
             var type = CodeGeneratorItem.AddonType ?? string.Empty;
-
+            var pnAddonExtensionsOptionList = new List<string>();
             var addonName = lblAddonName.Text;// isCreate ? lblAddonName.Text : string.Empty;
             var addonNameKebabCase = StringService.ConvertStringToKebabCase(addonName); // isCreate ? ConvertStringToKebabCase(addonName) : string.Empty;
 
@@ -227,58 +236,106 @@ namespace PilotDesktop.Forms
             if (checkBoxREACT.Checked)
             {
                 var reactOptionList = new List<string>();
-                SetNewLine("REACT-struktur");
+
+                SetNewLine("REACT-struktur", isCreate);
                 if (checkBoxREACT_Reducers.Checked)
                 {
-                    SetNewLine("   ...med Reducers");
-                    reactOptionList.Add("redusers");
+                    SetNewLine("   ...med Reducers", isCreate);
+                    AddToOptionsList(ref reactOptionList, "reducers");
                 }
+                
                 if (checkBoxREACT_API.Checked)
                 {
-                    SetNewLine("   ...med API-Cntr");
-                    reactOptionList.Add("Api");
-                    reactOptionList.Add("Actions");
-                }
-
-                if (isCreate)
-                {
-                    if (!CreateStructure(CodeGeneratorConstants.Path_ScriptsAddons, optionList: reactOptionList) || CreateStructure(CodeGeneratorConstants.Path_StylesApi, optionList: reactOptionList))
+                    SetNewLine("   ...med API-Cntr", isCreate);
+                    AddToOptionsList(ref reactOptionList, "Controllers\\Api");
+                    AddToOptionsList(ref reactOptionList, "Actions");
+                    if (isCreate && !CreateStructure(CodeGeneratorConstants.PathDestination_Api, optionList: reactOptionList))
                     {
                         isCreate = false;
-                        SetNewLine("JS-struktur - ERROR", isCreate, isError: true);
+                        SetNewLine("Controller-struktur API - ERROR", isCreate, isError: true);
                         return;
                     }
                 }
+
+                if (isCreate && !CreateStructure(CodeGeneratorConstants.Path_ScriptsAddons, optionList: reactOptionList))
+                {
+                    isCreate = false;
+                    SetNewLine("JS-struktur - ERROR", isCreate, isError: true);
+                    return;
+                }
+                // Add pandoNexis.js_merge
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "pandoNexis.js_merge");
             }
 
             if (checkBoxBuilders.Checked)
             {
-                SetNewLine("Builders-grund");
+                SetNewLine("Builders-grund", isCreate);                
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Builders");
             }
             if (checkBoxViewModels.Checked)
             {
-                SetNewLine("ViewModel-grund");
+                SetNewLine("ViewModel-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "ViewModels");
             }
             if (checkBoxServices.Checked)
             {
-                SetNewLine("Service-grund");
+                SetNewLine("Service-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Services");
             }
             if (checkBoxPageTemplate.Checked)
             {
-                SetNewLine("Sidmall-grund");
+                SetNewLine("Sidmall-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Resources");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions\\Pages");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions\\Pages\\PageFieldDefinitionSetup");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Constants");
             }
             if (checkBoxConstants.Checked)
             {
-                SetNewLine("Konstanter-grund");
+                SetNewLine("Konstanter-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Constants");
             }
+            
             if (checkBoxNewFields.Checked)
             {
-                SetNewLine("Nya Fält-grund");
+                SetNewLine("Nya Fält-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "PageFieldDefinitionSetup");
             }
             if (checkBoxWebsiteSettings.Checked)
             {
-                SetNewLine("WebsiteSettings-grund");
+                SetNewLine("WebsiteSettings-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Websites");
             }
+            if (checkBoxWebsiteStrings.Checked)
+            {
+                SetNewLine("Websitesträngar-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "WebsiteTexts");
+            }
+
+            // Create folder structure in PandoNexis:extensions.Addons Project
+            // What folder is to be used? Block or ordinary?
+            pnAddonExtensionsOptionList.Add((CodeGeneratorItem.MainType.Contains("Block") ? "PNBlock" : "") + addonName);
+            if (isCreate && !CreateStructure(CodeGeneratorConstants.Path_DestinationPnAddonsExtensions, optionList: pnAddonExtensionsOptionList))
+            {
+                isCreate = false;
+                SetNewLine("Addons-Project - ERROR", isCreate, isError: true);
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Fill List of strings with name or part of unique pathways
+        /// During rendering we look for and remove "pn_option_" from Folder/File-name
+        /// For each Folder/File we look att the full Path and if name or path is found in the list, the folder/file is rendered
+        /// </summary>
+        /// <param name="optionsList"></param>
+        /// <param name="value"></param>
+        private void AddToOptionsList(ref List<string> optionsList, string value)
+        {
+            if(optionsList.Contains(value))
+                return;
+            optionsList.Add(value);
         }
 
         private void SetNewLine(string text, bool isCreate = false, bool isHighlight = false, bool isError = false)

@@ -43,6 +43,7 @@
             this.checkBoxStyling = new System.Windows.Forms.CheckBox();
             this.checkBoxREACT = new System.Windows.Forms.CheckBox();
             this.groupBoxProj = new System.Windows.Forms.GroupBox();
+            this.checkBoxWebsiteStrings = new System.Windows.Forms.CheckBox();
             this.checkBoxWebsiteSettings = new System.Windows.Forms.CheckBox();
             this.checkBoxToggleAll = new System.Windows.Forms.CheckBox();
             this.checkBoxNewFields = new System.Windows.Forms.CheckBox();
@@ -110,8 +111,8 @@
             // 
             // lblFolderError
             // 
-            this.lblFolderError.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.lblFolderError.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFolderError.BackColor = System.Drawing.Color.Transparent;
             this.lblFolderError.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -136,7 +137,7 @@
             // 
             // ToolContainer
             // 
-            this.ToolContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.ToolContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ToolContainer.BackColor = System.Drawing.Color.Transparent;
             this.ToolContainer.BackgroundImage = global::PilotDesktop.Properties.Resources.PandoNexisHeroDark;
@@ -158,8 +159,8 @@
             // 
             // LeftToolPanel
             // 
-            this.LeftToolPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.LeftToolPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LeftToolPanel.BackColor = System.Drawing.Color.Transparent;
             this.LeftToolPanel.Controls.Add(this.checkBoxIsSolution);
@@ -192,7 +193,7 @@
             // 
             // ProjNameBar
             // 
-            this.ProjNameBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.ProjNameBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProjNameBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ProjNameBar.Controls.Add(this.lblBtnChoosNewProj);
@@ -265,9 +266,10 @@
             // 
             // groupBoxProj
             // 
-            this.groupBoxProj.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBoxProj.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxProj.Controls.Add(this.checkBoxWebsiteStrings);
             this.groupBoxProj.Controls.Add(this.checkBoxWebsiteSettings);
             this.groupBoxProj.Controls.Add(this.checkBoxToggleAll);
             this.groupBoxProj.Controls.Add(this.checkBoxNewFields);
@@ -284,9 +286,23 @@
             this.groupBoxProj.TabStop = false;
             this.groupBoxProj.Text = "PandoNexis.AddOns.Extensions";
             // 
+            // checkBoxWebsiteStrings
+            // 
+            this.checkBoxWebsiteStrings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxWebsiteStrings.AutoSize = true;
+            this.checkBoxWebsiteStrings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxWebsiteStrings.Location = new System.Drawing.Point(170, 182);
+            this.checkBoxWebsiteStrings.Name = "checkBoxWebsiteStrings";
+            this.checkBoxWebsiteStrings.Size = new System.Drawing.Size(140, 19);
+            this.checkBoxWebsiteStrings.TabIndex = 9;
+            this.checkBoxWebsiteStrings.Text = "Nya Websitesträngar?";
+            this.checkBoxWebsiteStrings.UseVisualStyleBackColor = true;
+            this.checkBoxWebsiteStrings.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
+            // 
             // checkBoxWebsiteSettings
             // 
-            this.checkBoxWebsiteSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxWebsiteSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxWebsiteSettings.AutoSize = true;
             this.checkBoxWebsiteSettings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -316,7 +332,7 @@
             // 
             // checkBoxNewFields
             // 
-            this.checkBoxNewFields.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxNewFields.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxNewFields.AutoSize = true;
             this.checkBoxNewFields.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -330,7 +346,7 @@
             // 
             // checkBoxConstants
             // 
-            this.checkBoxConstants.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxConstants.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxConstants.AutoSize = true;
             this.checkBoxConstants.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -344,7 +360,7 @@
             // 
             // checkBoxPageTemplate
             // 
-            this.checkBoxPageTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxPageTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPageTemplate.AutoSize = true;
             this.checkBoxPageTemplate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -358,7 +374,7 @@
             // 
             // checkBoxServices
             // 
-            this.checkBoxServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxServices.AutoSize = true;
             this.checkBoxServices.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -372,7 +388,7 @@
             // 
             // checkBoxViewModels
             // 
-            this.checkBoxViewModels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxViewModels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxViewModels.AutoSize = true;
             this.checkBoxViewModels.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -386,7 +402,7 @@
             // 
             // checkBoxBuilders
             // 
-            this.checkBoxBuilders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxBuilders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxBuilders.AutoSize = true;
             this.checkBoxBuilders.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -400,7 +416,7 @@
             // 
             // groupBoxREACT
             // 
-            this.groupBoxREACT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.groupBoxREACT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBoxREACT.Controls.Add(this.checkBoxREACT_API);
             this.groupBoxREACT.Controls.Add(this.checkBoxREACT_Reducers);
@@ -414,7 +430,7 @@
             // 
             // checkBoxREACT_API
             // 
-            this.checkBoxREACT_API.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxREACT_API.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxREACT_API.AutoSize = true;
             this.checkBoxREACT_API.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -428,7 +444,7 @@
             // 
             // checkBoxREACT_Reducers
             // 
-            this.checkBoxREACT_Reducers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBoxREACT_Reducers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxREACT_Reducers.AutoSize = true;
             this.checkBoxREACT_Reducers.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -456,9 +472,10 @@
             // 
             // radioNone
             // 
-            this.radioNone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.radioNone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.radioNone.AutoSize = true;
+            this.radioNone.Checked = true;
             this.radioNone.ForeColor = System.Drawing.Color.White;
             this.radioNone.Location = new System.Drawing.Point(233, 22);
             this.radioNone.Name = "radioNone";
@@ -471,7 +488,7 @@
             // 
             // radioBlock
             // 
-            this.radioBlock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.radioBlock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.radioBlock.AutoSize = true;
             this.radioBlock.ForeColor = System.Drawing.Color.White;
@@ -479,14 +496,13 @@
             this.radioBlock.Name = "radioBlock";
             this.radioBlock.Size = new System.Drawing.Size(54, 19);
             this.radioBlock.TabIndex = 4;
-            this.radioBlock.TabStop = true;
             this.radioBlock.Text = "Block";
             this.radioBlock.UseVisualStyleBackColor = true;
             this.radioBlock.CheckedChanged += new System.EventHandler(this.radioType_CheckedChanged);
             // 
             // radioPage
             // 
-            this.radioPage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.radioPage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.radioPage.AutoSize = true;
             this.radioPage.ForeColor = System.Drawing.Color.White;
@@ -494,14 +510,13 @@
             this.radioPage.Name = "radioPage";
             this.radioPage.Size = new System.Drawing.Size(119, 19);
             this.radioPage.TabIndex = 5;
-            this.radioPage.TabStop = true;
             this.radioPage.Text = "Inkluderar sidmall";
             this.radioPage.UseVisualStyleBackColor = true;
             this.radioPage.CheckedChanged += new System.EventHandler(this.radioType_CheckedChanged);
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Lavender;
             this.panel1.Controls.Add(this.lblErrorAddonExistsInProject);
@@ -543,7 +558,7 @@
             // 
             // PNAddonId
             // 
-            this.PNAddonId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.PNAddonId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PNAddonId.BackColor = System.Drawing.Color.White;
             this.PNAddonId.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -594,7 +609,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.BackColor = System.Drawing.Color.Transparent;
             this.btnCreate.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonDark;
@@ -616,7 +631,7 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
@@ -629,7 +644,7 @@
             // 
             // lblAddonName
             // 
-            this.lblAddonName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblAddonName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAddonName.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblAddonName.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -642,8 +657,8 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -655,8 +670,8 @@
             // 
             // TaskList
             // 
-            this.TaskList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.TaskList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TaskList.BackColor = System.Drawing.Color.Black;
             this.TaskList.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -668,20 +683,6 @@
             this.TaskList.Size = new System.Drawing.Size(167, 268);
             this.TaskList.TabIndex = 3;
             this.TaskList.Text = "";
-            // 
-            // checkBoxIsSolution
-            // 
-            this.checkBoxIsSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxIsSolution.AutoSize = true;
-            this.checkBoxIsSolution.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxIsSolution.ForeColor = System.Drawing.Color.Gold;
-            this.checkBoxIsSolution.Location = new System.Drawing.Point(228, 144);
-            this.checkBoxIsSolution.Name = "checkBoxIsSolution";
-            this.checkBoxIsSolution.Size = new System.Drawing.Size(176, 19);
-            this.checkBoxIsSolution.TabIndex = 13;
-            this.checkBoxIsSolution.Text = "Ska detta läggas i Solution?";
-            this.checkBoxIsSolution.UseVisualStyleBackColor = true;
             // 
             // CodeGenerator
             // 
@@ -765,5 +766,6 @@
         private CheckBox checkBoxWebsiteSettings;
         private Label lblErrorAddonExistsInProject;
         private CheckBox checkBoxIsSolution;
+        private CheckBox checkBoxWebsiteStrings;
     }
 }

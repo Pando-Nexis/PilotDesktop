@@ -108,7 +108,7 @@ namespace PilotDesktop.General.Services
 
         public static void CreateNotificationBox(string header, string body)
         {
-            var confirm = MessageBox.Show(header, body, MessageBoxButtons.OK);
+            var confirm = MessageBox.Show(body, header, MessageBoxButtons.OK);
         }
     }
 }
