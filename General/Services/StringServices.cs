@@ -49,19 +49,14 @@ namespace PilotDesktop.General.Services
                 .ToLower();
         }
 
+        // Variable friendly cleaner (keeps spaces due to PascalCase-fix)
         public static string CleanInput(string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return value;
+
             // Replace invalid characters with empty strings.
-            try
-            {
-                return Regex.Replace(value, "[^a-zA-Z0-9_ ]", String.Empty);                
-            }
-            // If we timeout when replacing invalid characters,
-            // we should return Empty.
-            catch (RegexMatchTimeoutException)
-            {
-                return String.Empty;
-            }
+            return Regex.Replace(value, "[^a-zA-Z0-9_ ]", String.Empty); 
         }
 
         public static string FirstLetterToUpper(string str)
