@@ -35,7 +35,6 @@
             this.panel_PNChooseFolder = new System.Windows.Forms.Panel();
             this.ToolContainer = new System.Windows.Forms.SplitContainer();
             this.LeftToolPanel = new System.Windows.Forms.Panel();
-            this.checkBoxIsSolution = new System.Windows.Forms.CheckBox();
             this.ProjNameBar = new System.Windows.Forms.Panel();
             this.lblBtnChoosNewProj = new System.Windows.Forms.LinkLabel();
             this.lblProjName = new System.Windows.Forms.Label();
@@ -56,9 +55,8 @@
             this.checkBoxREACT_API = new System.Windows.Forms.CheckBox();
             this.checkBoxREACT_Reducers = new System.Windows.Forms.CheckBox();
             this.AddonType = new System.Windows.Forms.GroupBox();
-            this.radioNone = new System.Windows.Forms.RadioButton();
-            this.radioBlock = new System.Windows.Forms.RadioButton();
-            this.radioPage = new System.Windows.Forms.RadioButton();
+            this.checkBoxIsSolution = new System.Windows.Forms.CheckBox();
+            this.checkBoxBlock = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblErrorAddonExistsInProject = new System.Windows.Forms.Label();
             this.labelErrNoAddonId = new System.Windows.Forms.Label();
@@ -124,20 +122,23 @@
             // 
             // panel_PNChooseFolder
             // 
+            this.panel_PNChooseFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_PNChooseFolder.BackgroundImage = global::PilotDesktop.Properties.Resources.PandoNexisHero;
             this.panel_PNChooseFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel_PNChooseFolder.Controls.Add(this.ToolContainer);
             this.panel_PNChooseFolder.Controls.Add(this.btnChooseProj);
             this.panel_PNChooseFolder.Controls.Add(this.lblFolderError);
-            this.panel_PNChooseFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_PNChooseFolder.Location = new System.Drawing.Point(0, 0);
             this.panel_PNChooseFolder.Name = "panel_PNChooseFolder";
             this.panel_PNChooseFolder.Size = new System.Drawing.Size(871, 450);
-            this.panel_PNChooseFolder.TabIndex = 5;
+            this.panel_PNChooseFolder.TabIndex = 111;
+            this.panel_PNChooseFolder.Visible = false;
             // 
             // ToolContainer
             // 
-            this.ToolContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ToolContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ToolContainer.BackColor = System.Drawing.Color.Transparent;
             this.ToolContainer.BackgroundImage = global::PilotDesktop.Properties.Resources.PandoNexisHeroDark;
@@ -154,8 +155,7 @@
             this.ToolContainer.Panel2.Controls.Add(this.RightToolPanel);
             this.ToolContainer.Size = new System.Drawing.Size(871, 450);
             this.ToolContainer.SplitterDistance = 654;
-            this.ToolContainer.TabIndex = 5;
-            this.ToolContainer.Visible = false;
+            this.ToolContainer.TabIndex = 1;
             // 
             // LeftToolPanel
             // 
@@ -163,7 +163,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LeftToolPanel.BackColor = System.Drawing.Color.Transparent;
-            this.LeftToolPanel.Controls.Add(this.checkBoxIsSolution);
             this.LeftToolPanel.Controls.Add(this.ProjNameBar);
             this.LeftToolPanel.Controls.Add(this.checkBoxStyling);
             this.LeftToolPanel.Controls.Add(this.checkBoxREACT);
@@ -175,21 +174,6 @@
             this.LeftToolPanel.Name = "LeftToolPanel";
             this.LeftToolPanel.Size = new System.Drawing.Size(655, 450);
             this.LeftToolPanel.TabIndex = 4;
-            // 
-            // checkBoxIsSolution
-            // 
-            this.checkBoxIsSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxIsSolution.AutoSize = true;
-            this.checkBoxIsSolution.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxIsSolution.ForeColor = System.Drawing.Color.Gold;
-            this.checkBoxIsSolution.Location = new System.Drawing.Point(228, 144);
-            this.checkBoxIsSolution.Name = "checkBoxIsSolution";
-            this.checkBoxIsSolution.Size = new System.Drawing.Size(176, 19);
-            this.checkBoxIsSolution.TabIndex = 13;
-            this.checkBoxIsSolution.Text = "Ska detta läggas i Solution?";
-            this.checkBoxIsSolution.UseVisualStyleBackColor = true;
-            this.checkBoxIsSolution.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
             // ProjNameBar
             // 
@@ -459,60 +443,45 @@
             // AddonType
             // 
             this.AddonType.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.AddonType.Controls.Add(this.radioNone);
-            this.AddonType.Controls.Add(this.radioBlock);
-            this.AddonType.Controls.Add(this.radioPage);
+            this.AddonType.Controls.Add(this.checkBoxIsSolution);
+            this.AddonType.Controls.Add(this.checkBoxBlock);
             this.AddonType.ForeColor = System.Drawing.Color.White;
-            this.AddonType.Location = new System.Drawing.Point(102, 76);
+            this.AddonType.Location = new System.Drawing.Point(153, 80);
             this.AddonType.Name = "AddonType";
-            this.AddonType.Size = new System.Drawing.Size(451, 58);
+            this.AddonType.Size = new System.Drawing.Size(372, 58);
             this.AddonType.TabIndex = 7;
             this.AddonType.TabStop = false;
             this.AddonType.Text = "Addon-typ";
             // 
-            // radioNone
+            // checkBoxIsSolution
             // 
-            this.radioNone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.checkBoxIsSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioNone.AutoSize = true;
-            this.radioNone.Checked = true;
-            this.radioNone.ForeColor = System.Drawing.Color.White;
-            this.radioNone.Location = new System.Drawing.Point(233, 22);
-            this.radioNone.Name = "radioNone";
-            this.radioNone.Size = new System.Drawing.Size(214, 19);
-            this.radioNone.TabIndex = 6;
-            this.radioNone.TabStop = true;
-            this.radioNone.Text = "Inkluderar varken block eller sidmall";
-            this.radioNone.UseVisualStyleBackColor = true;
-            this.radioNone.CheckedChanged += new System.EventHandler(this.radioType_CheckedChanged);
+            this.checkBoxIsSolution.AutoSize = true;
+            this.checkBoxIsSolution.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxIsSolution.ForeColor = System.Drawing.Color.Gold;
+            this.checkBoxIsSolution.Location = new System.Drawing.Point(175, 22);
+            this.checkBoxIsSolution.Name = "checkBoxIsSolution";
+            this.checkBoxIsSolution.Size = new System.Drawing.Size(176, 19);
+            this.checkBoxIsSolution.TabIndex = 13;
+            this.checkBoxIsSolution.Text = "Ska detta läggas i Solution?";
+            this.checkBoxIsSolution.UseVisualStyleBackColor = true;
+            this.checkBoxIsSolution.CheckedChanged += new System.EventHandler(this.GeneralCheckedChanged);
             // 
-            // radioBlock
+            // checkBoxBlock
             // 
-            this.radioBlock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.checkBoxBlock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioBlock.AutoSize = true;
-            this.radioBlock.ForeColor = System.Drawing.Color.White;
-            this.radioBlock.Location = new System.Drawing.Point(15, 22);
-            this.radioBlock.Name = "radioBlock";
-            this.radioBlock.Size = new System.Drawing.Size(54, 19);
-            this.radioBlock.TabIndex = 4;
-            this.radioBlock.Text = "Block";
-            this.radioBlock.UseVisualStyleBackColor = true;
-            this.radioBlock.CheckedChanged += new System.EventHandler(this.radioType_CheckedChanged);
-            // 
-            // radioPage
-            // 
-            this.radioPage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioPage.AutoSize = true;
-            this.radioPage.ForeColor = System.Drawing.Color.White;
-            this.radioPage.Location = new System.Drawing.Point(89, 22);
-            this.radioPage.Name = "radioPage";
-            this.radioPage.Size = new System.Drawing.Size(119, 19);
-            this.radioPage.TabIndex = 5;
-            this.radioPage.Text = "Inkluderar sidmall";
-            this.radioPage.UseVisualStyleBackColor = true;
-            this.radioPage.CheckedChanged += new System.EventHandler(this.radioType_CheckedChanged);
+            this.checkBoxBlock.AutoSize = true;
+            this.checkBoxBlock.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxBlock.ForeColor = System.Drawing.Color.OldLace;
+            this.checkBoxBlock.Location = new System.Drawing.Point(28, 22);
+            this.checkBoxBlock.Name = "checkBoxBlock";
+            this.checkBoxBlock.Size = new System.Drawing.Size(131, 19);
+            this.checkBoxBlock.TabIndex = 14;
+            this.checkBoxBlock.Text = "Gäller detta Block?";
+            this.checkBoxBlock.UseVisualStyleBackColor = true;
+            this.checkBoxBlock.CheckedChanged += new System.EventHandler(this.checkBoxBlock_CheckedChanged);
             // 
             // panel1
             // 
@@ -692,6 +661,7 @@
             this.BackgroundImage = global::PilotDesktop.Properties.Resources.PandoNexisHero;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(871, 450);
+            this.Controls.Add(this.ToolContainer);
             this.Controls.Add(this.panel_PNChooseFolder);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.Control;
@@ -742,9 +712,6 @@
         private Label label3;
         private Label lblAddonName;
         private Label label5;
-        private RadioButton radioNone;
-        private RadioButton radioPage;
-        private RadioButton radioBlock;
         private GroupBox AddonType;
         private CheckBox checkBoxStyling;
         private CheckBox checkBoxREACT;
@@ -767,5 +734,6 @@
         private Label lblErrorAddonExistsInProject;
         private CheckBox checkBoxIsSolution;
         private CheckBox checkBoxWebsiteStrings;
+        private CheckBox checkBoxBlock;
     }
 }

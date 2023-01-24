@@ -35,6 +35,7 @@ namespace PilotDesktop.CodeGenerator.Models
         public static DirectoryInfo ProjectDirectory { get; set; }
         //public static DirectoryInfo TemplateDirectory { get; set; }
         public static String AddonType { get; set; } = string.Empty;
+        public static String DestinationFolderName { get; set; } = string.Empty;
         public static bool UseNewWebsiteSettings { get; internal set; }
         public static bool UseNewFields { get; internal set; }
         public static bool UseConstants { get; internal set; }
@@ -47,6 +48,6 @@ namespace PilotDesktop.CodeGenerator.Models
         public static bool UseREACT { get; internal set; }
         public static bool UseStyling { get; internal set; }
         public static string? MainType { get; internal set; } = string.Empty;
-        public static bool PlaceInSolution { get; internal set; }
+        public static bool UseSolutionInseadOfAddons { get; internal set; }
     }
 }

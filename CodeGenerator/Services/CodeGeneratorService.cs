@@ -82,6 +82,11 @@ namespace PilotDesktop.General.Services
         {
             var errHeading = string.Empty;
             var errString = string.Empty;
+            if (CodeGeneratorItem.UseSolutionInseadOfAddons)
+            {
+                addonPath = addonPath.Replace(CodeGeneratorConstants.AddonsExtensionsProjectName, CodeGeneratorConstants.SolutionProjectName);
+                addonPath = addonPath.Replace(CodeGeneratorConstants.AddonsFolderName, CodeGeneratorConstants.SolutionFolderName);
+            }
             if (!string.IsNullOrWhiteSpace(CodeGeneratorItem.PathProject) && !string.IsNullOrWhiteSpace(addonPath))
             {
                 var destination = Path.Combine(CodeGeneratorItem.PathProject, addonPath);

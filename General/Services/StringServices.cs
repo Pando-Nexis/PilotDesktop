@@ -8,6 +8,7 @@ namespace PilotDesktop.General.Services
     {
         public static string FixStringPascalCase(string str)
         {
+            str = CleanInput(str);
             if (!str.Contains(" "))
             {
                 return FirstLetterToUpper(str);
@@ -48,6 +49,21 @@ namespace PilotDesktop.General.Services
                 .ToLower();
         }
 
+        public static string CleanInput(string value)
+        {
+            // Replace invalid characters with empty strings.
+            try
+            {
+                return Regex.Replace(value, "[^a-zA-Z0-9_ ]", String.Empty);                
+            }
+            // If we timeout when replacing invalid characters,
+            // we should return Empty.
+            catch (RegexMatchTimeoutException)
+            {
+                return String.Empty;
+            }
+        }
+
         public static string FirstLetterToUpper(string str)
         {
             if (str.Length > 1)
@@ -63,6 +79,14 @@ namespace PilotDesktop.General.Services
             var prefix = isInFile ? "[" : string.Empty;
             var sufix = isInFile ? "]" : string.Empty;
 
+            if (isInFile && str.Contains(prefix + CodeGeneratorConstants.AddonDestinationFolderName + sufix))
+            {
+                str = str.Replace(prefix + CodeGeneratorConstants.AddonDestinationFolderName + sufix, CodeGeneratorItem.UseSolutionInseadOfAddons ? CodeGeneratorConstants.SolutionFolderName : CodeGeneratorConstants.AddonsFolderName);
+            }
+            if (CodeGeneratorItem.UseSolutionInseadOfAddons && str.Contains(CodeGeneratorConstants.AddonsFolderName))
+            {
+                str.Replace(CodeGeneratorConstants.AddonsFolderName, CodeGeneratorConstants.SolutionFolderName);
+            }
             if (str.Contains(prefix + CodeGeneratorConstants.AddonNameReplace + sufix))
             {
                 str = str.Replace(prefix + CodeGeneratorConstants.AddonNameReplace + sufix, CodeGeneratorItem.AddonName);

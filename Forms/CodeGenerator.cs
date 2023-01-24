@@ -13,6 +13,7 @@ namespace PilotDesktop.Forms
             InitializeComponent();
 
             ToolContainer.Visible = false;
+            panel_PNChooseFolder.Visible = true;
             ToolContainer.Panel2Collapsed = true;
             ToolContainer.Panel2.Hide();
             checkBoxREACT_Reducers.Enabled = false;
@@ -26,6 +27,7 @@ namespace PilotDesktop.Forms
             lblFolderError.Text = "";
         }
 
+        #region Events
         private void lblBtnChoosNewProj_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ChoosePNLitiumProjectFolder(true);
@@ -55,18 +57,6 @@ namespace PilotDesktop.Forms
             PNAddonId.Text = tempPascalCaseText;
             lblAddonName.Text = "PN" + tempPascalCaseText;
 
-        }
-
-        private void radioType_CheckedChanged(object sender, EventArgs e)
-        {            
-            OnFormStateChanged();
-        }
-
-        private void OnFormStateChanged()
-        {
-            SetGlobalVariables();
-            ToggleRightPanel();
-            UpdateTaskList();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -105,7 +95,6 @@ namespace PilotDesktop.Forms
                 ToggleRightPanel();
             }
         }
-
         private void checkBoxToggleAll_CheckedChanged(object sender, EventArgs e)
         {
             var state = checkBoxToggleAll.Checked;
@@ -133,6 +122,20 @@ namespace PilotDesktop.Forms
                 ToggleRightPanel();
             }
         }
+        private void checkBoxBlock_CheckedChanged(object sender, EventArgs e)
+        {
+            OnFormStateChanged();
+        }
+
+        #endregion Events
+
+
+        private void OnFormStateChanged()
+        {
+            SetGlobalVariables();
+            ToggleRightPanel();
+            UpdateTaskList();
+        }
 
         private void ChoosePNLitiumProjectFolder(bool openRightPane = false)
         {
@@ -148,6 +151,7 @@ namespace PilotDesktop.Forms
                 if (srcDir == null)
                 {
                     ToolContainer.Visible = false;
+                    panel_PNChooseFolder.Visible = true;
                     lblFolderError.Text = "Projektet ser inte ut att innehålla Pandonexis Addons mapp? \nVänligen prova igen... :)";
                 }
                 else
@@ -155,8 +159,8 @@ namespace PilotDesktop.Forms
                     CodeGeneratorItem.ProjectDirectory = srcDir;
                     CodeGeneratorItem.PathProject = srcDir.FullName;
                     ToolContainer.BringToFront();
-
                     ToolContainer.Visible = true;
+                    panel_PNChooseFolder.Visible = false;
                     if (!openRightPane)
                     {
                         ToolContainer.Panel2Collapsed = true;
@@ -183,9 +187,8 @@ namespace PilotDesktop.Forms
         {
             labelErrNoAddonId.Visible = str.Length < 5;
             btnCreate.Enabled = str.Length > 4;
-
             // Check if exists in target project
-            if (Directory.Exists(Path.Combine(CodeGeneratorItem.PathProject, CodeGeneratorConstants.Path_DestinationPnAddonsExtensions, str)))
+            if (Directory.Exists(Path.Combine(CodeGeneratorItem.PathProject, CodeGeneratorConstants.AddonsExtensionsProjectName, str)))
             {
                 lblErrorAddonExistsInProject.Visible = true;
                 btnCreate.Enabled = false;
@@ -216,9 +219,10 @@ namespace PilotDesktop.Forms
 
             if (!string.IsNullOrEmpty(type))
             {
-                SetNewLine("Typ: " + type);
+                SetNewLine("Typ: " + type, isCreate);
             }
 
+            // Styling
             if (checkBoxStyling.Checked)
             {
                 if (isCreate)
@@ -232,7 +236,9 @@ namespace PilotDesktop.Forms
                 }
                 SetNewLine("SASS-struktur", isCreate);
             }
+            // END Styling
 
+            // REACT/JS
             if (checkBoxREACT.Checked)
             {
                 var reactOptionList = new List<string>();
@@ -266,7 +272,10 @@ namespace PilotDesktop.Forms
                 // Add pandoNexis.js_merge
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "pandoNexis.js_merge");
             }
+            // END REACT/JS
 
+
+            var pnAddonMvcOptionList = new List<string>();
             if (checkBoxBuilders.Checked)
             {
                 SetNewLine("Builders-grund", isCreate);                
@@ -287,39 +296,52 @@ namespace PilotDesktop.Forms
                 SetNewLine("Sidmall-grund", isCreate);
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "Resources");
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions");
-                AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions\\Pages");
-                AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions\\Pages\\PageFieldDefinitionSetup");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Pages");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "PageTemplateSetup.cs");
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "Constants");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "ViewModels");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "views.txt");
+                AddToOptionsList(ref pnAddonMvcOptionList, "Views");
             }
             if (checkBoxConstants.Checked)
             {
                 SetNewLine("Konstanter-grund", isCreate);
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "Constants");
-            }
-            
+            }            
             if (checkBoxNewFields.Checked)
             {
                 SetNewLine("Nya Fält-grund", isCreate);
-                AddToOptionsList(ref pnAddonExtensionsOptionList, "PageFieldDefinitionSetup");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Pages");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "PageFieldDefinitionSetup.cs");
             }
             if (checkBoxWebsiteSettings.Checked)
             {
                 SetNewLine("WebsiteSettings-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions");
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "Websites");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Constants");
             }
             if (checkBoxWebsiteStrings.Checked)
             {
                 SetNewLine("Websitesträngar-grund", isCreate);
+                AddToOptionsList(ref pnAddonExtensionsOptionList, "Definitions");
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "WebsiteTexts");
             }
 
             // Create folder structure in PandoNexis:extensions.Addons Project
             // What folder is to be used? Block or ordinary?
             pnAddonExtensionsOptionList.Add((CodeGeneratorItem.MainType.Contains("Block") ? "PNBlock" : "") + addonName);
-            if (isCreate && !CreateStructure(CodeGeneratorConstants.Path_DestinationPnAddonsExtensions, optionList: pnAddonExtensionsOptionList))
+            if (isCreate && !CreateStructure(CodeGeneratorConstants.AddonsExtensionsProjectName, optionList: pnAddonExtensionsOptionList))
             {
                 isCreate = false;
                 SetNewLine("Addons-Project - ERROR", isCreate, isError: true);
+                return;
+            }
+            if (isCreate && pnAddonMvcOptionList.Count>0 && !CreateStructure(CodeGeneratorConstants.PathDestination_ViewsAddons, optionList: pnAddonMvcOptionList))
+            {
+                isCreate = false;
+                SetNewLine("Addons-view - ERROR", isCreate, isError: true);
                 return;
             }
         }
@@ -361,20 +383,16 @@ namespace PilotDesktop.Forms
         private void SetGlobalVariables()
         {
             CodeGeneratorItem.AddonName = lblAddonName.Text;
-
-            if (radioNone.Checked)
+            
+            if (checkBoxBlock.Checked)
             {
-                CodeGeneratorItem.AddonType = "Varken block eller sida";
+                CodeGeneratorItem.MainType = CodeGeneratorItem.MainType = "Block";
+                CodeGeneratorItem.AddonType = "Detta gäller BLOCK";
+            }
+            else
+            {
                 CodeGeneratorItem.MainType = "None";
-            }
-            else if (radioPage.Checked)
-            {
-                CodeGeneratorItem.AddonType = "Sidamall/Vy";
-                CodeGeneratorItem.MainType = "Page";
-            }
-            else if (radioBlock.Checked)
-            {
-                CodeGeneratorItem.AddonType = CodeGeneratorItem.MainType = "Block";
+                CodeGeneratorItem.AddonType = "";
             }
 
             CodeGeneratorItem.UseStyling = checkBoxStyling.Checked;
@@ -388,7 +406,7 @@ namespace PilotDesktop.Forms
             CodeGeneratorItem.UseConstants = checkBoxConstants.Checked;
             CodeGeneratorItem.UseNewFields = checkBoxNewFields.Checked;
             CodeGeneratorItem.UseNewWebsiteSettings = checkBoxWebsiteSettings.Checked;
-            CodeGeneratorItem.PlaceInSolution = checkBoxIsSolution.Checked;
+            CodeGeneratorItem.UseSolutionInseadOfAddons = checkBoxIsSolution.Checked;
         }
     }
 }

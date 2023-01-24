@@ -12,7 +12,6 @@ namespace PilotDesktop.Pilot.Services
 {
     public class ConnectToApi
     {
-
         private readonly PilotApplicationSettings _pilotApplicationSettings;
 
         public ConnectToApi()
@@ -27,7 +26,6 @@ namespace PilotDesktop.Pilot.Services
         private static readonly string _token = "UGlsb3RVc2VyOnRlc3Rhcg==";
         private static readonly string _urlBase = "http://pandonexis.localtest.me/api/pandoNexis/pilot/";
 
-
         public async Task<string> GetData(string method, Dictionary<string, string> parameters)
         {
             var url = _pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.BaseUrl] + method;
@@ -40,12 +38,10 @@ namespace PilotDesktop.Pilot.Services
                 }
             }    
             try 
-            {
-              
+            { 
                 var _client = new HttpClient();
                 _client.DefaultRequestHeaders.Clear();
                 _client.DefaultRequestHeaders.Add("ClientSecret", _pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ApiSecret]);
-
 
                 var response = await _client.GetAsync(url);
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -53,7 +49,6 @@ namespace PilotDesktop.Pilot.Services
                 {
                     var tt = response.StatusCode;
                 }
-
 
                 if (response.EnsureSuccessStatusCode().IsSuccessStatusCode &&
                         !string.IsNullOrWhiteSpace(responseString))
@@ -64,11 +59,8 @@ namespace PilotDesktop.Pilot.Services
             }
             catch (Exception e)
             {
-             
                 throw new Exception("cannot connect");
             }
-
-
         }
     }
 }
