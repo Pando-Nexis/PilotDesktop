@@ -8,14 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-
 namespace PilotDesktop.SourceCode.Services;
 
 public class SourceCodeProjectService
 {
-
-
-
     #region AddOns
     public void CreateAddonProject(string masterProjectDirectoryPath, string createProjectPath, List<string> addOns)
     {
@@ -275,7 +271,7 @@ public class SourceCodeProjectService
         }
     }
 
-    private void CreatePandoNexisJsFile(string masterProjectDirectoryPath, string createProjectPath, List<string> addOns)
+    public void CreatePandoNexisJsFile(string masterProjectDirectoryPath, string createProjectPath, List<string> addOns)
     {
         var pandoNexisJsImports = new List<string>();
         var pandoNexisJsComponent = new List<string>();
@@ -342,7 +338,6 @@ public class SourceCodeProjectService
         FoldersAndFilesHelper.CopySpecificFolder(Path.Combine(masterProjectPath, FolderConstants.Src, ProjectConstants.Mvc), Path.Combine(createProjectPath, FolderConstants.Src, ProjectConstants.Mvc), addOn);
 
         var configPath = Path.Combine(addonPath, FolderConstants.Config);
-
     }
 
     public void GetPandoNexisJsEntities(string projectPath, List<string> addons, ref List<string> pandoNexisJsImports, ref List<string> pandoNexisJsComponents)
@@ -351,14 +346,12 @@ public class SourceCodeProjectService
         {
             var configPath = Path.Combine(projectPath, FolderConstants.Src, ProjectConstants.AddOn, addon, FolderConstants.Config);
 
-
             if (!Directory.Exists(configPath))
                 return;
 
             var configJsPath = Path.Combine(configPath, FileTypeConstants.PandoNexisJsMerge);
             if (!File.Exists(configJsPath))
                 return;
-
 
             var lines = File.ReadLines(configJsPath);
             var importLines = false;

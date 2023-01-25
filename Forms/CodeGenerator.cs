@@ -2,6 +2,7 @@
 using PilotDesktop.General.Services;
 using PilotDesktop.Settings.Constants;
 using PilotDesktop.SourceCode.Constants;
+using PilotDesktop.SourceCode.Services;
 using static PilotDesktop.General.Services.CodeGeneratorService;
 
 namespace PilotDesktop.Forms
@@ -344,6 +345,18 @@ namespace PilotDesktop.Forms
                 SetNewLine("Addons-view - ERROR", isCreate, isError: true);
                 return;
             }
+
+            // Todo: Aspen: All Addon-kod i PandonNexis.js försvinner. Kolla om rätt metod anropas. 
+            //if (isCreate && checkBoxREACT.Checked)
+            //{
+            //    SourceCodeProjectService _SourceCodeProjectService = new SourceCodeProjectService();
+
+            //    //Collect all Addons in folder
+            //    var projAddonPath = Path.Combine(CodeGeneratorItem.PathProject, ProjectConstants.AddOn);
+            //    var projDestPath = new DirectoryInfo(CodeGeneratorItem.PathProject).Parent.FullName;
+            //    var addOns = _SourceCodeProjectService.GetAddons(projAddonPath);
+            //    _SourceCodeProjectService.CreatePandoNexisJsFile(projDestPath, projDestPath, addOns);
+            //}
         }
 
         /// <summary>
