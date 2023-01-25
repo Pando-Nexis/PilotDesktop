@@ -188,7 +188,7 @@ namespace PilotDesktop.Forms
             labelErrNoAddonId.Visible = str.Length < 5;
             btnCreate.Enabled = str.Length > 4;
             // Check if exists in target project
-            if (Directory.Exists(Path.Combine(CodeGeneratorItem.PathProject, CodeGeneratorConstants.AddonsExtensionsProjectName, str)))
+            if (Directory.Exists(Path.Combine(CodeGeneratorItem.PathProject, ProjectConstants.AddOn, str)))
             {
                 lblErrorAddonExistsInProject.Visible = true;
                 btnCreate.Enabled = false;
@@ -270,7 +270,7 @@ namespace PilotDesktop.Forms
                     return;
                 }
                 // Add pandoNexis.js_merge
-                AddToOptionsList(ref pnAddonExtensionsOptionList, "pandoNexis.js_merge");
+                AddToOptionsList(ref pnAddonExtensionsOptionList, FileTypeConstants.PandoNexisJsMerge);
             }
             // END REACT/JS
 
@@ -332,7 +332,7 @@ namespace PilotDesktop.Forms
             // Create folder structure in PandoNexis:extensions.Addons Project
             // What folder is to be used? Block or ordinary?
             pnAddonExtensionsOptionList.Add((CodeGeneratorItem.MainType.Contains("Block") ? "PNBlock" : "") + addonName);
-            if (isCreate && !CreateStructure(CodeGeneratorConstants.AddonsExtensionsProjectName, optionList: pnAddonExtensionsOptionList))
+            if (isCreate && !CreateStructure(ProjectConstants.AddOn, optionList: pnAddonExtensionsOptionList))
             {
                 isCreate = false;
                 SetNewLine("Addons-Project - ERROR", isCreate, isError: true);

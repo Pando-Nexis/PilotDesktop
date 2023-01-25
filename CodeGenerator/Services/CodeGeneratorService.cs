@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using static PilotDesktop.Program;
 using PilotDesktop.General.Services;
 using PilotDesktop.CodeGenerator.Models;
+using PilotDesktop.SourceCode.Constants;
 
 namespace PilotDesktop.General.Services
 {
@@ -84,7 +85,7 @@ namespace PilotDesktop.General.Services
             var errString = string.Empty;
             if (CodeGeneratorItem.UseSolutionInseadOfAddons)
             {
-                addonPath = addonPath.Replace(CodeGeneratorConstants.AddonsExtensionsProjectName, CodeGeneratorConstants.SolutionProjectName);
+                addonPath = addonPath.Replace(ProjectConstants.AddOn, ProjectConstants.Solution);
                 addonPath = addonPath.Replace(CodeGeneratorConstants.AddonsFolderName, CodeGeneratorConstants.SolutionFolderName);
             }
             if (!string.IsNullOrWhiteSpace(CodeGeneratorItem.PathProject) && !string.IsNullOrWhiteSpace(addonPath))

@@ -31,7 +31,7 @@ namespace PilotDesktop.General.Services
             if (folderSrc != null)
             {
                 DirectoryInfo[] folders = folderSrc.GetDirectories();
-                var PNAddonsFolder = folders.FirstOrDefault(x => x.Name.ToLower() == CodeGeneratorConstants.AddonsExtensionsProjectName.ToLower());
+                var PNAddonsFolder = folders.FirstOrDefault(x => x.Name.ToLower() == ProjectConstants.AddOn.ToLower());
                 if (PNAddonsFolder != null)
                 {
                     return folderSrc;
