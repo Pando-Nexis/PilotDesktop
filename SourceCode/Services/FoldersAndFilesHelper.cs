@@ -161,6 +161,22 @@ namespace PilotDesktop.SourceCode.Services
         }
         public static string GetIndexsCssPath(string projectPath)
         {
+           if(!Directory.Exists(Path.Combine(projectPath,
+                                                      FolderConstants.Src,
+                                                      ProjectConstants.Mvc,
+                                                      FolderConstants.Client,
+                                                      FolderConstants.Styles,
+                                                      FolderConstants.Addons
+                                                      )))
+            {
+                Directory.CreateDirectory(Path.Combine(projectPath,
+                                                      FolderConstants.Src,
+                                                      ProjectConstants.Mvc,
+                                                      FolderConstants.Client,
+                                                      FolderConstants.Styles,
+                                                      FolderConstants.Addons
+                                                      ));
+            }
             return Path.Combine(projectPath,
                                                       FolderConstants.Src,
                                                       ProjectConstants.Mvc,
