@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PilotNavigator));
             this.bSettings = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bHandleAddOn = new System.Windows.Forms.Button();
             this.btnToCodeGenerator = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnToOblivion = new System.Windows.Forms.Button();
             this.Keg = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.bHandleAddOn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Keg)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +50,7 @@
             this.bSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bSettings.FlatAppearance.BorderSize = 0;
             this.bSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSettings.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bSettings.Font = new System.Drawing.Font("Nirmala UI Semilight", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bSettings.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.bSettings.ImageIndex = 66;
             this.bSettings.Location = new System.Drawing.Point(0, -1);
@@ -58,7 +58,7 @@
             this.bSettings.Name = "bSettings";
             this.bSettings.Size = new System.Drawing.Size(109, 36);
             this.bSettings.TabIndex = 1;
-            this.bSettings.Text = "Settings";
+            this.bSettings.Text = "    Inställningar";
             this.bSettings.UseVisualStyleBackColor = false;
             this.bSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
@@ -69,11 +69,32 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.bHandleAddOn);
             this.panel1.Controls.Add(this.btnToCodeGenerator);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnToOblivion);
             this.panel1.Location = new System.Drawing.Point(0, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(109, 158);
             this.panel1.TabIndex = 4;
+            // 
+            // bHandleAddOn
+            // 
+            this.bHandleAddOn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bHandleAddOn.BackColor = System.Drawing.Color.Transparent;
+            this.bHandleAddOn.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral1;
+            this.bHandleAddOn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bHandleAddOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bHandleAddOn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bHandleAddOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bHandleAddOn.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bHandleAddOn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.bHandleAddOn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bHandleAddOn.Location = new System.Drawing.Point(5, 110);
+            this.bHandleAddOn.MinimumSize = new System.Drawing.Size(100, 0);
+            this.bHandleAddOn.Name = "bHandleAddOn";
+            this.bHandleAddOn.Size = new System.Drawing.Size(100, 45);
+            this.bHandleAddOn.TabIndex = 7;
+            this.bHandleAddOn.Text = "Hantera AddOn";
+            this.bHandleAddOn.UseVisualStyleBackColor = false;
+            this.bHandleAddOn.Click += new System.EventHandler(this.bHandleAddOn_Click);
             // 
             // btnToCodeGenerator
             // 
@@ -92,30 +113,30 @@
             this.btnToCodeGenerator.Name = "btnToCodeGenerator";
             this.btnToCodeGenerator.Size = new System.Drawing.Size(100, 45);
             this.btnToCodeGenerator.TabIndex = 6;
-            this.btnToCodeGenerator.Text = "Code generator";
+            this.btnToCodeGenerator.Text = "Kodgenerator";
             this.btnToCodeGenerator.UseVisualStyleBackColor = false;
             this.btnToCodeGenerator.Click += new System.EventHandler(this.btnToCodeGenerator_Click);
             // 
-            // button1
+            // btnToOblivion
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral1;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(5, 7);
-            this.button1.MinimumSize = new System.Drawing.Size(100, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 45);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Project handler";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnToOblivion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnToOblivion.BackColor = System.Drawing.Color.Transparent;
+            this.btnToOblivion.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral1;
+            this.btnToOblivion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnToOblivion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnToOblivion.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnToOblivion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnToOblivion.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnToOblivion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnToOblivion.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnToOblivion.Location = new System.Drawing.Point(5, 7);
+            this.btnToOblivion.MinimumSize = new System.Drawing.Size(100, 0);
+            this.btnToOblivion.Name = "btnToOblivion";
+            this.btnToOblivion.Size = new System.Drawing.Size(100, 45);
+            this.btnToOblivion.TabIndex = 5;
+            this.btnToOblivion.Text = "Till vete katten";
+            this.btnToOblivion.UseVisualStyleBackColor = false;
+            this.btnToOblivion.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Keg
             // 
@@ -150,27 +171,6 @@
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // bHandleAddOn
-            // 
-            this.bHandleAddOn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bHandleAddOn.BackColor = System.Drawing.Color.Transparent;
-            this.bHandleAddOn.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral1;
-            this.bHandleAddOn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bHandleAddOn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bHandleAddOn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.bHandleAddOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bHandleAddOn.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bHandleAddOn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.bHandleAddOn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bHandleAddOn.Location = new System.Drawing.Point(5, 110);
-            this.bHandleAddOn.MinimumSize = new System.Drawing.Size(100, 0);
-            this.bHandleAddOn.Name = "bHandleAddOn";
-            this.bHandleAddOn.Size = new System.Drawing.Size(100, 45);
-            this.bHandleAddOn.TabIndex = 7;
-            this.bHandleAddOn.Text = "Hantera AddOn";
-            this.bHandleAddOn.UseVisualStyleBackColor = false;
-            this.bHandleAddOn.Click += new System.EventHandler(this.bHandleAddOn_Click);
             // 
             // PilotNavigator
             // 
@@ -207,7 +207,7 @@
         private Button bSettings;
         private Panel panel1;
         private Button btnToCodeGenerator;
-        private Button button1;
+        private Button btnToOblivion;
         private PictureBox Keg;
         private ToolStrip toolStrip1;
         private Button bHandleAddOn;
