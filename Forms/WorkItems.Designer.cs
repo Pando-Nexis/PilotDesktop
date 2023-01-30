@@ -41,7 +41,7 @@
             this.lvItems.TabIndex = 0;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
-            this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
+            this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_SelectedIndexChanged);
             // 
             // bNewWorkItem
             // 
@@ -61,6 +61,7 @@
             this.Controls.Add(this.bNewWorkItem);
             this.Controls.Add(this.lvItems);
             this.Name = "WorkItems";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WorkItems";
             this.Load += new System.EventHandler(this.WorkItems_Load);
             this.ResumeLayout(false);

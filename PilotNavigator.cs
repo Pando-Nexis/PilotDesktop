@@ -144,8 +144,8 @@ namespace PilotDesktop
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var dlg = new Forms.WorkItems();
-            dlg.ShowDialog();
+            var frm = new Forms.WorkItems();
+            frm.Show();
         }
 
         private void btnToCodeGenerator_Click(object sender, EventArgs e)

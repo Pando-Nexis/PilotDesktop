@@ -37,11 +37,12 @@
             this.itemTypeCtrl1 = new PilotDesktop.UserControls.ItemTypeCtrl();
             this.estimatedTime1 = new PilotDesktop.UserControls.EstimatedTimeCtrl();
             this.workedTime1 = new PilotDesktop.UserControls.WorkedTimeCtrl();
+            this.bNew = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(649, 400);
+            this.bSave.Location = new System.Drawing.Point(568, 395);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(75, 23);
             this.bSave.TabIndex = 2;
@@ -112,11 +113,22 @@
             this.workedTime1.Size = new System.Drawing.Size(308, 193);
             this.workedTime1.TabIndex = 10;
             // 
+            // bNew
+            // 
+            this.bNew.Location = new System.Drawing.Point(649, 395);
+            this.bNew.Name = "bNew";
+            this.bNew.Size = new System.Drawing.Size(75, 23);
+            this.bNew.TabIndex = 11;
+            this.bNew.Text = "Ny";
+            this.bNew.UseVisualStyleBackColor = true;
+            this.bNew.Click += new System.EventHandler(this.bNew_Click);
+            // 
             // HandleWorkItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 430);
+            this.Controls.Add(this.bNew);
             this.Controls.Add(this.workedTime1);
             this.Controls.Add(this.estimatedTime1);
             this.Controls.Add(this.itemTypeCtrl1);
@@ -127,6 +139,7 @@
             this.Controls.Add(this.customerAndProjectCtrl1);
             this.Controls.Add(this.bSave);
             this.Name = "HandleWorkItem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HandleWorkItems";
             this.Load += new System.EventHandler(this.HandleWorkItems_Load);
             this.ResumeLayout(false);
@@ -144,5 +157,6 @@
         private UserControls.ItemTypeCtrl itemTypeCtrl1;
         private UserControls.EstimatedTimeCtrl estimatedTime1;
         private UserControls.WorkedTimeCtrl workedTime1;
+        private Button bNew;
     }
 }

@@ -55,5 +55,14 @@ namespace PilotDesktop.Forms
         {
             SetData();
         }
+
+        private void bNew_Click(object sender, EventArgs e)
+        {
+            var workItem =  new WorkItem();
+            workItem.OrganizationSystemId = _workItem.OrganizationSystemId;
+            workItem.ItemTypeSystemId = _workItem.ItemTypeSystemId;
+            _workItem = workItem;
+            SetData();
+        }
     }
 }
