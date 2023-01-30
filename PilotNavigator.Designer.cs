@@ -134,7 +134,7 @@
             this.btnToOblivion.Name = "btnToOblivion";
             this.btnToOblivion.Size = new System.Drawing.Size(100, 45);
             this.btnToOblivion.TabIndex = 5;
-            this.btnToOblivion.Text = "Till vete katten";
+            this.btnToOblivion.Text = "Aktiviteter";
             this.btnToOblivion.UseVisualStyleBackColor = false;
             this.btnToOblivion.Click += new System.EventHandler(this.button1_Click_1);
             // 
