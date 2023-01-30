@@ -62,5 +62,47 @@ namespace PilotDesktop.Pilot.Services
                 throw new Exception("cannot connect");
             }
         }
+        public async Task<string> PostData(string method,string jsonData, Dictionary<string, string> parameters)
+        {
+            var url = _pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.BaseUrl] + method;
+
+            if (parameters != null && parameters.Any())
+            {
+                foreach (var value in parameters)
+                {
+                    url += "?" + value.Key + "=" + value.Value;
+                }
+            }
+            try
+            {
+
+                var _client = new HttpClient();
+                _client.DefaultRequestHeaders.Clear();
+                _client.DefaultRequestHeaders.Add("ClientSecret", _pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ApiSecret]);
+                
+
+                var response = await _client.PostAsync(url, new StringContent(jsonData));
+                var responseString = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == HttpStatusCode.Unauthorized) // Todo Handle If Status Not Success.
+                {
+                    var tt = response.StatusCode;
+                }
+
+
+                if (response.EnsureSuccessStatusCode().IsSuccessStatusCode &&
+                        !string.IsNullOrWhiteSpace(responseString))
+                {
+                    return responseString;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("cannot connect");
+            }
+
+
+        }
     }
 }

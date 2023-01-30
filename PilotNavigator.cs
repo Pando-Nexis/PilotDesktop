@@ -1,7 +1,8 @@
 using PilotDesktop.Forms;
 using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Pilot.Services;
-using PilotDesktop.WorkItems.Services;
+using PilotDesktop.Work.Objects;
+using PilotDesktop.Work.Services;
 
 namespace PilotDesktop
 {
@@ -9,11 +10,21 @@ namespace PilotDesktop
     {
         private readonly PilotCustomerService _pilotCustomerService;
         private readonly WorkItemService _workItemService;
+        private readonly ItemStatusService _itemStatusService;
+        private readonly ItemTypeService _itemTypeService;
+        private readonly TimeService _timeService;
+        private readonly TimeTypeService _timeTypeService;
+        private readonly TimeStatusService _timeStatusService;
         public PilotNavigator()
         {
             InitializeComponent();
-            _pilotCustomerService =  new PilotCustomerService();
+            _pilotCustomerService = new PilotCustomerService();
             _workItemService = new WorkItemService();
+            _itemStatusService = new ItemStatusService();
+            _itemTypeService = new ItemTypeService();
+            _timeService = new TimeService();
+            _timeTypeService = new TimeTypeService();
+            _timeStatusService = new TimeStatusService();
             SnapToLeft();
         }
 
@@ -23,11 +34,11 @@ namespace PilotDesktop
             this.Left = -8;
 
             this.Height = scn.WorkingArea.Height - 400;
-            this.Top = (scn.WorkingArea.Height/4) - (this.Height/4);
+            this.Top = (scn.WorkingArea.Height / 4) - (this.Height / 4);
         }
 
         private const int SnapDist = 200;
-        private bool DoSnap(int pos, int edge, int snapDist=200)
+        private bool DoSnap(int pos, int edge, int snapDist = 200)
         {
             int delta = pos - edge;
             return delta > 0 && delta <= SnapDist;
@@ -39,7 +50,7 @@ namespace PilotDesktop
             Screen scn = Screen.FromPoint(this.Location);
             if (DoSnap(this.Left, scn.WorkingArea.Left))
             {
-                this.Left = scn.WorkingArea.Left - 10; 
+                this.Left = scn.WorkingArea.Left - 10;
                 this.Height = scn.WorkingArea.Height - 400;
                 this.Top = (scn.WorkingArea.Height / 4) - (this.Height / 4);
                 this.Width = 135;
@@ -47,7 +58,7 @@ namespace PilotDesktop
             //else if (DoSnap(this.Top, scn.WorkingArea.Top, 40)) this.Top = scn.WorkingArea.Top;
             else if (DoSnap(scn.WorkingArea.Right, this.Right))
             {
-                this.Left = scn.WorkingArea.Right - this.Width + 10; 
+                this.Left = scn.WorkingArea.Right - this.Width + 10;
                 this.Height = scn.WorkingArea.Height - 400;
                 this.Width = 135;
                 this.Top = (scn.WorkingArea.Height / 4) - (this.Height / 4);
@@ -60,40 +71,56 @@ namespace PilotDesktop
             }
         }
 
-        //protected override void OnMove(EventArgs e)
-        //{
-        //    base.OnMove(e);
-        //    this.Height = 300; 
-            
-        //}
+
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            var dlg = new Forms.Settings(); 
+            var dlg = new Forms.Settings();
             dlg.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
         }
 
         private void PilotNavigator_Load(object sender, EventArgs e)
         {
             SnapToLeft();
-            GetCustomers();
-            GetWorkItems();
+            LoadDataLayer();
+        }
+        private async void LoadDataLayer()
+        {
+            try
+            {
+                GetCustomers();
+                Program.WorkItems.List = await _workItemService.GetAll();
+                Program.ItemStatuses = await _itemStatusService.GetAll();
+                Program.ItemTypes = await _itemTypeService.GetAll();
+                Program.Times = await _timeService.GetAll();
+                Program.TimeStatuses = await _timeStatusService.GetAll();
+                Program.TimeTypes = await _timeTypeService.GetAll();
+            }
+            catch
+            {
+            }
+
         }
         private async void GetCustomers()
         {
-            Program._customers = await _pilotCustomerService.GetCustomers();
+            Program.Customers = await _pilotCustomerService.GetCustomers();
 
-            foreach (var customer in Program._customers)
+            foreach (var customer in Program.Customers)
             {
 
                 var dropDown = new ToolStripDropDownButton();
                 dropDown.Text = customer.Name;
-              
-                foreach(var project in customer.Projects)
+
+                foreach (var project in customer.Projects)
                 {
                     var projectNode = new ToolStripDropDownButton();
                     projectNode.Text = project.Name;
-                    projectNode.Tag = project.SystemId.ToString();  
+                    projectNode.Tag = project.SystemId.ToString();
                     var syncCode = new ToolStripButton();
                     syncCode.Text = "sync code";
                     syncCode.Tag = project;
@@ -106,22 +133,19 @@ namespace PilotDesktop
                 toolStrip1.Items.Add(dropDown);
             }
         }
-        private async void GetWorkItems()
-        {
-            Program.workItems = await _workItemService.GetWorkItems();
-        }
+
         private void OpenCodeSync(object sender, EventArgs e)
         {
             var senderButton = (ToolStripButton)sender;
-            var project =  senderButton.Tag as PilotProject;
+            var project = senderButton.Tag as PilotProject;
             var frm = new CustomerSourceCodeTool(project);
             frm.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //var dlg = new Forms.CodeGenerator();
-            //dlg.ShowDialog();
+            var dlg = new Forms.WorkItems();
+            dlg.ShowDialog();
         }
 
         private void btnToCodeGenerator_Click(object sender, EventArgs e)

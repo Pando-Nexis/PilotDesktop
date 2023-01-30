@@ -27,6 +27,34 @@ namespace PilotDesktop.Pilot.Services
 
             return result;
         }
+        public bool GetCustomerAndProject(List<PilotCustomer> customers, Guid organizationSystemId, out PilotCustomer customer, out PilotProject project)
+        {
+            if (organizationSystemId != Guid.Empty)
+            {
+                foreach(var cust in customers)
+                {
+                    if (cust.SystemId== organizationSystemId)
+                    {
+                        customer = cust;
+                        project = null;
+                        return true;
+                    }
+                    foreach(var proj in cust.Projects)
+                    {
+                        if (proj.SystemId== organizationSystemId)
+                        {
+                            customer = cust;
+                            project = proj;
+                            return true;
+                        }
+                    }
+                }
+            }
+            customer = null;
+            project = null;
+           return false;
+
+        }
 
     }
 }
