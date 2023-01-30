@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Pilot.Services;
+using PilotDesktop.SourceCode.Constants;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -30,7 +31,7 @@ namespace PilotDesktop.General.Services
             if (folderSrc != null)
             {
                 DirectoryInfo[] folders = folderSrc.GetDirectories();
-                var PNAddonsFolder = folders.FirstOrDefault(x => x.Name.ToLower() == CodeGeneratorConstants.PathDestinationPnAddonsExtensions.ToLower());
+                var PNAddonsFolder = folders.FirstOrDefault(x => x.Name.ToLower() == ProjectConstants.AddOn.ToLower());
                 if (PNAddonsFolder != null)
                 {
                     return folderSrc;
@@ -39,22 +40,31 @@ namespace PilotDesktop.General.Services
             return null;
         }
 
-        public static DirectoryInfo? CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target, bool isSubNode = false)
+        public static DirectoryInfo? CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target, bool isSubNode = false, List<string> optionList = null)
         {
             var sourceDirectories = source.GetDirectories();
             var newFolderName = string.Empty;
             foreach (DirectoryInfo dir in sourceDirectories)
             {
-                var newName = StringService.ReplacePartString(dir.Name);
+                var newName = StringService.ReplacePartString(dir.Name, fullName: dir.FullName, optionList:optionList);
+                if (newName == "continue")
+                {
+                    continue;
+                }
+                
                 if (!isSubNode)
                 {
                     newFolderName = newName;
                 }
-                CopyFilesRecursively(dir, target.CreateSubdirectory(newName), true);
+                CopyFilesRecursively(dir, target.CreateSubdirectory(newName), true, optionList: optionList);
             }
             foreach (FileInfo file in source.GetFiles())
             {
-                var newName = StringService.ReplacePartString(file.Name);
+                var newName = StringService.ReplacePartString(file.Name, fullName: file.FullName, optionList: optionList);
+                if (newName == "continue")
+                {
+                    continue;
+                }
                 file.CopyTo(Path.Combine(target.FullName, newName));
             }
             if (!isSubNode)

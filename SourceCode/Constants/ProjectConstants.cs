@@ -49,7 +49,7 @@ namespace PilotDesktop.SourceCode.Constants
     }
     public static class PathsConstants
     { 
-        public const string AddonControllers = "Litium.Accelerator.Mvc\\Controllers\\_Addons";
+        public const string AddonControllers = ProjectConstants.Mvc + "\\Controllers\\_Addons";
     }
     public static class ConfigConstants
     {
