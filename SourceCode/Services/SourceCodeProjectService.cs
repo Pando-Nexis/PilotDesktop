@@ -347,11 +347,11 @@ public class SourceCodeProjectService
             var configPath = Path.Combine(projectPath, FolderConstants.Src, ProjectConstants.AddOn, addon, FolderConstants.Config);
 
             if (!Directory.Exists(configPath))
-                return;
+                continue;
 
             var configJsPath = Path.Combine(configPath, FileTypeConstants.PandoNexisJsMerge);
             if (!File.Exists(configJsPath))
-                return;
+                continue;
 
             var lines = File.ReadLines(configJsPath);
             var importLines = false;
