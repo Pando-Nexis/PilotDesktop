@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lvItems = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bNewWorkItem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvItems
@@ -43,22 +43,22 @@
             this.lvItems.View = System.Windows.Forms.View.Details;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
             // 
-            // button1
+            // bNewWorkItem
             // 
-            this.button1.Location = new System.Drawing.Point(545, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bNewWorkItem.Location = new System.Drawing.Point(698, 35);
+            this.bNewWorkItem.Name = "bNewWorkItem";
+            this.bNewWorkItem.Size = new System.Drawing.Size(75, 23);
+            this.bNewWorkItem.TabIndex = 1;
+            this.bNewWorkItem.Text = "Nytt";
+            this.bNewWorkItem.UseVisualStyleBackColor = true;
+            this.bNewWorkItem.Click += new System.EventHandler(this.button1_Click);
             // 
             // WorkItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bNewWorkItem);
             this.Controls.Add(this.lvItems);
             this.Name = "WorkItems";
             this.Text = "WorkItems";
@@ -70,6 +70,6 @@
         #endregion
 
         private ListView lvItems;
-        private Button button1;
+        private Button bNewWorkItem;
     }
 }
