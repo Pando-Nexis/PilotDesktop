@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PilotDesktop.Pilot.Objects
+namespace PilotDesktop.Work.Objects
 {
-    public class PilotProject
+    public class TimeStatus
     {
         public Guid SystemId { get; set; }
+        public Guid TimeTypeSystemId { get; set; }
         public string Name { get; set; }
-        public string ProjectType { get; set; }
-        public List<string> AddOns { get; set; }
-
-        public override string ToString() => Name;
+        public string Description { get; set; }
     }
 }

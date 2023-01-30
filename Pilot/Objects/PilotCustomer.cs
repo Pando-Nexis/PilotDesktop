@@ -10,6 +10,9 @@ namespace PilotDesktop.Pilot.Objects
     {
         public Guid SystemId { get; set; }
         public string Name { get; set; }
+        public string WorkItemPrefix { get; set; }
         public List<PilotProject> Projects { get; set; }
+
+        public override string ToString() => Name;
     }
 }

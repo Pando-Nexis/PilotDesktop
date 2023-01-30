@@ -1,18 +1,20 @@
 using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Settings.Objects;
 using PilotDesktop.Settings.Services;
-using System.Globalization;
-using System.Text.RegularExpressions;
-using PilotDesktop.General.Services;
-using Solution.Extensions.PNPilot.Objects;
+using PilotDesktop.Work.Objects;
 
 namespace PilotDesktop
 {
     internal static class Program
     {
         public static PilotApplicationSettings _pilotApplicationSettings = new PilotApplicationSettings();
-        public static List<PilotCustomer> _customers = new List<PilotCustomer>();
-        public static List<WorkItem> workItems = new List<WorkItem>();
+        public static List<PilotCustomer> Customers = new List<PilotCustomer>();
+        public static WorkItems WorkItems  =new WorkItems();
+        public static List<ItemType> ItemTypes = new List<ItemType>();
+        public static List<ItemStatus> ItemStatuses = new List<ItemStatus>(); 
+        public static List<Time> Times = new List<Time>();
+        public static List<TimeType> TimeTypes = new List<TimeType>();
+        public static List<TimeStatus> TimeStatuses= new List<TimeStatus>();
        
         /// <summary>
         ///  The main entry point for the application.
