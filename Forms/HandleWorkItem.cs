@@ -29,6 +29,7 @@ namespace PilotDesktop.Forms
             _workItem.ItemTitle = tbTitle.Text;
             _workItem.ItemDescription = rtbDescription.Text;
             _workItem.ItemTypeSystemId = itemTypeCtrl1.GetData()?.SystemId == null ? Guid.Empty : itemTypeCtrl1.GetData().SystemId;
+            _workItem.ItemStatusSystemId = itemStatusCtrl1.GetData()?.SystemId == null ? Guid.Empty : itemStatusCtrl1.GetData().SystemId;
             _workItem.OrganizationSystemId = customerAndProjectCtrl1.GetSelectedSystemId();
 
             var list = await _workItemService.AddOrUpdate(_workItem);
@@ -37,6 +38,7 @@ namespace PilotDesktop.Forms
                 Program.WorkItems.List = list;
                 _workItem = Program.WorkItems.List.FirstOrDefault(i => i.SystemId == _workItem.SystemId);
                 estimatedTime1.SaveEstimate(_workItem.SystemId);
+                workedTime1.SaveHoursWorked(_workItem.SystemId);
                 SetData();
             }
         }
@@ -46,10 +48,12 @@ namespace PilotDesktop.Forms
             rtbDescription.Text = _workItem.ItemDescription;
             customerAndProjectCtrl1.SetData(_workItem.OrganizationSystemId);
             itemTypeCtrl1.LoadItemTypes(_workItem.ItemTypeSystemId);
+            itemStatusCtrl1.LoadItemStatuses(_workItem.ItemStatusSystemId);
             Text = $"{_workItem.Id} - {tbTitle.Text}";
-            
-            estimatedTime1.SetData(_workItemService.GetEstimatedTime(_workItem.SystemId, ref Program.Times)); 
+
+            estimatedTime1.SetData(_workItemService.GetEstimatedTime(_workItem.SystemId, ref Program.Times));
             workedTime1.SetData(_workItemService.GetWorkedTime(_workItem.SystemId, ref Program.Times));
+            LoadChildTasks(); 
         }
         private void HandleWorkItems_Load(object sender, EventArgs e)
         {
@@ -58,11 +62,52 @@ namespace PilotDesktop.Forms
 
         private void bNew_Click(object sender, EventArgs e)
         {
-            var workItem =  new WorkItem();
+            var workItem = new WorkItem();
             workItem.OrganizationSystemId = _workItem.OrganizationSystemId;
             workItem.ItemTypeSystemId = _workItem.ItemTypeSystemId;
             _workItem = workItem;
             SetData();
+        }
+
+        private void bAddSubActivities_Click(object sender, EventArgs e)
+        {
+            var workItem = new WorkItem();
+            workItem.ItemTypeSystemId = Program.ItemTypes?.FirstOrDefault(i => i.Name == "Task")?.SystemId ?? Guid.Empty;
+            workItem.ItemStatusSystemId = Program.ItemStatuses?.FirstOrDefault(i => i.Name == "Ny")?.SystemId ?? Guid.Empty;
+            workItem.OrganizationSystemId = _workItem.OrganizationSystemId;
+            workItem.ParentSystemId = _workItem.SystemId;
+
+            var dlg = new QuickAddTask(workItem);
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                LoadChildTasks();
+            }
+
+        }
+
+        private void LoadChildTasks()
+        {
+
+            lvItems.Items.Clear();
+            lvItems.Columns.Clear();
+            var children = Program.WorkItems.List.Where(i => i.ParentSystemId == _workItem.SystemId).ToList();
+
+            lvItems.Columns.Add("id");
+            lvItems.Columns.Add("Titel");
+            lvItems.Columns.Add("typ");
+            lvItems.Columns.Add("status");
+            foreach (var child in children)
+            {
+
+                var test = new ListViewItem(child.Id);
+                test.Tag = child.SystemId;
+                test.SubItems.Add(child.ItemTitle);
+                test.SubItems.Add(Program.ItemTypes.FirstOrDefault(i => i.SystemId == child.ItemTypeSystemId)?.Name ?? string.Empty);
+                test.SubItems.Add(Program.ItemStatuses.FirstOrDefault(i => i.SystemId == child.ItemStatusSystemId)?.Name ?? string.Empty);
+
+                lvItems.Items.Add(test);
+            }
+
         }
     }
 }

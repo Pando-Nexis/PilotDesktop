@@ -165,5 +165,7 @@ namespace PilotDesktop
             var dlg = new Forms.HandleAddons();
             dlg.ShowDialog();
         }
+
+        
     }
 }

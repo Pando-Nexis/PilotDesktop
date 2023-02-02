@@ -49,10 +49,16 @@ namespace PilotDesktop.Work.Services
             var estimateSystemId = Program.TimeTypes.FirstOrDefault(i => i.Name == "Estimated")?.SystemId??Guid.Empty;
             return Program.Times.FirstOrDefault(i => i.ItemSystemId == workItemSystemId && i.TimeTypeSystemId== estimateSystemId) ?? new Time() { ItemSystemId = workItemSystemId, TimeTypeSystemId = estimateSystemId };
         }
+        
         public List<Time> GetWorkedTime(Guid workItemSystemId, ref List<Time> times)
         {
             var estimateSystemId = Program.TimeTypes.FirstOrDefault(i => i.Name == "Worked")?.SystemId ?? Guid.Empty;
             return Program.Times.Where(i => i.ItemSystemId == workItemSystemId && i.TimeTypeSystemId == estimateSystemId).ToList() ?? new List<Time>();
+        }
+        public int GetSumWorkedTime(Guid workItemSystemId, ref List<Time> times)
+        {
+           
+            return GetWorkedTime(workItemSystemId, ref times).Sum(i=>i.Amount);
         }
     }
 }

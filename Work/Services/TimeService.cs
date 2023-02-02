@@ -42,11 +42,11 @@ namespace PilotDesktop.Work.Services
 
         public decimal GetHours(int minutes)
         {
-            return minutes / 60;
+            return (decimal)minutes / 60;
         }
         public int GetMinutesFromHours(decimal hours)
         {
-            return (int)hours*60;
+            return (int)(hours*60);
         }
        
     }

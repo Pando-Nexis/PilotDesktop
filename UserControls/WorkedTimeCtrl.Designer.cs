@@ -54,7 +54,6 @@
             // 
             // rtbComment
             // 
-            this.rtbComment.Enabled = false;
             this.rtbComment.Location = new System.Drawing.Point(82, 110);
             this.rtbComment.Name = "rtbComment";
             this.rtbComment.Size = new System.Drawing.Size(222, 76);
@@ -63,7 +62,6 @@
             // 
             // tbWorkedTime
             // 
-            this.tbWorkedTime.Enabled = false;
             this.tbWorkedTime.Location = new System.Drawing.Point(82, 48);
             this.tbWorkedTime.Name = "tbWorkedTime";
             this.tbWorkedTime.Size = new System.Drawing.Size(45, 23);

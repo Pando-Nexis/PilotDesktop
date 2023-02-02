@@ -23,5 +23,6 @@ namespace PilotDesktop.Work.Objects
         public Guid UpdatedBy { get; set; }
         public DateTime DeletedDateTime { get; set; }
         public Guid DeletedBy { get; set; }
+
     }
 }

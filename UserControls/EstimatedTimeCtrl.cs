@@ -28,9 +28,9 @@ namespace PilotDesktop.UserControls
                 _time = time;
                 if (_time.ItemSystemId != Guid.Empty)
                 {
-                    tbEstimate.Text = _timeService.GetHours(_time.Amount).ToString();
-                    tbRisk.Text = _time.Risk.ToString();
-                    tbMax.Text = (_timeService.GetHours(_time.Amount) * _time.Risk).ToString();
+                    tbEstimate.Text = _timeService.GetHours(_time.Amount).ToString("0.##");
+                    tbRisk.Text = _time.Risk.ToString("0.##");
+                    tbMax.Text = (_timeService.GetHours(_time.Amount) * _time.Risk).ToString("0.##");
                     rtbComment.Text = _time.TimeComment;
 
                     tbEstimate.Enabled = true;
@@ -77,7 +77,7 @@ namespace PilotDesktop.UserControls
         }
         public async void SaveEstimate(Guid workItemSystemId)
         {
-            if (int.TryParse(tbEstimate.Text, out int estimate))
+            if (decimal.TryParse(tbEstimate.Text, out decimal estimate))
             {
                 _time.ItemSystemId = workItemSystemId;
                 _time.Amount = _timeService.GetMinutesFromHours(estimate);

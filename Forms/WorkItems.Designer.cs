@@ -35,6 +35,7 @@
             // lvItems
             // 
             this.lvItems.FullRowSelect = true;
+            this.lvItems.GridLines = true;
             this.lvItems.Location = new System.Drawing.Point(12, 64);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(761, 355);
