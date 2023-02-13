@@ -40,6 +40,7 @@
             this.tvAddons.Name = "tvAddons";
             this.tvAddons.Size = new System.Drawing.Size(281, 374);
             this.tvAddons.TabIndex = 1;
+            this.tvAddons.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAddons_AfterSelect);
             // 
             // bRegister
             // 
@@ -50,6 +51,7 @@
             this.bRegister.TabIndex = 6;
             this.bRegister.Text = "Kontrollerar status";
             this.bRegister.UseVisualStyleBackColor = true;
+            this.bRegister.Click += new System.EventHandler(this.bRegister_Click);
             // 
             // label1
             // 
