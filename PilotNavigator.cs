@@ -1,6 +1,7 @@
 using PilotDesktop.Forms;
 using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Pilot.Services;
+using PilotDesktop.Settings.Objects;
 using PilotDesktop.Work.Objects;
 using PilotDesktop.Work.Services;
 
@@ -87,6 +88,13 @@ namespace PilotDesktop
         private void PilotNavigator_Load(object sender, EventArgs e)
         {
             SnapToLeft();
+            if (!Program._pilotApplicationSettings.RequiredFieldValid())
+            {
+                var dlg = new Forms.Settings();
+                dlg.ShowDialog();
+                if (!Program._pilotApplicationSettings.RequiredFieldValid())
+                    return;
+            }
             LoadDataLayer();
         }
         private async void LoadDataLayer()
