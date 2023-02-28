@@ -82,7 +82,7 @@ namespace PilotDesktop
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void PilotNavigator_Load(object sender, EventArgs e)
@@ -129,15 +129,18 @@ namespace PilotDesktop
                     var projectNode = new ToolStripDropDownButton();
                     projectNode.Text = project.Name;
                     projectNode.Tag = project.SystemId.ToString();
-                    var syncCode = new ToolStripButton();
-                    syncCode.Text = "sync code";
-                    syncCode.Tag = project;
-                    syncCode.Click += new EventHandler(OpenCodeSync);
-                    projectNode.DropDownItems.Add(syncCode);
+                    if (project.ProjectType == "PandoNexisAccelerator")
+                    {
+                        var syncCode = new ToolStripButton();
+                        syncCode.Text = "sync code";
+                        syncCode.Tag = project;
+                        syncCode.Click += new EventHandler(OpenCodeSync);
+                        projectNode.DropDownItems.Add(syncCode);
+                    }
                     projectNode.DropDownItems.Add("test2");
                     dropDown.DropDownItems.Add(projectNode);
                 }
-   
+
                 toolStrip1.Items.Add(dropDown);
             }
         }
@@ -174,6 +177,6 @@ namespace PilotDesktop
             dlg.ShowDialog();
         }
 
-        
+
     }
 }
