@@ -303,6 +303,8 @@ namespace PilotDesktop.Forms
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "ViewModels");
                 AddToOptionsList(ref pnAddonExtensionsOptionList, "views.txt");
                 AddToOptionsList(ref pnAddonMvcOptionList, "Views");
+                AddToOptionsList(ref pnAddonMvcOptionList, "Controllers\\_Addons");
+                AddToOptionsList(ref pnAddonMvcOptionList, "Definitions");
             }
             if (checkBoxConstants.Checked)
             {
@@ -333,6 +335,7 @@ namespace PilotDesktop.Forms
             // Create folder structure in PandoNexis:extensions.Addons Project
             // What folder is to be used? Block or ordinary?
             pnAddonExtensionsOptionList.Add((CodeGeneratorItem.MainType.Contains("Block") ? "PNBlock" : "") + addonName);
+            
             if (isCreate && !CreateStructure(ProjectConstants.AddOn, optionList: pnAddonExtensionsOptionList))
             {
                 isCreate = false;
