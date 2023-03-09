@@ -13,8 +13,8 @@ namespace PilotDesktop.Work.Objects
         public Guid SystemId { get; set; } = Guid.NewGuid();
         public Guid OrganizationSystemId { get; set; }
         public Guid ParentSystemId { get; set; }
-        public Guid ItemTypeSystemId { get; set; }
-        public Guid ItemStatusSystemId { get; set; }
+        public Guid ItemTypeSystemId { get; set; } =  Program.ItemTypes?.FirstOrDefault(i => i.Name == "Task")?.SystemId ?? Guid.Empty;
+        public Guid ItemStatusSystemId { get; set; } = Program.ItemStatuses?.FirstOrDefault(i => i.Name == "Ny")?.SystemId ?? Guid.Empty;
         public string Id { get; set; }
         public string ItemTitle { get; set; }
         public string ItemDescription { get; set; }

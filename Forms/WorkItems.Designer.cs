@@ -36,19 +36,22 @@
             // 
             this.lvItems.FullRowSelect = true;
             this.lvItems.GridLines = true;
-            this.lvItems.Location = new System.Drawing.Point(12, 64);
+            this.lvItems.Location = new System.Drawing.Point(14, 85);
+            this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(761, 355);
+            this.lvItems.Size = new System.Drawing.Size(1264, 529);
             this.lvItems.TabIndex = 0;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
-            this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_SelectedIndexChanged);
+            this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
+            this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
             // 
             // bNewWorkItem
             // 
-            this.bNewWorkItem.Location = new System.Drawing.Point(698, 35);
+            this.bNewWorkItem.Location = new System.Drawing.Point(798, 47);
+            this.bNewWorkItem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bNewWorkItem.Name = "bNewWorkItem";
-            this.bNewWorkItem.Size = new System.Drawing.Size(75, 23);
+            this.bNewWorkItem.Size = new System.Drawing.Size(86, 31);
             this.bNewWorkItem.TabIndex = 1;
             this.bNewWorkItem.Text = "Nytt";
             this.bNewWorkItem.UseVisualStyleBackColor = true;
@@ -56,11 +59,12 @@
             // 
             // WorkItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1290, 651);
             this.Controls.Add(this.bNewWorkItem);
             this.Controls.Add(this.lvItems);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "WorkItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WorkItems";

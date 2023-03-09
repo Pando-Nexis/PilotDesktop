@@ -83,7 +83,7 @@ namespace PilotDesktop.UserControls
                 _time.Amount = _timeService.GetMinutesFromHours(estimate);
 
                 decimal.TryParse(tbRisk.Text, out decimal risk);
-                _time.Risk = risk;
+                _time.Risk = risk==0?1:risk;
                 _time.TimeComment = rtbComment.Text;
                 var list = await _timeService.AddOrUpdate(_time);
                 if (list != null)
@@ -95,5 +95,7 @@ namespace PilotDesktop.UserControls
                 }
             }
         }
+
+      
     }
 }

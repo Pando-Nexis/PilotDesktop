@@ -15,6 +15,7 @@ namespace PilotDesktop.UserControls
 {
     public partial class ItemStatusCtrl : UserControl
     {
+        private Guid _incommingSystemId = Guid.Empty;
         public ItemStatusCtrl()
         {
             InitializeComponent();
@@ -24,13 +25,19 @@ namespace PilotDesktop.UserControls
         {
             LoadItemStatuses(null);
         }
-        public void LoadItemStatuses(Guid? SelectedItemStatusSystemId)
+        public void LoadItemStatuses(Guid? selectedItemStatusSystemId)
         {
+
+            if (selectedItemStatusSystemId.HasValue)
+            {
+                _incommingSystemId = (Guid)selectedItemStatusSystemId;
+            }
+
             cbItemStatus.Items.Clear();
             foreach (var ItemStatus in Program.ItemStatuses)
             {
                 cbItemStatus.Items.Add(ItemStatus);
-                if (SelectedItemStatusSystemId.HasValue && ItemStatus.SystemId == SelectedItemStatusSystemId)
+                if (selectedItemStatusSystemId.HasValue && ItemStatus.SystemId == selectedItemStatusSystemId)
                     cbItemStatus.SelectedItem = ItemStatus;
             }
         }
@@ -40,6 +47,10 @@ namespace PilotDesktop.UserControls
             {
                 return (ItemStatus)cbItemStatus.SelectedItem;
             }
+       
+            if (_incommingSystemId != Guid.Empty)
+                return Program.ItemStatuses?.FirstOrDefault(i => i.SystemId == _incommingSystemId);
+
             return null;
         }
     }

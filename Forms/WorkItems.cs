@@ -1,13 +1,17 @@
-﻿using PilotDesktop.Work.Objects;
+﻿using PilotDesktop.Pilot.Objects;
+using PilotDesktop.Pilot.Services;
+using PilotDesktop.Work.Objects;
 using PilotDesktop.Work.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace PilotDesktop.Forms
@@ -16,10 +20,15 @@ namespace PilotDesktop.Forms
     {
         private WorkItemService _workItemService = new WorkItemService();
         private TimeService _timeService= new TimeService();
+        private PilotCustomerService _pilotCustomerService = new PilotCustomerService();
+        private string _query = string.Empty;
+        private Guid _systemId= Guid.Empty;
         
-        public WorkItems()
+        public WorkItems(string query, Guid systemId)
         {
             InitializeComponent();
+            _query = query;
+            _systemId = systemId;
         }
 
         private void WorkItems_Load(object sender, EventArgs e)
@@ -31,40 +40,80 @@ namespace PilotDesktop.Forms
         {
             lvItems.Items.Clear();
             lvItems.Columns.Clear();
-            lvItems.Columns.Add("id");
-            lvItems.Columns.Add("Titel");
-            lvItems.Columns.Add("typ");
-            lvItems.Columns.Add("status");
-            lvItems.Columns.Add("Estimat");
-            lvItems.Columns.Add("Estimat med risk");
-            lvItems.Columns.Add("Nedlagd tid");
+            lvItems.Columns.Add("Kund", 100);
+            lvItems.Columns.Add("Project", 100);
+            lvItems.Columns.Add("id", 100);
+            lvItems.Columns.Add("Titel", 300);
+            lvItems.Columns.Add("typ", 100);
+            lvItems.Columns.Add("status", 100);
+            lvItems.Columns.Add("Estimat", 100);
+            lvItems.Columns.Add("Estimat med risk", 100);
+            lvItems.Columns.Add("Nedlagd tid", 100);
 
-
-            foreach (var item in Program.WorkItems.List)
+            var workItems = new List<WorkItem>();
+            switch (_query)
             {
+                case "CustomerSystemId":
+                    var customer = Program.Customers.FirstOrDefault(i=>i.SystemId == _systemId);
 
-                var test = new ListViewItem(item.Id);
-                test.Tag = item.SystemId;
-                test.SubItems.Add(item.ItemTitle);
-                test.SubItems.Add(Program.ItemTypes.FirstOrDefault(i => i.SystemId == item.ItemTypeSystemId)?.Name ?? string.Empty);
-                test.SubItems.Add(Program.ItemStatuses.FirstOrDefault(i => i.SystemId == item.ItemStatusSystemId)?.Name ?? string.Empty);
+                    workItems = Program.WorkItems.List.Where(i => i.OrganizationSystemId == customer.SystemId).ToList();
+                    foreach(var project in customer.Projects)
+                    {
+                        workItems.AddRange(Program.WorkItems.List.Where(i => i.OrganizationSystemId == project.SystemId).ToList());
+                    }
+                    Text = "Aktiviteter för " + customer.Name;
+                    break;
+                case "ProjectSystemId":
+                    foreach(var cust in Program.Customers)
+                    {
+                        foreach(var project in cust.Projects)
+                        {
+                            if (project.SystemId == _systemId)
+                            {
+                                Text = "Aktiviteter för " + cust.Name + ": " + project.Name;
+                                workItems.AddRange(Program.WorkItems.List.Where(i => i.OrganizationSystemId == project.SystemId).ToList());
+                            }
+                        }
+                    }
+                    
+                    break;
+                default:
+                    workItems = Program.WorkItems.List;
+                        break;
+
+            }
+
+            foreach (var item in workItems.OrderBy(i=>i.Id))
+            {
+                PilotCustomer customer;
+                PilotProject project;
+                _pilotCustomerService.GetCustomerAndProject(Program.Customers, item.OrganizationSystemId, out customer, out project);
+                var listViewItem = new ListViewItem(customer?.Name ?? string.Empty);
+                listViewItem.Tag = item.SystemId;
+
+                listViewItem.SubItems.Add(project?.Name ?? string.Empty);
+
+                listViewItem.SubItems.Add(item.Id);
+                listViewItem.SubItems.Add(item.ItemTitle);
+                listViewItem.SubItems.Add(Program.ItemTypes.FirstOrDefault(i => i.SystemId == item.ItemTypeSystemId)?.Name ?? string.Empty);
+                listViewItem.SubItems.Add(Program.ItemStatuses.FirstOrDefault(i => i.SystemId == item.ItemStatusSystemId)?.Name ?? string.Empty);
                 var timeEstimate = _workItemService.GetEstimatedTime(item.SystemId, ref Program.Times);
        
                     var estimate =  _timeService.GetHours(timeEstimate.Amount);
                     var risk = timeEstimate.Risk * estimate;
 
-                    test.SubItems.Add(estimate.ToString("0.##"));
+                    listViewItem.SubItems.Add(estimate.ToString("0.##"));
 
-                    test.SubItems.Add(risk.ToString("0.##"));
+                    listViewItem.SubItems.Add(risk.ToString("0.##"));
                
                 var workedTime = _timeService.GetHours( _workItemService.GetSumWorkedTime(item.SystemId, ref Program.Times));
 
-                test.SubItems.Add(workedTime.ToString("0.##"));
-                lvItems.Items.Add(test);
+                listViewItem.SubItems.Add(workedTime.ToString("0.##"));
+                lvItems.Items.Add(listViewItem);
             }
         }
 
-        private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
+        private void lvItems_DoubleClick(object sender, EventArgs e)
         {
             if (lvItems.SelectedItems != null && lvItems.SelectedItems.Count > 0)
             {
@@ -84,8 +133,23 @@ namespace PilotDesktop.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var dlg = new HandleWorkItem(new WorkItem());
+            var workitem = new WorkItem();
+            switch (_query)
+            {
+                case "CustomerSystemId":
+                case "ProjectSystemId":
+                    workitem.OrganizationSystemId = _systemId; 
+                    break;
+            }
+
+            var dlg = new HandleWorkItem(workitem);
             dlg.ShowDialog();
+            LoadItems();
+        }
+
+        private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

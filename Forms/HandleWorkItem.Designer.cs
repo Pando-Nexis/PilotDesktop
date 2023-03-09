@@ -39,23 +39,31 @@
             this.workedTime1 = new PilotDesktop.UserControls.WorkedTimeCtrl();
             this.bNew = new System.Windows.Forms.Button();
             this.tabCtrl = new System.Windows.Forms.TabControl();
-            this.tabTimes = new System.Windows.Forms.TabPage();
+            this.tabGeneral = new System.Windows.Forms.TabPage();
             this.tabDescription = new System.Windows.Forms.TabPage();
             this.tabChildren = new System.Windows.Forms.TabPage();
             this.bAddSubActivities = new System.Windows.Forms.Button();
             this.lvItems = new System.Windows.Forms.ListView();
+            this.tabWorkTime = new System.Windows.Forms.TabPage();
+            this.bAddTime = new System.Windows.Forms.Button();
+            this.lvWorkTime = new System.Windows.Forms.ListView();
+            this.tabInvoices = new System.Windows.Forms.TabPage();
+            this.lvInvoice = new System.Windows.Forms.ListView();
             this.itemStatusCtrl1 = new PilotDesktop.UserControls.ItemStatusCtrl();
             this.tabCtrl.SuspendLayout();
-            this.tabTimes.SuspendLayout();
+            this.tabGeneral.SuspendLayout();
             this.tabDescription.SuspendLayout();
             this.tabChildren.SuspendLayout();
+            this.tabWorkTime.SuspendLayout();
+            this.tabInvoices.SuspendLayout();
             this.SuspendLayout();
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(601, 535);
+            this.bSave.Location = new System.Drawing.Point(687, 713);
+            this.bSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bSave.Name = "bSave";
-            this.bSave.Size = new System.Drawing.Size(75, 23);
+            this.bSave.Size = new System.Drawing.Size(86, 31);
             this.bSave.TabIndex = 2;
             this.bSave.Text = "Spara";
             this.bSave.UseVisualStyleBackColor = true;
@@ -63,72 +71,79 @@
             // 
             // customerAndProjectCtrl1
             // 
-            this.customerAndProjectCtrl1.Location = new System.Drawing.Point(393, 11);
+            this.customerAndProjectCtrl1.Location = new System.Drawing.Point(449, 15);
+            this.customerAndProjectCtrl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.customerAndProjectCtrl1.Name = "customerAndProjectCtrl1";
-            this.customerAndProjectCtrl1.Size = new System.Drawing.Size(366, 51);
+            this.customerAndProjectCtrl1.Size = new System.Drawing.Size(418, 68);
             this.customerAndProjectCtrl1.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(14, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 15);
+            this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Titel";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 36);
+            this.label2.Location = new System.Drawing.Point(33, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 15);
+            this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Beskrivning";
             // 
             // tbTitle
             // 
-            this.tbTitle.Location = new System.Drawing.Point(91, 11);
+            this.tbTitle.Location = new System.Drawing.Point(104, 15);
+            this.tbTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(282, 23);
+            this.tbTitle.Size = new System.Drawing.Size(322, 27);
             this.tbTitle.TabIndex = 6;
             // 
             // rtbDescription
             // 
-            this.rtbDescription.Location = new System.Drawing.Point(103, 39);
+            this.rtbDescription.Location = new System.Drawing.Point(118, 52);
+            this.rtbDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rtbDescription.Name = "rtbDescription";
-            this.rtbDescription.Size = new System.Drawing.Size(282, 283);
+            this.rtbDescription.Size = new System.Drawing.Size(322, 376);
             this.rtbDescription.TabIndex = 7;
             this.rtbDescription.Text = "";
             // 
             // itemTypeCtrl1
             // 
-            this.itemTypeCtrl1.Location = new System.Drawing.Point(13, 40);
+            this.itemTypeCtrl1.Location = new System.Drawing.Point(15, 53);
+            this.itemTypeCtrl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.itemTypeCtrl1.Name = "itemTypeCtrl1";
-            this.itemTypeCtrl1.Size = new System.Drawing.Size(360, 24);
+            this.itemTypeCtrl1.Size = new System.Drawing.Size(411, 32);
             this.itemTypeCtrl1.TabIndex = 8;
             // 
             // estimatedTime1
             // 
             this.estimatedTime1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.estimatedTime1.Location = new System.Drawing.Point(6, 15);
+            this.estimatedTime1.Location = new System.Drawing.Point(26, 28);
+            this.estimatedTime1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.estimatedTime1.Name = "estimatedTime1";
-            this.estimatedTime1.Size = new System.Drawing.Size(308, 115);
+            this.estimatedTime1.Size = new System.Drawing.Size(352, 153);
             this.estimatedTime1.TabIndex = 9;
             // 
             // workedTime1
             // 
             this.workedTime1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.workedTime1.Location = new System.Drawing.Point(6, 136);
+            this.workedTime1.Location = new System.Drawing.Point(399, 28);
+            this.workedTime1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.workedTime1.Name = "workedTime1";
-            this.workedTime1.Size = new System.Drawing.Size(308, 193);
+            this.workedTime1.Size = new System.Drawing.Size(389, 257);
             this.workedTime1.TabIndex = 10;
             // 
             // bNew
             // 
-            this.bNew.Location = new System.Drawing.Point(682, 535);
+            this.bNew.Location = new System.Drawing.Point(779, 713);
+            this.bNew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bNew.Name = "bNew";
-            this.bNew.Size = new System.Drawing.Size(75, 23);
+            this.bNew.Size = new System.Drawing.Size(86, 31);
             this.bNew.TabIndex = 11;
             this.bNew.Text = "Ny";
             this.bNew.UseVisualStyleBackColor = true;
@@ -136,35 +151,39 @@
             // 
             // tabCtrl
             // 
-            this.tabCtrl.Controls.Add(this.tabTimes);
+            this.tabCtrl.Controls.Add(this.tabGeneral);
             this.tabCtrl.Controls.Add(this.tabDescription);
             this.tabCtrl.Controls.Add(this.tabChildren);
-            this.tabCtrl.Location = new System.Drawing.Point(3, 108);
+            this.tabCtrl.Controls.Add(this.tabWorkTime);
+            this.tabCtrl.Controls.Add(this.tabInvoices);
+            this.tabCtrl.Location = new System.Drawing.Point(0, 144);
+            this.tabCtrl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabCtrl.Name = "tabCtrl";
             this.tabCtrl.SelectedIndex = 0;
-            this.tabCtrl.Size = new System.Drawing.Size(759, 421);
+            this.tabCtrl.Size = new System.Drawing.Size(867, 561);
             this.tabCtrl.TabIndex = 12;
+            this.tabCtrl.SelectedIndexChanged += new System.EventHandler(this.tabCtrl_SelectedIndexChanged);
             // 
-            // tabTimes
+            // tabGeneral
             // 
-            this.tabTimes.Controls.Add(this.estimatedTime1);
-            this.tabTimes.Controls.Add(this.workedTime1);
-            this.tabTimes.Location = new System.Drawing.Point(4, 24);
-            this.tabTimes.Name = "tabTimes";
-            this.tabTimes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTimes.Size = new System.Drawing.Size(751, 393);
-            this.tabTimes.TabIndex = 0;
-            this.tabTimes.Text = "Tid";
-            this.tabTimes.UseVisualStyleBackColor = true;
+            this.tabGeneral.Controls.Add(this.estimatedTime1);
+            this.tabGeneral.Controls.Add(this.workedTime1);
+            this.tabGeneral.Location = new System.Drawing.Point(4, 29);
+            this.tabGeneral.Name = "tabGeneral";
+            this.tabGeneral.Size = new System.Drawing.Size(859, 528);
+            this.tabGeneral.TabIndex = 3;
+            this.tabGeneral.Text = "Allmänt";
+            this.tabGeneral.UseVisualStyleBackColor = true;
             // 
             // tabDescription
             // 
             this.tabDescription.Controls.Add(this.rtbDescription);
             this.tabDescription.Controls.Add(this.label2);
-            this.tabDescription.Location = new System.Drawing.Point(4, 24);
+            this.tabDescription.Location = new System.Drawing.Point(4, 29);
+            this.tabDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabDescription.Name = "tabDescription";
-            this.tabDescription.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDescription.Size = new System.Drawing.Size(751, 393);
+            this.tabDescription.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabDescription.Size = new System.Drawing.Size(859, 528);
             this.tabDescription.TabIndex = 1;
             this.tabDescription.Text = "Beskrivning";
             this.tabDescription.UseVisualStyleBackColor = true;
@@ -173,18 +192,20 @@
             // 
             this.tabChildren.Controls.Add(this.bAddSubActivities);
             this.tabChildren.Controls.Add(this.lvItems);
-            this.tabChildren.Location = new System.Drawing.Point(4, 24);
+            this.tabChildren.Location = new System.Drawing.Point(4, 29);
+            this.tabChildren.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabChildren.Name = "tabChildren";
-            this.tabChildren.Size = new System.Drawing.Size(751, 393);
+            this.tabChildren.Size = new System.Drawing.Size(859, 528);
             this.tabChildren.TabIndex = 2;
             this.tabChildren.Text = "Del aktiviteter";
             this.tabChildren.UseVisualStyleBackColor = true;
             // 
             // bAddSubActivities
             // 
-            this.bAddSubActivities.Location = new System.Drawing.Point(614, 330);
+            this.bAddSubActivities.Location = new System.Drawing.Point(752, 438);
+            this.bAddSubActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bAddSubActivities.Name = "bAddSubActivities";
-            this.bAddSubActivities.Size = new System.Drawing.Size(75, 23);
+            this.bAddSubActivities.Size = new System.Drawing.Size(86, 31);
             this.bAddSubActivities.TabIndex = 1;
             this.bAddSubActivities.Text = "Lägg till";
             this.bAddSubActivities.UseVisualStyleBackColor = true;
@@ -194,26 +215,90 @@
             // 
             this.lvItems.FullRowSelect = true;
             this.lvItems.GridLines = true;
-            this.lvItems.Location = new System.Drawing.Point(22, 28);
+            this.lvItems.Location = new System.Drawing.Point(25, 37);
+            this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(667, 296);
+            this.lvItems.Size = new System.Drawing.Size(813, 393);
             this.lvItems.TabIndex = 0;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
+            this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
+            // 
+            // tabWorkTime
+            // 
+            this.tabWorkTime.Controls.Add(this.bAddTime);
+            this.tabWorkTime.Controls.Add(this.lvWorkTime);
+            this.tabWorkTime.Location = new System.Drawing.Point(4, 29);
+            this.tabWorkTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabWorkTime.Name = "tabWorkTime";
+            this.tabWorkTime.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabWorkTime.Size = new System.Drawing.Size(859, 528);
+            this.tabWorkTime.TabIndex = 0;
+            this.tabWorkTime.Text = "Arbetad tid";
+            this.tabWorkTime.UseVisualStyleBackColor = true;
+            // 
+            // bAddTime
+            // 
+            this.bAddTime.Location = new System.Drawing.Point(740, 86);
+            this.bAddTime.Name = "bAddTime";
+            this.bAddTime.Size = new System.Drawing.Size(94, 29);
+            this.bAddTime.TabIndex = 4;
+            this.bAddTime.Text = "Lägg till tid";
+            this.bAddTime.UseVisualStyleBackColor = true;
+            this.bAddTime.Click += new System.EventHandler(this.bAddTime_Click);
+            // 
+            // lvWorkTime
+            // 
+            this.lvWorkTime.FullRowSelect = true;
+            this.lvWorkTime.GridLines = true;
+            this.lvWorkTime.Location = new System.Drawing.Point(11, 81);
+            this.lvWorkTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lvWorkTime.Name = "lvWorkTime";
+            this.lvWorkTime.Size = new System.Drawing.Size(715, 419);
+            this.lvWorkTime.TabIndex = 3;
+            this.lvWorkTime.UseCompatibleStateImageBehavior = false;
+            this.lvWorkTime.View = System.Windows.Forms.View.Details;
+            this.lvWorkTime.SelectedIndexChanged += new System.EventHandler(this.lvWorkTime_SelectedIndexChanged);
+            this.lvWorkTime.DoubleClick += new System.EventHandler(this.lvWorkTime_DoubleClick);
+            // 
+            // tabInvoices
+            // 
+            this.tabInvoices.Controls.Add(this.lvInvoice);
+            this.tabInvoices.Location = new System.Drawing.Point(4, 29);
+            this.tabInvoices.Name = "tabInvoices";
+            this.tabInvoices.Size = new System.Drawing.Size(859, 528);
+            this.tabInvoices.TabIndex = 4;
+            this.tabInvoices.Text = "Fakturor";
+            this.tabInvoices.UseVisualStyleBackColor = true;
+            // 
+            // lvInvoice
+            // 
+            this.lvInvoice.FullRowSelect = true;
+            this.lvInvoice.GridLines = true;
+            this.lvInvoice.Location = new System.Drawing.Point(25, 55);
+            this.lvInvoice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lvInvoice.Name = "lvInvoice";
+            this.lvInvoice.Size = new System.Drawing.Size(701, 419);
+            this.lvInvoice.TabIndex = 4;
+            this.lvInvoice.UseCompatibleStateImageBehavior = false;
+            this.lvInvoice.View = System.Windows.Forms.View.Details;
+            this.lvInvoice.SelectedIndexChanged += new System.EventHandler(this.lvInvoice_SelectedIndexChanged);
+            this.lvInvoice.DoubleClick += new System.EventHandler(this.lvInvoice_DoubleClick);
             // 
             // itemStatusCtrl1
             // 
-            this.itemStatusCtrl1.Location = new System.Drawing.Point(13, 70);
+            this.itemStatusCtrl1.Location = new System.Drawing.Point(15, 93);
+            this.itemStatusCtrl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.itemStatusCtrl1.Name = "itemStatusCtrl1";
-            this.itemStatusCtrl1.Size = new System.Drawing.Size(360, 24);
+            this.itemStatusCtrl1.Size = new System.Drawing.Size(411, 32);
             this.itemStatusCtrl1.TabIndex = 13;
             // 
             // HandleWorkItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 565);
+            this.ClientSize = new System.Drawing.Size(878, 753);
             this.Controls.Add(this.itemStatusCtrl1);
             this.Controls.Add(this.tabCtrl);
             this.Controls.Add(this.bNew);
@@ -222,15 +307,18 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.customerAndProjectCtrl1);
             this.Controls.Add(this.bSave);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "HandleWorkItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HandleWorkItems";
             this.Load += new System.EventHandler(this.HandleWorkItems_Load);
             this.tabCtrl.ResumeLayout(false);
-            this.tabTimes.ResumeLayout(false);
+            this.tabGeneral.ResumeLayout(false);
             this.tabDescription.ResumeLayout(false);
             this.tabDescription.PerformLayout();
             this.tabChildren.ResumeLayout(false);
+            this.tabWorkTime.ResumeLayout(false);
+            this.tabInvoices.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,11 +336,16 @@
         private UserControls.WorkedTimeCtrl workedTime1;
         private Button bNew;
         private TabControl tabCtrl;
-        private TabPage tabTimes;
+        private TabPage tabWorkTime;
         private TabPage tabDescription;
         private UserControls.ItemStatusCtrl itemStatusCtrl1;
         private TabPage tabChildren;
         private ListView lvItems;
         private Button bAddSubActivities;
+        private TabPage tabGeneral;
+        private ListView lvWorkTime;
+        private Button bAddTime;
+        private TabPage tabInvoices;
+        private ListView lvInvoice;
     }
 }

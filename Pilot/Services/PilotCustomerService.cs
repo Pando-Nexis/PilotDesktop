@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PilotDesktop.Pilot.Objects;
+using PilotDesktop.Work.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,13 @@ namespace PilotDesktop.Pilot.Services
 
             var result = JsonConvert.DeserializeObject<List<PilotCustomer>>(response);
 
-            return result;
+            return result.OrderBy(i=>i.Name).ToList();
+        }
+        public bool GetCustomerAndProject(WorkItem workItem, out PilotCustomer customer, out PilotProject project)
+        {
+            customer = null;
+            project = null;
+            return GetCustomerAndProject(Program.Customers, workItem.OrganizationSystemId, out customer, out project);
         }
         public bool GetCustomerAndProject(List<PilotCustomer> customers, Guid organizationSystemId, out PilotCustomer customer, out PilotProject project)
         {
