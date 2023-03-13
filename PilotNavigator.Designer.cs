@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PilotNavigator));
             this.bSettings = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bInvoices = new System.Windows.Forms.Button();
             this.bInvoicing = new System.Windows.Forms.Button();
             this.bHandleAddOn = new System.Windows.Forms.Button();
             this.btnToCodeGenerator = new System.Windows.Forms.Button();
             this.btnToOblivion = new System.Windows.Forms.Button();
             this.Keg = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.bInvoices = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Keg)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +80,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 336);
             this.panel1.TabIndex = 4;
+            // 
+            // bInvoices
+            // 
+            this.bInvoices.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bInvoices.BackColor = System.Drawing.Color.Transparent;
+            this.bInvoices.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral1;
+            this.bInvoices.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bInvoices.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bInvoices.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bInvoices.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bInvoices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.bInvoices.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bInvoices.Location = new System.Drawing.Point(9, 138);
+            this.bInvoices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bInvoices.MinimumSize = new System.Drawing.Size(114, 0);
+            this.bInvoices.Name = "bInvoices";
+            this.bInvoices.Size = new System.Drawing.Size(180, 60);
+            this.bInvoices.TabIndex = 9;
+            this.bInvoices.Text = "Fakturor";
+            this.bInvoices.UseVisualStyleBackColor = false;
+            this.bInvoices.Click += new System.EventHandler(this.bInvoices_Click);
             // 
             // bInvoicing
             // 
@@ -196,35 +218,13 @@
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 443);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 385);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(200, 284);
+            this.toolStrip1.Size = new System.Drawing.Size(200, 342);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // bInvoices
-            // 
-            this.bInvoices.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bInvoices.BackColor = System.Drawing.Color.Transparent;
-            this.bInvoices.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral1;
-            this.bInvoices.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bInvoices.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bInvoices.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.bInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bInvoices.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bInvoices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.bInvoices.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bInvoices.Location = new System.Drawing.Point(9, 138);
-            this.bInvoices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bInvoices.MinimumSize = new System.Drawing.Size(114, 0);
-            this.bInvoices.Name = "bInvoices";
-            this.bInvoices.Size = new System.Drawing.Size(180, 60);
-            this.bInvoices.TabIndex = 9;
-            this.bInvoices.Text = "Fakturor";
-            this.bInvoices.UseVisualStyleBackColor = false;
-            this.bInvoices.Click += new System.EventHandler(this.bInvoices_Click);
             // 
             // PilotNavigator
             // 
