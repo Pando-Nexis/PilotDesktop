@@ -27,7 +27,7 @@ namespace PilotDesktop.Work.Services
             string response = await _connectToApi.GetData(method, new Dictionary<string, string>());
 
             var result = JsonConvert.DeserializeObject<List<WorkItem>>(response);
-
+            
             return result;
         }
         public async Task<List<WorkItem>> AddOrUpdate(WorkItem item)

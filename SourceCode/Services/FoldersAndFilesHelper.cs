@@ -85,16 +85,13 @@ namespace PilotDesktop.SourceCode.Services
             if (!isAddon)
             {
             }
-            if (fileName.StartsWith("."))
+            if (fileName.StartsWith(".") && fileName!=".gitignore")
                 return false;
             if (_excludedFiles.Contains(fileName.ToLower()))
                 return false;
             if (fileName.EndsWith(FileTypeConstants.Sln))
                 return false;
-            if (fileName.StartsWith("."))
-                return false;
-
-
+           
             return true;
         }
         public static void CreateSubFolders(string masterProjectDirectoryPath, string createProjectPath, bool isAddon = false)

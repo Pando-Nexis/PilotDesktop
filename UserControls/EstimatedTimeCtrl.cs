@@ -77,7 +77,7 @@ namespace PilotDesktop.UserControls
         }
         public async void SaveEstimate(Guid workItemSystemId)
         {
-            if (decimal.TryParse(tbEstimate.Text, out decimal estimate))
+            if (_time!=null && decimal.TryParse(tbEstimate.Text, out decimal estimate))
             {
                 _time.ItemSystemId = workItemSystemId;
                 _time.Amount = _timeService.GetMinutesFromHours(estimate);

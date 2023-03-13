@@ -102,13 +102,13 @@ namespace PilotDesktop
         {
             try
             {
-                GetCustomers();
                 Program.WorkItems.List = await _workItemService.GetAll();
                 Program.ItemStatuses = await _itemStatusService.GetAll();
                 Program.ItemTypes = await _itemTypeService.GetAll();
                 Program.Times = await _timeService.GetAll();
                 Program.TimeStatuses = await _timeStatusService.GetAll();
                 Program.TimeTypes = await _timeTypeService.GetAll();
+                GetCustomers();
             }
             catch
             {
@@ -127,6 +127,26 @@ namespace PilotDesktop
                 dropDown.Text = customer.Name;
                 dropDown.Tag = customer.SystemId.ToString();
 
+                var handleWorkItems = new ToolStripButton();
+                DecorateMenuItemNode(ref handleWorkItems);
+                handleWorkItems.Text = "Alla aktiviteter";
+                handleWorkItems.Tag = customer;
+                handleWorkItems.Click += new EventHandler(HandleCustomerWorkItem);
+                dropDown.DropDownItems.Add(handleWorkItems);
+
+                var addWorkItems = new ToolStripDropDownButton();
+                addWorkItems.Text = "Lägg till";
+
+                var workItems = CreateItemTypeMenu(customer.SystemId);
+                foreach (var workItem in workItems)
+                {
+                    addWorkItems.DropDownItems.Add(workItem);
+                }
+
+
+                dropDown.DropDownItems.Add(addWorkItems);
+                dropDown.DropDownItems.Add(new ToolStripSeparator());
+
                 foreach (var project in customer.Projects)
                 {
                     var projectNode = new ToolStripDropDownButton();
@@ -141,13 +161,12 @@ namespace PilotDesktop
                         syncCode.Tag = project;
                         syncCode.Click += new EventHandler(OpenCodeSync);
                         projectNode.DropDownItems.Add(syncCode);
+                        projectNode.DropDownItems.Add(new ToolStripSeparator());
                     }
-
-                    projectNode.DropDownItems.Add(new ToolStripSeparator());
 
                     var handleProjectWorkItems = new ToolStripButton();
                     DecorateMenuItemNode(ref handleProjectWorkItems);
-                    handleProjectWorkItems.Text = "Akitiviteter";
+                    handleProjectWorkItems.Text = "Alla aktiviteter";
                     handleProjectWorkItems.Tag = project;
                     handleProjectWorkItems.Click += new EventHandler(HandleProjectWorkItem);
                     projectNode.DropDownItems.Add(handleProjectWorkItems);
@@ -155,70 +174,38 @@ namespace PilotDesktop
                     var addProjectWorkItems = new ToolStripDropDownButton();
                     addProjectWorkItems.Text = "Lägg till";
 
-                    var addProjectWorkItemEpic = new ToolStripButton();
-                    DecorateMenuItemNode(ref addProjectWorkItemEpic);
-                    addProjectWorkItemEpic.Text = "Epic";
-                    addProjectWorkItemEpic.Tag = project;
-                    addProjectWorkItemEpic.Click += new EventHandler(AddProjectWorkItemEpic);
-                    addProjectWorkItems.DropDownItems.Add(addProjectWorkItemEpic);
-
-                    var addProjectWorkItemStory = new ToolStripButton();
-                    DecorateMenuItemNode(ref addProjectWorkItemStory);
-                    addProjectWorkItemStory.Text = "Story";
-                    addProjectWorkItemStory.Tag = project;
-                    addProjectWorkItemStory.Click += new EventHandler(AddProjectWorkItemStory);
-                    addProjectWorkItems.DropDownItems.Add(addProjectWorkItemStory);
-
-                    var addProjectWorkItemTask = new ToolStripButton();
-                    DecorateMenuItemNode(ref addProjectWorkItemTask);
-                    addProjectWorkItemTask.Text = "Task";
-                    addProjectWorkItemTask.Tag = project;
-                    addProjectWorkItemTask.Click += new EventHandler(AddProjectWorkItemTask);
-                    addProjectWorkItems.DropDownItems.Add(addProjectWorkItemTask);
-
+                    workItems = CreateItemTypeMenu(project.SystemId);
+                    foreach (var workItem in workItems)
+                    {
+                        addProjectWorkItems.DropDownItems.Add(workItem);
+                    }
                     projectNode.DropDownItems.Add(addProjectWorkItems);
-
 
                     dropDown.DropDownItems.Add(projectNode);
                 }
-                dropDown.DropDownItems.Add(new ToolStripSeparator());
-
-                var handleWorkItems = new ToolStripButton();
-                DecorateMenuItemNode(ref handleWorkItems);
-                handleWorkItems.Text = "Akitiviteter";
-                handleWorkItems.Tag = customer;
-                handleWorkItems.Click += new EventHandler(HandleCustomerWorkItem);
-                dropDown.DropDownItems.Add(handleWorkItems);
-
-                var addWorkItems = new ToolStripDropDownButton();
-                addWorkItems.Text = "Lägg till";
-
-                var addWorkItemEpic = new ToolStripButton();
-                DecorateMenuItemNode(ref addWorkItemEpic);
-                addWorkItemEpic.Text = "Epic";
-                addWorkItemEpic.Tag = customer;
-                addWorkItemEpic.Click += new EventHandler(AddCustomerWorkItemEpic);
-                addWorkItems.DropDownItems.Add(addWorkItemEpic);
-
-                var addWorkItemStory = new ToolStripButton();
-                DecorateMenuItemNode(ref addWorkItemStory);
-                addWorkItemStory.Text = "Story";
-                addWorkItemStory.Tag = customer;
-                addWorkItemStory.Click += new EventHandler(AddCustomerWorkItemStory);
-                addWorkItems.DropDownItems.Add(addWorkItemStory);
-
-                var addWorkItemTask = new ToolStripButton();
-                DecorateMenuItemNode(ref addWorkItemTask);
-                addWorkItemTask.Text = "Task";
-                addWorkItemTask.Tag = customer;
-                addWorkItemTask.Click += new EventHandler(AddCustomerWorkItemTask);
-                addWorkItems.DropDownItems.Add(addWorkItemTask);
-
-                dropDown.DropDownItems.Add(addWorkItems);
-
-
                 toolStrip1.Items.Add(dropDown);
             }
+        }
+
+        private List<ToolStripButton> CreateItemTypeMenu(Guid organizationSystemId)
+        {
+            var menuList = new List<ToolStripButton>();
+            foreach (var type in Program.ItemTypes)
+            {
+                ToolStripButton item = new ToolStripButton();
+                DecorateMenuItemNode(ref item);
+                var workItem = new WorkItem();
+                workItem.OrganizationSystemId = organizationSystemId;
+                workItem.ItemTypeSystemId = type.SystemId;
+                item.Text = type.Name;
+                item.Tag = workItem;
+                item.Click += new EventHandler(AddWorkItem);
+
+                menuList.Add(item);
+            }
+
+
+            return menuList;
         }
 
         private void DecorateMenuItemNode(ref ToolStripButton button)
@@ -256,74 +243,14 @@ namespace PilotDesktop
             var frm = new CustomerSourceCodeTool(project);
             frm.Show();
         }
-        private void AddCustomerWorkItemTask(object sender, EventArgs e)
-        {
-            var senderButton = (ToolStripButton)sender;
-            var customer = senderButton.Tag as PilotCustomer;
-            var workItem = new WorkItem();
-            workItem.OrganizationSystemId = customer.SystemId;
-            workItem.ItemTypeSystemId = Program.ItemTypes?.FirstOrDefault(i => i.Name == "Task")?.SystemId ?? Guid.Empty;
-            workItem.ItemStatusSystemId = Program.ItemStatuses?.FirstOrDefault(i => i.Name == "Ny")?.SystemId ?? Guid.Empty;
-            var frm = new HandleWorkItem(workItem);
-            frm.Show();
-        }
-        private void AddCustomerWorkItemStory(object sender, EventArgs e)
-        {
-            var senderButton = (ToolStripButton)sender;
-            var customer = senderButton.Tag as PilotCustomer;
-            var workItem = new WorkItem();
-            workItem.OrganizationSystemId = customer.SystemId;
-            workItem.ItemTypeSystemId = Program.ItemTypes?.FirstOrDefault(i => i.Name == "Story")?.SystemId ?? Guid.Empty;
-            workItem.ItemStatusSystemId = Program.ItemStatuses?.FirstOrDefault(i => i.Name == "Ny")?.SystemId ?? Guid.Empty;
-            var frm = new HandleWorkItem(workItem);
-            frm.Show();
-        }
-        private void AddCustomerWorkItemEpic(object sender, EventArgs e)
-        {
-            var senderButton = (ToolStripButton)sender;
-            var customer = senderButton.Tag as PilotCustomer;
-            var workItem = new WorkItem();
-            workItem.OrganizationSystemId = customer.SystemId;
-            workItem.ItemTypeSystemId = Program.ItemTypes?.FirstOrDefault(i => i.Name == "Epic")?.SystemId ?? Guid.Empty;
-            workItem.ItemStatusSystemId = Program.ItemStatuses?.FirstOrDefault(i => i.Name == "Ny")?.SystemId ?? Guid.Empty;
-            var frm = new HandleWorkItem(workItem);
-            frm.Show();
-        }
 
-        private void AddProjectWorkItemTask(object sender, EventArgs e)
+        private void AddWorkItem(object sender, EventArgs e)
         {
             var senderButton = (ToolStripButton)sender;
-            var project = senderButton.Tag as PilotProject;
-            var workItem = new WorkItem();
-            workItem.OrganizationSystemId = project.SystemId;
-            workItem.ItemTypeSystemId = Program.ItemTypes?.FirstOrDefault(i => i.Name == "Task")?.SystemId ?? Guid.Empty;
-            workItem.ItemStatusSystemId = Program.ItemStatuses?.FirstOrDefault(i => i.Name == "Ny")?.SystemId ?? Guid.Empty;
+            var workItem = senderButton.Tag as WorkItem;
             var frm = new HandleWorkItem(workItem);
             frm.Show();
         }
-        private void AddProjectWorkItemStory(object sender, EventArgs e)
-        {
-            var senderButton = (ToolStripButton)sender;
-            var project = senderButton.Tag as PilotProject;
-            var workItem = new WorkItem();
-            workItem.OrganizationSystemId = project.SystemId;
-            workItem.ItemTypeSystemId = Program.ItemTypes?.FirstOrDefault(i => i.Name == "Story")?.SystemId ?? Guid.Empty;
-            workItem.ItemStatusSystemId = Program.ItemStatuses?.FirstOrDefault(i => i.Name == "Ny")?.SystemId ?? Guid.Empty;
-            var frm = new HandleWorkItem(workItem);
-            frm.Show();
-        }
-        private void AddProjectWorkItemEpic(object sender, EventArgs e)
-        {
-            var senderButton = (ToolStripButton)sender;
-            var project = senderButton.Tag as PilotProject;
-            var workItem = new WorkItem();
-            workItem.OrganizationSystemId = project.SystemId;
-            workItem.ItemTypeSystemId = Program.ItemTypes?.FirstOrDefault(i => i.Name == "Epic")?.SystemId ?? Guid.Empty;
-            workItem.ItemStatusSystemId = Program.ItemStatuses?.FirstOrDefault(i => i.Name == "Ny")?.SystemId ?? Guid.Empty;
-            var frm = new HandleWorkItem(workItem);
-            frm.Show();
-        }
-
 
         private void btnToCodeGenerator_Click(object sender, EventArgs e)
         {
@@ -352,7 +279,7 @@ namespace PilotDesktop
 
         private void bInvoicing_Click(object sender, EventArgs e)
         {
-            var frm  = new Forms.HandleInvoicing();
+            var frm = new Forms.HandleInvoicing();
             frm.Show();
         }
 

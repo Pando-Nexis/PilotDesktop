@@ -84,7 +84,7 @@ namespace PilotDesktop.Forms
             dtrDataTotal[0] = "Totalt:";
 
 
-            dtrDataTotal[2] = _timeService.GetHours(invoiceTime.Sum(i => i.Amount)).ToString("0.##");
+            dtrDataTotal[4] = _timeService.GetHours(invoiceTime.Sum(i => i.Amount)).ToString("0.##");
             dtData.Rows.Add(dtrDataTotal);
 
 
