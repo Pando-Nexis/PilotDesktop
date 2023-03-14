@@ -1,4 +1,6 @@
-﻿using PilotDesktop.SourceCode.Constants;
+﻿using Newtonsoft.Json;
+using PilotDesktop.SourceCode.Constants;
+using PilotDesktop.SourceCode.Objects;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -30,6 +32,7 @@ public class SourceCodeProjectService
 
 
         CreatePandoNexisJsFile(masterProjectDirectoryPath, createProjectPath, addOns);
+        CreatePNViewModels(masterProjectDirectoryPath, createProjectPath, addOns);
         CreateAddonReducerFile(createProjectPath, addOns);
         CreateAddonIndexScss(createProjectPath, addOns);
 
@@ -62,6 +65,7 @@ public class SourceCodeProjectService
         CreateCsProjeFile(Path.Combine(masterAddonProjectPath, ProjectConstants.AddOn + FileTypeConstants.Csproj), Path.Combine(createAddonProjectPath, ProjectConstants.AddOn + FileTypeConstants.Csproj), createAddonProjectPath, resxFiles);
 
         CreatePandoNexisJsFile(masterProjectDirectoryPath, createProjectPath, addOns);
+        CreatePNViewModels(masterProjectDirectoryPath, createProjectPath, addOns);
         CreateAddonReducerFile(createProjectPath, addOns);
         CreateAddonIndexScss(createProjectPath, addOns);
 
@@ -211,7 +215,7 @@ public class SourceCodeProjectService
         }
         lines.Add(ConfigConstants.JsEndOfExport);
 
-        if (!Directory.Exists(Path.Combine(createProjectPath,FolderConstants.Src,ProjectConstants.Mvc,FolderConstants.Client,FolderConstants.Script,FolderConstants.Addons)))
+        if (!Directory.Exists(Path.Combine(createProjectPath, FolderConstants.Src, ProjectConstants.Mvc, FolderConstants.Client, FolderConstants.Script, FolderConstants.Addons)))
         {
             Directory.CreateDirectory(Path.Combine(createProjectPath,
                                        FolderConstants.Src,
@@ -270,7 +274,68 @@ public class SourceCodeProjectService
 
         }
     }
+    public void CreatePNViewModels(string masterProjectDirectoryPath, string createProjectPath, List<string> addOns)
+    {
+        var viewModels = new List<PNViewModel>();
+        GetViewModelEntities(masterProjectDirectoryPath, addOns, ref viewModels);
 
+        if (!viewModels.Any())
+            return;
+
+        var listToWrite = new Dictionary<string, List<string>>();
+
+        foreach (var path in viewModels)
+        {
+            var modelPath = createProjectPath + path.modelPath;
+
+            if (!File.Exists(modelPath))
+                continue;
+
+            if (listToWrite.ContainsKey(modelPath))
+            {
+                listToWrite[modelPath].AddRange(path.data);
+            }
+            else
+            {
+                listToWrite.Add(modelPath, path.data);
+            }
+        }
+
+        foreach (var file in listToWrite)
+        {
+            if (!File.Exists(file.Key))
+                continue;
+            var initialFileContent = File.ReadAllLines(file.Key);
+
+            var newFileContent = new List<string>();
+            var startReached = false;
+            var endReached = false;
+            foreach (var line in initialFileContent)
+            {
+                if (!startReached && !endReached)
+                    newFileContent.Add(line);
+                if (startReached && endReached)
+                    newFileContent.Add(line);
+
+                if (line.Contains(ConfigConstants.BeginModel))
+                {
+                    startReached = true;
+                    newFileContent.AddRange(file.Value);
+                }
+                if (line.Contains(ConfigConstants.EndModel))
+                {
+                    endReached = true;
+                    newFileContent.Add(line);
+                }
+                    
+            }
+
+            File.WriteAllLines(file.Key, newFileContent);
+
+
+        }
+
+    }
     public void CreatePandoNexisJsFile(string masterProjectDirectoryPath, string createProjectPath, List<string> addOns)
     {
         var pandoNexisJsImports = new List<string>();
@@ -339,7 +404,25 @@ public class SourceCodeProjectService
 
         var configPath = Path.Combine(addonPath, FolderConstants.Config);
     }
+    public void GetViewModelEntities(string projectPath, List<string> addons, ref List<PNViewModel> models)
+    {
+        foreach (var addon in addons)
+        {
+            var configPath = Path.Combine(projectPath, FolderConstants.Src, ProjectConstants.AddOn, addon, FolderConstants.Config);
 
+            if (!Directory.Exists(configPath))
+                continue;
+
+            var configJsPath = Path.Combine(configPath, FileTypeConstants.PandoNexisViewModels);
+            if (!File.Exists(configJsPath))
+                continue;
+
+            var str = File.ReadAllText(configJsPath);
+            if (!string.IsNullOrWhiteSpace(str))
+                models.AddRange(JsonConvert.DeserializeObject<List<PNViewModel>>(str));
+
+        }
+    }
     public void GetPandoNexisJsEntities(string projectPath, List<string> addons, ref List<string> pandoNexisJsImports, ref List<string> pandoNexisJsComponents)
     {
         foreach (var addon in addons)

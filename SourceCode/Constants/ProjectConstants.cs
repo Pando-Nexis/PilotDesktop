@@ -24,6 +24,7 @@ namespace PilotDesktop.SourceCode.Constants
         public static string Csproj = ".csproj";
         public static string Cs = ".cs";
         public static string PandoNexisJsMerge = "pandoNexis.js_merge";
+        public static string PandoNexisViewModels = "PNViewModels.json";
         public static string Views = "views.txt";
         public static string Modified = "modified.txt";
         public static string PandoNexisJs = "pandoNexis.js";
@@ -60,6 +61,9 @@ namespace PilotDesktop.SourceCode.Constants
 
         public static string BeginAddOn = "//PandoNexis: BEGIN ADDON";
         public static string EndAddOn = "//PandoNexis: END ADDON";
+
+        public static string BeginModel = "//PandoNexis: BEGIN MODEL";
+        public static string EndModel = "//PandoNexis: END MODEL";
 
         public static string CssImport = "@import '";
         public static string CssIndex = "/index';";

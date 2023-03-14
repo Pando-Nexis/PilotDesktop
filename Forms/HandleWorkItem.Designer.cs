@@ -31,9 +31,7 @@
             this.bSave = new System.Windows.Forms.Button();
             this.customerAndProjectCtrl1 = new PilotDesktop.UserControls.CustomerAndProjectCtrl();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tbTitle = new System.Windows.Forms.TextBox();
-            this.rtbDescription = new System.Windows.Forms.RichTextBox();
             this.itemTypeCtrl1 = new PilotDesktop.UserControls.ItemTypeCtrl();
             this.estimatedTime1 = new PilotDesktop.UserControls.EstimatedTimeCtrl();
             this.workedTime1 = new PilotDesktop.UserControls.WorkedTimeCtrl();
@@ -50,9 +48,10 @@
             this.tabInvoices = new System.Windows.Forms.TabPage();
             this.lvInvoice = new System.Windows.Forms.ListView();
             this.itemStatusCtrl1 = new PilotDesktop.UserControls.ItemStatusCtrl();
+            this.rtbDescription = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabCtrl.SuspendLayout();
             this.tabGeneral.SuspendLayout();
-            this.tabDescription.SuspendLayout();
             this.tabChildren.SuspendLayout();
             this.tabWorkTime.SuspendLayout();
             this.tabInvoices.SuspendLayout();
@@ -86,15 +85,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Titel";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Beskrivning";
-            // 
             // tbTitle
             // 
             this.tbTitle.Location = new System.Drawing.Point(104, 15);
@@ -102,15 +92,6 @@
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(322, 27);
             this.tbTitle.TabIndex = 6;
-            // 
-            // rtbDescription
-            // 
-            this.rtbDescription.Location = new System.Drawing.Point(118, 52);
-            this.rtbDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rtbDescription.Name = "rtbDescription";
-            this.rtbDescription.Size = new System.Drawing.Size(322, 376);
-            this.rtbDescription.TabIndex = 7;
-            this.rtbDescription.Text = "";
             // 
             // itemTypeCtrl1
             // 
@@ -123,7 +104,7 @@
             // estimatedTime1
             // 
             this.estimatedTime1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.estimatedTime1.Location = new System.Drawing.Point(26, 28);
+            this.estimatedTime1.Location = new System.Drawing.Point(3, 28);
             this.estimatedTime1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.estimatedTime1.Name = "estimatedTime1";
             this.estimatedTime1.Size = new System.Drawing.Size(352, 153);
@@ -132,7 +113,7 @@
             // workedTime1
             // 
             this.workedTime1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.workedTime1.Location = new System.Drawing.Point(399, 28);
+            this.workedTime1.Location = new System.Drawing.Point(10, 200);
             this.workedTime1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.workedTime1.Name = "workedTime1";
             this.workedTime1.Size = new System.Drawing.Size(389, 257);
@@ -166,6 +147,8 @@
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.rtbDescription);
+            this.tabGeneral.Controls.Add(this.label2);
             this.tabGeneral.Controls.Add(this.estimatedTime1);
             this.tabGeneral.Controls.Add(this.workedTime1);
             this.tabGeneral.Location = new System.Drawing.Point(4, 29);
@@ -177,8 +160,6 @@
             // 
             // tabDescription
             // 
-            this.tabDescription.Controls.Add(this.rtbDescription);
-            this.tabDescription.Controls.Add(this.label2);
             this.tabDescription.Location = new System.Drawing.Point(4, 29);
             this.tabDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabDescription.Name = "tabDescription";
@@ -294,6 +275,24 @@
             this.itemStatusCtrl1.Size = new System.Drawing.Size(411, 32);
             this.itemStatusCtrl1.TabIndex = 13;
             // 
+            // rtbDescription
+            // 
+            this.rtbDescription.Location = new System.Drawing.Point(466, 38);
+            this.rtbDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rtbDescription.Name = "rtbDescription";
+            this.rtbDescription.Size = new System.Drawing.Size(370, 469);
+            this.rtbDescription.TabIndex = 12;
+            this.rtbDescription.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(381, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 20);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Beskrivning";
+            // 
             // HandleWorkItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -314,8 +313,7 @@
             this.Load += new System.EventHandler(this.HandleWorkItems_Load);
             this.tabCtrl.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
-            this.tabDescription.ResumeLayout(false);
-            this.tabDescription.PerformLayout();
+            this.tabGeneral.PerformLayout();
             this.tabChildren.ResumeLayout(false);
             this.tabWorkTime.ResumeLayout(false);
             this.tabInvoices.ResumeLayout(false);
@@ -328,9 +326,7 @@
         private Button bSave;
         private UserControls.CustomerAndProjectCtrl customerAndProjectCtrl1;
         private Label label1;
-        private Label label2;
         private TextBox tbTitle;
-        private RichTextBox rtbDescription;
         private UserControls.ItemTypeCtrl itemTypeCtrl1;
         private UserControls.EstimatedTimeCtrl estimatedTime1;
         private UserControls.WorkedTimeCtrl workedTime1;
@@ -347,5 +343,7 @@
         private Button bAddTime;
         private TabPage tabInvoices;
         private ListView lvInvoice;
+        private RichTextBox rtbDescription;
+        private Label label2;
     }
 }
