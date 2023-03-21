@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 using PilotDesktop.Pilot.Objects;
 using PilotDesktop.Pilot.Services;
 using PilotDesktop.Work.Objects;
@@ -63,8 +64,8 @@ namespace PilotDesktop.Work.Services
 
         public bool IsValidForInvoicing(DateTime dtFrom, DateTime dtTo, Time time)
         {
-            
-            if (time.TimeTypeSystemId==_workTimeSystemId && dtFrom <= time.TimeFrom && dtTo >= time.TimeFrom)
+
+            if (time.TimeTypeSystemId == _workTimeSystemId && dtFrom <= time.TimeFrom && dtTo >= time.TimeFrom)
                 return true;
             return false;
         }
@@ -73,6 +74,88 @@ namespace PilotDesktop.Work.Services
         {
             time.TimeStatusSystemId = _invoiceWorkTimeSystemId;
             await AddOrUpdate(time);
+        }
+        public List<Time> GetWorkTime(DateTime from, DateTime to)
+        {
+
+            if (DateTime.TryParse(from.ToShortDateString() + " 00:00", out var datefrom))
+            {
+                if (DateTime.TryParse(to.ToShortDateString() + " 23:59", out var dateto))
+                {
+                    return Program.Times.Where(i => i.TimeTypeSystemId == _workTimeSystemId && Between(i.TimeFrom, datefrom, dateto)).ToList();
+                }
+            }
+            return new List<Time>();
+
+        }
+        public bool Between(DateTime time, DateTime timefrom, DateTime timeto)
+        {
+            if (time >= timefrom && time <= timeto)
+                return true;
+
+
+            return false;
+        }
+
+        public decimal GetWorkTimeSum(Guid systemId, DateTime from, DateTime to)
+        {
+            if (DateTime.TryParse(from.ToShortDateString() + " 00:00", out var datefrom))
+            {
+                if (DateTime.TryParse(to.ToShortDateString() + " 23:59", out var dateto))
+                {
+                    return GetHours(Program.Times.Where(i => i.TimeTypeSystemId == _workTimeSystemId && i.ItemSystemId == systemId && Between(i.TimeFrom, datefrom, dateto)).Sum(i => i.Amount));
+                }
+            }
+            return decimal.Zero;
+        }
+
+        public List<Time> WorkTimeForProject(List<Time> worktime, PilotProject project)
+        {
+            var times = new List<Time>();
+
+            foreach (var time in worktime)
+            {
+                var workitem = Program.WorkItems.List.FirstOrDefault(i => i.SystemId == time.ItemSystemId);
+                if (workitem != null && workitem.OrganizationSystemId == project.SystemId)
+                {
+                    times.Add(time);
+                }
+
+            }
+
+            return times;
+
+        }
+
+        public List<Time> WorkTimeForCustomer(List<Time> worktime, PilotCustomer customer, bool includeProjects)
+        {
+            var times = new List<Time>();
+
+            foreach (var time in worktime)
+            {
+                var workitem = Program.WorkItems.List.FirstOrDefault(i => i.SystemId == time.ItemSystemId);
+                if (workitem == null)
+                {
+                    continue;
+                }
+                if (workitem.OrganizationSystemId == customer.SystemId)
+                {
+                    times.Add(time);
+                }
+                else if (includeProjects)
+                {
+                    foreach (var project in customer.Projects)
+                    {
+                        if (workitem.OrganizationSystemId == project.SystemId)
+                        {
+                            times.Add(time);
+                        }
+                    }
+                }
+
+            }
+
+            return times;
         }
     }
 }

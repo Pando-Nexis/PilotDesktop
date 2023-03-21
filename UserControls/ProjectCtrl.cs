@@ -57,6 +57,28 @@ namespace PilotDesktop.UserControls
             return null;
         }
 
-     
+        #region Eventhandlers
+        public event EventHandler OnIndexChanged;
+        public virtual void RaiseIndexChanged(EventArgs ea)
+        {
+            var handler = OnIndexChanged;
+            if (OnIndexChanged != null)
+                OnIndexChanged(this, ea);
+        }
+
+
+
+
+
+        //public string GetSelectedText()
+        //{
+        //    return ((Project)cbProject.SelectedItem)?.ToString() ?? "";
+        //}
+        #endregion
+
+        private void cbProjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RaiseIndexChanged(e);
+        }
     }
 }

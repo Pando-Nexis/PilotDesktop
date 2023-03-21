@@ -35,25 +35,30 @@
             // ctrlCustomer
             // 
             this.ctrlCustomer.Location = new System.Drawing.Point(3, 0);
+            this.ctrlCustomer.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ctrlCustomer.Name = "ctrlCustomer";
-            this.ctrlCustomer.Size = new System.Drawing.Size(360, 24);
+            this.ctrlCustomer.Size = new System.Drawing.Size(411, 32);
             this.ctrlCustomer.TabIndex = 0;
+            this.ctrlCustomer.OnIndexChanged += new System.EventHandler(this.ctrlCustomer_OnIndexChanged);
             // 
             // ctrlProject
             // 
-            this.ctrlProject.Location = new System.Drawing.Point(3, 26);
+            this.ctrlProject.Location = new System.Drawing.Point(3, 35);
+            this.ctrlProject.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ctrlProject.Name = "ctrlProject";
-            this.ctrlProject.Size = new System.Drawing.Size(360, 24);
+            this.ctrlProject.Size = new System.Drawing.Size(411, 32);
             this.ctrlProject.TabIndex = 1;
+            this.ctrlProject.OnIndexChanged += new System.EventHandler(this.ctrlProject_OnIndexChanged);
             // 
             // CustomerAndProjectCtrl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ctrlProject);
             this.Controls.Add(this.ctrlCustomer);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CustomerAndProjectCtrl";
-            this.Size = new System.Drawing.Size(366, 51);
+            this.Size = new System.Drawing.Size(418, 68);
             this.Load += new System.EventHandler(this.CustomerAndProjectCtrl_Load);
             this.ResumeLayout(false);
 

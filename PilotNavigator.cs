@@ -288,5 +288,11 @@ namespace PilotDesktop
             var frm = new Forms.HandleInvoices();
             frm.Show();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var frm = new Forms.WorkTimeCalender();
+            frm.Show();
+        }
     }
 }

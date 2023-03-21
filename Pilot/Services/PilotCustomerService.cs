@@ -25,7 +25,7 @@ namespace PilotDesktop.Pilot.Services
             string response = await _connectToApi.GetData(method, new Dictionary<string, string>());
 
             var result = JsonConvert.DeserializeObject<List<PilotCustomer>>(response);
-
+            
             return result.OrderBy(i=>i.Name).ToList();
         }
         public bool GetCustomerAndProject(WorkItem workItem, out PilotCustomer customer, out PilotProject project)

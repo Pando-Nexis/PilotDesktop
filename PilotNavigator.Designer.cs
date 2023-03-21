@@ -38,6 +38,7 @@
             this.btnToOblivion = new System.Windows.Forms.Button();
             this.Keg = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Keg)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +60,7 @@
             this.bSettings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bSettings.MinimumSize = new System.Drawing.Size(114, 0);
             this.bSettings.Name = "bSettings";
-            this.bSettings.Size = new System.Drawing.Size(200, 48);
+            this.bSettings.Size = new System.Drawing.Size(264, 48);
             this.bSettings.TabIndex = 1;
             this.bSettings.Text = "    Inställningar";
             this.bSettings.UseVisualStyleBackColor = false;
@@ -70,6 +71,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.bInvoices);
             this.panel1.Controls.Add(this.bInvoicing);
             this.panel1.Controls.Add(this.bHandleAddOn);
@@ -78,7 +80,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 45);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 336);
+            this.panel1.Size = new System.Drawing.Size(264, 336);
             this.panel1.TabIndex = 4;
             // 
             // bInvoices
@@ -93,11 +95,11 @@
             this.bInvoices.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bInvoices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.bInvoices.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bInvoices.Location = new System.Drawing.Point(9, 138);
+            this.bInvoices.Location = new System.Drawing.Point(132, 75);
             this.bInvoices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bInvoices.MinimumSize = new System.Drawing.Size(114, 0);
             this.bInvoices.Name = "bInvoices";
-            this.bInvoices.Size = new System.Drawing.Size(180, 60);
+            this.bInvoices.Size = new System.Drawing.Size(114, 60);
             this.bInvoices.TabIndex = 9;
             this.bInvoices.Text = "Fakturor";
             this.bInvoices.UseVisualStyleBackColor = false;
@@ -115,11 +117,11 @@
             this.bInvoicing.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bInvoicing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.bInvoicing.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bInvoicing.Location = new System.Drawing.Point(9, 75);
+            this.bInvoicing.Location = new System.Drawing.Point(12, 75);
             this.bInvoicing.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bInvoicing.MinimumSize = new System.Drawing.Size(114, 0);
             this.bInvoicing.Name = "bInvoicing";
-            this.bInvoicing.Size = new System.Drawing.Size(180, 60);
+            this.bInvoicing.Size = new System.Drawing.Size(114, 60);
             this.bInvoicing.TabIndex = 8;
             this.bInvoicing.Text = "Fakturering";
             this.bInvoicing.UseVisualStyleBackColor = false;
@@ -137,7 +139,7 @@
             this.bHandleAddOn.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bHandleAddOn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.bHandleAddOn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bHandleAddOn.Location = new System.Drawing.Point(9, 272);
+            this.bHandleAddOn.Location = new System.Drawing.Point(12, 272);
             this.bHandleAddOn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bHandleAddOn.MinimumSize = new System.Drawing.Size(114, 0);
             this.bHandleAddOn.Name = "bHandleAddOn";
@@ -159,7 +161,7 @@
             this.btnToCodeGenerator.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnToCodeGenerator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnToCodeGenerator.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnToCodeGenerator.Location = new System.Drawing.Point(9, 204);
+            this.btnToCodeGenerator.Location = new System.Drawing.Point(12, 204);
             this.btnToCodeGenerator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnToCodeGenerator.MinimumSize = new System.Drawing.Size(114, 0);
             this.btnToCodeGenerator.Name = "btnToCodeGenerator";
@@ -181,11 +183,11 @@
             this.btnToOblivion.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnToOblivion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnToOblivion.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnToOblivion.Location = new System.Drawing.Point(9, 9);
+            this.btnToOblivion.Location = new System.Drawing.Point(12, 9);
             this.btnToOblivion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnToOblivion.MinimumSize = new System.Drawing.Size(114, 0);
             this.btnToOblivion.Name = "btnToOblivion";
-            this.btnToOblivion.Size = new System.Drawing.Size(180, 60);
+            this.btnToOblivion.Size = new System.Drawing.Size(114, 60);
             this.btnToOblivion.TabIndex = 5;
             this.btnToOblivion.Text = "Aktiviteter";
             this.btnToOblivion.UseVisualStyleBackColor = false;
@@ -221,10 +223,32 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 385);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(200, 342);
+            this.toolStrip1.Size = new System.Drawing.Size(264, 342);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::PilotDesktop.Properties.Resources.GlassButtonGeneral1;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(132, 10);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.MinimumSize = new System.Drawing.Size(114, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 60);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Tidrapport";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // PilotNavigator
             // 
@@ -233,7 +257,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::PilotDesktop.Properties.Resources.reflection1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(202, 736);
+            this.ClientSize = new System.Drawing.Size(266, 736);
             this.Controls.Add(this.Keg);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
@@ -268,5 +292,6 @@
         private Button bHandleAddOn;
         private Button bInvoicing;
         private Button bInvoices;
+        private Button button1;
     }
 }

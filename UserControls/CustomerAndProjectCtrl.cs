@@ -19,16 +19,18 @@ namespace PilotDesktop.UserControls
         public CustomerAndProjectCtrl()
         {
             InitializeComponent();
-            ctrlCustomer.OnIndexChanged += new System.EventHandler(this.ctrlCustomer_IndexChanged);
+            ctrlCustomer.OnIndexChanged += new System.EventHandler(this.ctrlCustomer_OnIndexChanged);
         }
 
-        private void ctrlCustomer_IndexChanged(object sender, EventArgs e)
+        private void ctrlCustomer_OnIndexChanged(object sender, EventArgs e)
         {
             var customer = ctrlCustomer.GetData();
             if (customer != null)
             {
                 ctrlProject.LoadProjects(customer.Projects, null);
             }
+            RaiseIndexChanged(e);
+
         }
 
         private void CustomerAndProjectCtrl_Load(object sender, EventArgs e)
@@ -66,6 +68,28 @@ namespace PilotDesktop.UserControls
                     ctrlProject.LoadProjects(project.SystemId);
                 }
             }
+        }
+        #region Eventhandlers
+        public event EventHandler OnIndexChanged;
+        public virtual void RaiseIndexChanged(EventArgs ea)
+        {
+            var handler = OnIndexChanged;
+            if (OnIndexChanged != null)
+                OnIndexChanged(this, ea);
+        }
+
+
+
+
+        //public string GetSelectedText()
+        //{
+        //    return ((Project)cbProject.SelectedItem)?.ToString() ?? "";
+        //}
+        #endregion
+
+        private void ctrlProject_OnIndexChanged(object sender, EventArgs e)
+        {
+            RaiseIndexChanged(e);
         }
     }
 }
