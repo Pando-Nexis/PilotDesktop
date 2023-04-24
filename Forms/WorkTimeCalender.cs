@@ -27,7 +27,13 @@ namespace PilotDesktop.Forms
 
         private void WorkTimeCalender_Load(object sender, EventArgs e)
         {
-            dtpFrom.Value = DateTime.Today;
+            var date = DateTime.Today;
+
+            while (date.DayOfWeek != DayOfWeek.Monday)
+            {
+                date = date.AddDays(-1);
+            }
+            dtpFrom.Value = date;
             dtpTo.Value = dtpFrom.Value.AddDays(7);
             LoadData();
         }
@@ -132,13 +138,13 @@ namespace PilotDesktop.Forms
                     }
 
                 }
-               dtData.Rows.Add(rowData);
+                dtData.Rows.Add(rowData);
             }
             var rowSums = dtData.NewRow();
 
             rowSums[0] = "Totalt";
 
-            foreach(var sum in sums)
+            foreach (var sum in sums)
             {
                 rowSums[sum.Key] = sum.Value;
             }
@@ -167,6 +173,19 @@ namespace PilotDesktop.Forms
         private void bRefresh_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void bOpen_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbOpenWorkItem.Text))
+            {
+                var workItem = Program.WorkItems.List.FirstOrDefault(i => i.Id == tbOpenWorkItem.Text);
+                if (workItem != null)
+                {
+                    var frm = new HandleWorkItem(workItem);
+                    frm.ShowDialog();
+                }
+            }
         }
     }
 }

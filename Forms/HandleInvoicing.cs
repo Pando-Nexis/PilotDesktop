@@ -209,5 +209,15 @@ namespace PilotDesktop.Forms
             }
             LoadData();
         }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }

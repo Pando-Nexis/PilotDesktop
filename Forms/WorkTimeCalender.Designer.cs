@@ -35,6 +35,8 @@
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bRefresh = new System.Windows.Forms.Button();
+            this.tbOpenWorkItem = new System.Windows.Forms.TextBox();
+            this.bOpen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,7 +101,7 @@
             // 
             // bRefresh
             // 
-            this.bRefresh.Location = new System.Drawing.Point(1259, 21);
+            this.bRefresh.Location = new System.Drawing.Point(1346, 60);
             this.bRefresh.Name = "bRefresh";
             this.bRefresh.Size = new System.Drawing.Size(94, 29);
             this.bRefresh.TabIndex = 20;
@@ -107,11 +109,30 @@
             this.bRefresh.UseVisualStyleBackColor = true;
             this.bRefresh.Click += new System.EventHandler(this.bRefresh_Click);
             // 
+            // tbOpenWorkItem
+            // 
+            this.tbOpenWorkItem.Location = new System.Drawing.Point(1247, 18);
+            this.tbOpenWorkItem.Name = "tbOpenWorkItem";
+            this.tbOpenWorkItem.Size = new System.Drawing.Size(84, 27);
+            this.tbOpenWorkItem.TabIndex = 21;
+            // 
+            // bOpen
+            // 
+            this.bOpen.Location = new System.Drawing.Point(1346, 16);
+            this.bOpen.Name = "bOpen";
+            this.bOpen.Size = new System.Drawing.Size(94, 29);
+            this.bOpen.TabIndex = 22;
+            this.bOpen.Text = "Öppna";
+            this.bOpen.UseVisualStyleBackColor = true;
+            this.bOpen.Click += new System.EventHandler(this.bOpen_Click);
+            // 
             // WorkTimeCalender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 727);
+            this.Controls.Add(this.bOpen);
+            this.Controls.Add(this.tbOpenWorkItem);
             this.Controls.Add(this.bRefresh);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
@@ -137,5 +158,7 @@
         private DateTimePicker dtpFrom;
         private DataGridView dataGridView1;
         private Button bRefresh;
+        private TextBox tbOpenWorkItem;
+        private Button bOpen;
     }
 }
