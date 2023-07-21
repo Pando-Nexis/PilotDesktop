@@ -90,10 +90,10 @@ public class SourceCodeProjectService
 
     public void AddModifiedFiles(string masterProjectDirectoryPath, string createProjectPath, List<string> modifiedPaths, List<string> addOns)
     {
-        var addLine = true;
-        var currentAddonName = string.Empty;
         foreach (var viewPath in modifiedPaths)
         {
+            var addLine = true;
+            var currentAddonName = string.Empty;
             var destFile = new List<string>();
             var source = File.ReadAllLines(masterProjectDirectoryPath + viewPath);
 

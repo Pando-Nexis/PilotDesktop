@@ -20,6 +20,7 @@ namespace PilotDesktop.Forms
     {
         private readonly SourceCodeProjectService _sourceCodeProjectService;
         private readonly PilotProject _project;
+        private  List<string> _addons = new List<string>();
         public CustomerSourceCodeTool(PilotProject project)
         {
             InitializeComponent();
@@ -31,6 +32,14 @@ namespace PilotDesktop.Forms
 
         private void CreateProject(string masterProjectPath, string createProjectPath)
         {
+            if (string.IsNullOrEmpty(tbManuelAddon.Text))
+            {
+                _addons = _project.AddOns;
+            }
+            else
+            {
+                _addons.Add(tbManuelAddon.Text);
+            }
             var masterProjectDirectoryPath = Path.GetDirectoryName(masterProjectPath);
             if (!Directory.Exists(createProjectPath))
             {
@@ -39,7 +48,7 @@ namespace PilotDesktop.Forms
             FoldersAndFilesHelper.CopyFiles(masterProjectDirectoryPath, createProjectPath);
             FoldersAndFilesHelper.CreateSubFolders(masterProjectDirectoryPath, createProjectPath);
             _sourceCodeProjectService.CreateSlnFile(masterProjectPath, createProjectPath);
-            _sourceCodeProjectService.CreateAddonProject(masterProjectDirectoryPath, createProjectPath, _project.AddOns);
+            _sourceCodeProjectService.CreateAddonProject(masterProjectDirectoryPath, createProjectPath, _addons);
             _sourceCodeProjectService.CreateSolutionProject(masterProjectDirectoryPath, createProjectPath);
 
             ProcessStartInfo processInfo;
@@ -53,12 +62,28 @@ namespace PilotDesktop.Forms
         }
         private void AddAddOn(string masterProjectPath, string createProjectPath)
         {
+            if (string.IsNullOrEmpty(tbManuelAddon.Text))
+            {
+                _addons = _project.AddOns;
+            }
+            else
+            {
+                _addons.Add(tbManuelAddon.Text);
+            }
             var masterProjectDirectoryPath = Path.GetDirectoryName(masterProjectPath);
 
-            _sourceCodeProjectService.AddAddonToProject(masterProjectDirectoryPath,createProjectPath, _project.AddOns);
+            _sourceCodeProjectService.AddAddonToProject(masterProjectDirectoryPath, createProjectPath, _addons);
         }
         private void bAddAddon_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(tbManuelAddon.Text))
+            {
+                _addons = _project.AddOns;
+            }
+            else
+            {
+                _addons.Add(tbManuelAddon.Text);
+            }
             Cursor.Current = Cursors.WaitCursor;
 
             AddAddOn(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.MasterProject],
@@ -71,9 +96,9 @@ namespace PilotDesktop.Forms
         {
             Cursor.Current = Cursors.WaitCursor;
 
-            CreateProject(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.MasterProject], 
+            CreateProject(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.MasterProject],
                             Path.Combine(Program._pilotApplicationSettings.Settings[PilotApplicationSettingsConstants.ProjectFolder], _project.Name));
-            
+
             Cursor.Current = Cursors.Default;
         }
     }

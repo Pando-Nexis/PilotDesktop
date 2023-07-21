@@ -163,6 +163,7 @@ namespace PilotDesktop.SourceCode.Services
                                                       ProjectConstants.Mvc,
                                                       FolderConstants.Client,
                                                       FolderConstants.Styles,
+                                                      FolderConstants.PNTheme,
                                                       FolderConstants.Addons
                                                       )))
             {
@@ -171,6 +172,7 @@ namespace PilotDesktop.SourceCode.Services
                                                       ProjectConstants.Mvc,
                                                       FolderConstants.Client,
                                                       FolderConstants.Styles,
+                                                      FolderConstants.PNTheme,
                                                       FolderConstants.Addons
                                                       ));
             }
@@ -178,7 +180,8 @@ namespace PilotDesktop.SourceCode.Services
                                                       FolderConstants.Src,
                                                       ProjectConstants.Mvc,
                                                       FolderConstants.Client,
-                                                      FolderConstants.Styles,
+                                                      FolderConstants.Styles, 
+                                                      FolderConstants.PNTheme,
                                                       FolderConstants.Addons,
                                                       FileTypeConstants.IndexScss);
         }

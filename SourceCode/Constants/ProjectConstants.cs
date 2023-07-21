@@ -42,6 +42,7 @@ namespace PilotDesktop.SourceCode.Constants
 
         public static string Src = "Src";
         public static string Controllers = "Controllers";
+        public static string PNTheme = "PNTheme";
         public static string Addons = "_Addons";
         public static string Config = "_config";
         public static string Client = "Client";
@@ -54,16 +55,16 @@ namespace PilotDesktop.SourceCode.Constants
     }
     public static class ConfigConstants
     {
-        public static string BeginImport = "//PandoNexis: BEGIN IMPORT";
-        public static string EndImport = "//PandoNexis: END IMPORT";
-        public static string BeginComponent = "//PandoNexis: BEGIN COMPONENT";
-        public static string EndComponent = "//PandoNexis: END COMPONENT";
+        public static string BeginImport = "PandoNexis: BEGIN IMPORT";
+        public static string EndImport = "PandoNexis: END IMPORT";
+        public static string BeginComponent = "PandoNexis: BEGIN COMPONENT";
+        public static string EndComponent = "PandoNexis: END COMPONENT";
 
-        public static string BeginAddOn = "//PandoNexis: BEGIN ADDON";
-        public static string EndAddOn = "//PandoNexis: END ADDON";
+        public static string BeginAddOn = "PandoNexis: BEGIN ADDON";
+        public static string EndAddOn = "PandoNexis: END ADDON";
 
-        public static string BeginModel = "//PandoNexis: BEGIN MODEL";
-        public static string EndModel = "//PandoNexis: END MODEL";
+        public static string BeginModel = "PandoNexis: BEGIN MODEL";
+        public static string EndModel = "PandoNexis: END MODEL";
 
         public static string CssImport = "@import '";
         public static string CssIndex = "/index';";
